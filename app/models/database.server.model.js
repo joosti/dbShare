@@ -35,9 +35,9 @@ var DatabaseSchema = new Schema({
 	url: {
 		type: String,
 		default: '',
-		required: 'Please provide the URL of the Database',
-		trim: true,
-		match: [/^https?:\/\/?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$/, 'Please enter a valid URL. URL must begin with \'http://\' or \'https://\' and end with a TLD (e.g. \'.com\', \'.net\').']
+		//required: 'Please provide the URL of the Database',
+		trim: true
+//		match: [/^https?:\/\/?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$/, 'Please enter a valid URL. URL must begin with \'http://\' or \'https://\' and end with a TLD (e.g. \'.com\', \'.net\').']
 	},
 	created: {
 		type: Date,
