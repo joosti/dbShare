@@ -116,7 +116,7 @@ angular.module('databases').controller('DatabasesController', ['$scope', '$state
 				});
 
 			}
-            console.log(user);
+            //console.log(user);
 
          $scope.modalInstance.dismiss('cancel');
         };

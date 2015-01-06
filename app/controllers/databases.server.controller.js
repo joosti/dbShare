@@ -80,7 +80,7 @@ exports.list = function(req, res) {
 				message: errorHandler.getErrorMessage(err)
 			});
 		} else {
-			console.log(databases);
+			//console.log(databases);
 			res.jsonp(databases);
 		}
 	});

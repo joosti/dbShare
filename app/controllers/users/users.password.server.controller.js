@@ -206,7 +206,7 @@ exports.changePassword = function(req, res, next) {
 	// Init Variables
 	var passwordDetails = req.body;
 	var message = null;
-	console.log(passwordDetails);
+	//console.log(passwordDetails);
 
 	if (req.user) {
 		if (passwordDetails.newPassword) {

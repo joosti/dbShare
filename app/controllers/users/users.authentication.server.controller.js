@@ -32,7 +32,7 @@ exports.signup = function(req, res) {
 		}
 	});
 
-	// Add missing user fields
+	// Add missing user fieldsc
 	user.provider = 'local';
 	user.displayName = user.firstName + ' ' + user.lastName;
 
@@ -155,7 +155,7 @@ exports.signup = function(req, res) {
 exports.signin = function(req, res, next) {
 	passport.authenticate('local', function(err, user, info) {
 		if (err || !user) {
-			console.log(user);
+			//console.log(user);
 			res.status(400).send(info);
 		} else {
 			// Remove sensitive data before login
@@ -172,7 +172,7 @@ exports.signin = function(req, res, next) {
 					if (err) {
 						res.status(400).send(err);
 					} else {
-						console.log(user);
+						//console.log(user);
 						res.jsonp(user);					
 					}
 					//});
@@ -180,7 +180,7 @@ exports.signin = function(req, res, next) {
 				});
 			}
 			else{
-				console.log(user);
+				//console.log(user);
 				res.status(400).send(info);
 			}
 	}
@@ -194,7 +194,7 @@ exports.validateVerificationToken = function(req, res) {
 		if (!user) {
 			return res.redirect('/#!/auth/verification/' + req.params.token);
 		}
-		console.log('redirect correct');
+		//console.log('redirect correct');
 		res.redirect('/#!/auth/verification/' + req.params.token);
 	});
 };
@@ -207,10 +207,10 @@ exports.verifyEmail = function(req, res) {
 			}, function(err, user) {
 				if (!err && user) {
 						user.verified = '';
-						console.log('email');
-						console.log(user.username);
-						console.log('verified');
-						console.log(user.verified);
+						//console.log('email');
+						//console.log(user.username);
+						//console.log('verified');
+						//console.log(user.verified);
 
 						user.save(function(err) {
 							if (err) {

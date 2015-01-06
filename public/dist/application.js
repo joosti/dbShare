@@ -431,7 +431,7 @@ angular.module('databases').controller('DatabasesController', [
           $scope.error = response.data.message;
         });
       }
-      console.log(user);
+      //console.log(user);
       $scope.modalInstance.dismiss('cancel');
     };
     //Checks for database in user's portfolio. Returns TRUE if database is NOT in portfolio.
@@ -923,7 +923,6 @@ angular.module('users').controller('UsersController', [
     $scope.findUserPortfolio = function () {
       //Must save initial count because we will be changing this array
       var initPortCount = $scope.user.portfolios.length;
-      console.log('something');
       for (var i = 0; i < initPortCount; i++) {
         //Call method to remove bad portfolios from (Authentication/$scope).user.portfolios
         //Needed a separate method to preserve the current i value when the async request is made (Databases.get)

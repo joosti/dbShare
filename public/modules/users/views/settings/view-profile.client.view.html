@@ -12,14 +12,14 @@
 
 	<div class="pull-right">
 			<h3>Portfolio</h3>
-			<h5>Search by:</h5> 
+<!-- 			<h5>Search by:</h5> 
     		<select ng-model="searchKey" style="margin-bottom: 10px;">
     			<option selected="selected" value="$"> Any </option>
         		<option value="name"> Name </option>
         		<option value="descriptionShort"> Short Description </option> 
-    		</select>
+    		</select> -->
     		<div class="input-group input-group-sm" style="margin-bottom:10px">
-         Search: <input ng-model="query[searchKey]" class="form-control" placeholder = "Filter Criteria">
+         Search: <input ng-model="query" class="form-control" placeholder = "Filter Criteria">
     </div>
 			<div data-ng-init="findUserPortfolio()" class="list-group" style="min-width:450px !important; height: 300px !important; overflow-y:scroll; max-width:700px">
 

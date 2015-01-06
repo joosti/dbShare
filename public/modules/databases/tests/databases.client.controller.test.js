@@ -183,7 +183,7 @@
 				dismiss: function(string)
 				{
 				}
-			}
+			};
 			scope.addDatabaseToPortfolio();
 			$httpBackend.flush();
 

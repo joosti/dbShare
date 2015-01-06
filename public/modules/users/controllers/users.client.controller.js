@@ -34,8 +34,7 @@ angular.module('users').controller('UsersController', ['$scope', '$stateParams',
 		//Retrieve user's portfolio
 		$scope.findUserPortfolio = function() {		
 			//Must save initial count because we will be changing this array
-			var initPortCount = $scope.user.portfolios.length;
-			console.log('something');
+			var initPortCount = $scope.user.portfolios.length;			
 
 			for(var i = 0; i < initPortCount; i++)
 			{

@@ -59,14 +59,14 @@ exports.me = function(req, res) {
 * List Users
 */
 exports.list = function(req, res) {
-	console.log('listing users');
+	//console.log('listing users');
 	User.find().sort('lastName').exec(function(err, users) {
 		if(err) {
 			return res.status(400).send({
 				message: errorHandler.getErrorMessage(err)
 			});
 		} else {
-			console.log(users.length);
+			//console.log(users.length);
 			res.jsonp(users);
 		}
 	});
