@@ -69,6 +69,21 @@ angular.module('comments').controller('CommentsController', ['$scope', '$statePa
 
 		$scope.isAdmin = function() {
 			return (Authentication.user.roles.indexOf('admin') !== -1);
-		};		
+		};
+
+		/* NEW CODEMIRROR CONTROLS */
+
+		//modes enabled for posting code comments
+
+		$scope.cmOption = {
+			lineNumbers: true, 
+			indentWithTabs: true, 
+			mode: 'javascript'
+		};
+
+		//initial code content...
+
+		$scope.cmModel = '//Javascript code here\n' +
+			'var sampleText = \'text\';\n';
 	}
 ]);
