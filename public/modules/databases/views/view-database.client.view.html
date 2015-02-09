@@ -124,7 +124,15 @@
                 <label class="control-label" for="reviews" style="padding-left:10px">Add Comment</label>
                 <div class="controls">
                     <textarea type="text" data-ng-model="reviews" id="reviews" class="form-control" style="margin-left:10px; max-width:700px;" placeholder="Enter your comment here" required></textarea>
-                </div>            
+
+                    <!--Newly added CodeMirror element for commenting system-->
+                    <section style="margin-left:10px; max-width:700px;">
+                        <div ui-codemirror="cmOption" ng-model="cmModel"></div>
+                        <!--Mode: <select ng-model="mode" ng-options:"m for m in modes" ng-change="modeChanged()"></select>-->
+                    </section>
+
+
+                </div>   
             </div>
             <div class="form-group">
                 <input type="submit" class="btn btn-default" id="commentSubmit" style="margin-left:10px;">
