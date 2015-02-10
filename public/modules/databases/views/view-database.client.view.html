@@ -126,10 +126,11 @@
                     <textarea type="text" data-ng-model="reviews" id="reviews" class="form-control" style="margin-left:10px; max-width:700px;" placeholder="Enter your comment here" required></textarea>
 
                     <!--Newly added CodeMirror element for commenting system-->
-                    <section style="margin-left:10px; max-width:700px;">
+                    <section class="codeMirrorSection" style="margin-left:10px; max-width:700px;">
                         <div ui-codemirror="cmOption" ng-model="cmModel"></div>
-                        <!--Mode: <select ng-model="mode" ng-options:"m for m in modes" ng-change="modeChanged()"></select>-->
                     </section>
+                    <label class="control-label" for="reviews" style="padding-left:10px">Mode :</label>
+                    <select class="mode-button  ng-valid ng-dirty" style="margin-left:10px; max-width:700px;" ng-model="mode" ng-options="m for m in modes" ng-change="modeChanged()"></select>
 
 
                 </div>   

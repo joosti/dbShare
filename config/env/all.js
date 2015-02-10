@@ -15,7 +15,11 @@ module.exports = {
 			css: [
 				'public/lib/bootstrap/dist/css/bootstrap.css',
 				'public/lib/bootstrap/dist/css/bootstrap-theme.css',
-				'public/lib/codemirror/lib/codemirror.css'
+				'public/lib/codemirror/lib/codemirror.css',
+				'public/lib/codemirror/addon/hint/show-hint.css',
+				'public/lib/codemirror/addon/fold/foldgutter.css',
+				'public/lib/codemirror/theme/monokai.css'
+
 			],
 			js: [
 				'public/lib/angular/angular.js',
@@ -30,7 +34,22 @@ module.exports = {
 				'public/lib/angular-ui-codemirror/ui-codemirror.js',
 				'public/lib/codemirror/lib/codemirror.js',
 				'public/lib/codemirror/mode/xml/xml.js',
-				'public/lib/codemirror/mode/javascript/javascript.js'
+				'public/lib/codemirror/mode/javascript/javascript.js',
+				'public/lib/codemirror/addon/hint/show-hint.js',
+				'public/lib/codemirror/addon/hint/javascript-hint.js',
+				'public/lib/codemirror/addon/fold/foldcode.js',
+				'public/lib/codemirror/addon/fold/foldgutter.js',
+				'public/lib/codemirror/addon/fold/brace-fold.js',
+				'public/lib/codemirror/addon/fold/xml-fold.js',
+				'public/lib/codemirror/addon/fold/comment-fold.js',
+				'public/lib/codemirror/addon/edit/closetag.js',
+				'public/lib/codemirror/addon/selection/active-line.js',
+				'public/lib/codemirror/addon/edit/closebrackets.js',
+				'public/lib/codemirror/addon/search/search.js',
+				'public/lib/codemirror/mode/meta.js',
+				'public/lib/codemirror/addon/mode/loadmode.js',
+				'public/lib/codemirror/addon/search/match-highlighter.js',
+				'public/lib/codemirror/mode/sql/sql.js'
 			]
 		},
 		css: [
