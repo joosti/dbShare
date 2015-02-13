@@ -68,4 +68,9 @@
     <div class="alert alert-warning text-center" data-ng-hide="!databases.$resolved || databases.length">
     	No databases yet, why don't you <a href="/#!/databases/create">create one</a>?
     </div>
+
+    <!-- Need to create a button for database creation that shows up if there are databases present -->
+    <a class="btn btn-primary" href="/#!/databases/create" data-ng-show="databases.length">
+        Create New Database
+    </a>
 </section>
