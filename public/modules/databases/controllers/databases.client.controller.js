@@ -205,6 +205,9 @@ angular.module('databases').controller('DatabasesController', ['$scope', '$state
 
 		//sort order for the list database page
 		$scope.sortorder = 'name';
+
+		//default tab for comment/code section
+		$scope.selectedTab = 1;
 	}
 ]);
 
