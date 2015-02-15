@@ -71,7 +71,7 @@ angular.module('comments').controller('CommentsController', ['$scope', '$statePa
 			return (Authentication.user.roles.indexOf('admin') !== -1);
 		};
 
-		/* NEW CODEMIRROR CONTROLS */
+		/* NEW CODEMIRROR CONTROLS ---- NEED TO REMOVE FROM THIS CONTROLLER */
 
 		//modes enabled for posting code comments
 

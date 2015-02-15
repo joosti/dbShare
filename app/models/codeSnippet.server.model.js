@@ -32,4 +32,4 @@ var CodeSchema = new Schema({
 
 });
 
-mongoose.model('Code', CodeSchema);
+mongoose.model('CodeSnippet', CodeSchema);
