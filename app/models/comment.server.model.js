@@ -25,7 +25,7 @@ var CommentSchema = new Schema({
 		ref: 'User'
 	},
 	databaseId: {
-		type:String
+		type: String
 	}
 });
 

@@ -25,14 +25,15 @@ angular.module('comments').controller('CommentsController', ['$scope', '$statePa
 
 		// Remove existing Comment
 		$scope.remove = function( comment ) {
-			if ( comment ) { comment.$remove();
+			if ( comment ) { 
+				comment.$remove();
 
 				for (var i in $scope.comments ) {
 					if ($scope.comments [i] === comment ) {
 						$scope.comments.splice(i, 1);
 					}
 				}
-			} else {
+			} else { 
 				$scope.comment.$remove(function() {
 					$location.path('comments');
 				});
@@ -70,50 +71,5 @@ angular.module('comments').controller('CommentsController', ['$scope', '$statePa
 		$scope.isAdmin = function() {
 			return (Authentication.user.roles.indexOf('admin') !== -1);
 		};
-
-		/* NEW CODEMIRROR CONTROLS */
-
-		//modes enabled for posting code comments
-
-		$scope.modes = ['XML', 'Javascript', 'text/x-mysql'];
-
-		$scope.mode = $scope.modes[0];
-
-		$scope.cmOption = {
-			lineNumbers: true,
-			lineWrapping: true,
-			autoCloseTags: true,
-			autoCloseBrackets: true,
-			enableSearchTools: true,
-			showSearchButton: true,
-			highlightMatches: true,
-			smartIndent: true,
-			theme: 'monokai',
-			extraKeys: {"Ctrl-Space": "autocomplete"},
-			foldGutter: {
-				rangeFinder: new CodeMirror.fold.combine(CodeMirror.fold.brace, CodeMirror.fold.comment)
-			},
-			gutters: ["CodeMirror-linenumbers", "CodeMirror-foldgutter"],
-
-			onLoad : function(_cm){
-
-				// HACK to have the codemirror instance in the scope...
-				$scope.modeChanged = function(){
-					_cm.setOption("mode", $scope.mode.toLowerCase());
-				};
-			}
-		};
-
-		//initial code content...
-
-		$scope.cmModel = '<!-- XML code in here. -->\n' +
-		'<root class="main">\n\t<foo style="background-attachment: fixed">\n\t\tOMG this is great!\n\t</foo>\n\t<bar/>\n</root>\n\n\n' +
-		'// Javascript code in here.\n' +
-		'function foo(msg) {\n\tvar r = Math.random();\n\treturn "" + r + " : " + msg;\n}'
-		+'\n\n# SQL code in here\n'+
-		'\nSELECT Orders.OrderID, Customers.CustomerName, Orders.OrderDate\n'+
-		'FROM Orders\n'+
-		'INNER JOIN Customers\n'+
-		'ON Orders.CustomerID=Customers.CustomerID;\n';
 	}
 ]);

@@ -1,8 +1,8 @@
 'use strict';
 
 // Databases controller
-angular.module('databases').controller('DatabasesController', ['$scope', '$stateParams', '$location', '$window', 'Users', 'Authentication', 'Databases', 'Comments', '$modal', 
-	function($scope, $stateParams, $location, $window, Users, Authentication, Databases, Comments, $modal) {
+angular.module('databases').controller('DatabasesController', ['$scope', '$stateParams', '$location', '$window', 'Users', 'Authentication', 'Databases', 'Comments', 'CodeSnippets', '$modal', 
+	function($scope, $stateParams, $location, $window, Users, Authentication, Databases, Comments, CodeSnippets, $modal) {
 		$scope.user = {};
 		angular.copy(Authentication.user, $scope.user);
 		$scope.authentication = Authentication;
@@ -86,6 +86,7 @@ angular.module('databases').controller('DatabasesController', ['$scope', '$state
 			}, function(){
 				$scope.findDBUsers(result._id);
 				$scope.getComments(result._id);
+				$scope.getCodeSnippets(result._id);
 				$scope.database = result; //Set this scope's current database
 			});
 		};
@@ -173,6 +174,7 @@ angular.module('databases').controller('DatabasesController', ['$scope', '$state
 
         //Find all comments associated with the current database
 		$scope.getComments = function(database_id) {
+			console.log('get here');
 			var allComments = Comments.query({}, function(){
 				for(var i = 0; i < allComments.length; i++)
 				{
@@ -184,6 +186,22 @@ angular.module('databases').controller('DatabasesController', ['$scope', '$state
 					}
 				}
 				$scope.dbComments = allComments;
+			});
+		};
+
+		//Find all code snippets associated with the current database
+		$scope.getCodeSnippets = function(database_id) {
+			console.log('get here');
+			var allCodeSnippets = CodeSnippets.query({}, function() {
+				for(var i = 0; i < allCodeSnippets.length; i++)
+				{
+					var currentCodeSnippet = allCodeSnippets[i];
+					if(currentCodeSnippet.databaseId !== database_id) {
+						allCodeSnippets.splice(i, 1);
+						i--;
+					}
+				}
+				$scope.dbCodeSnippets = allCodeSnippets;
 			});
 		};
 
@@ -205,6 +223,9 @@ angular.module('databases').controller('DatabasesController', ['$scope', '$state
 
 		//sort order for the list database page
 		$scope.sortorder = 'name';
+
+		//default tab for comment/code section
+		$scope.selectedTab = 1;
 	}
 ]);
 
