@@ -27,7 +27,7 @@ var CodeSnippetSchema = new Schema({
 	}, 
 	user: {
 		type: Schema.ObjectId, 
-		ref: 'user'
+		ref: 'User'
 	}, 
 	databaseId: {
 		type: String

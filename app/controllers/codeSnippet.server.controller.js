@@ -17,7 +17,7 @@ exports.create = function(req, res) {
 	var codeSnippet = new CodeSnippet(req.body);
 	codeSnippet.user = req.user;
 
-	comment.save(function(err) {
+	codeSnippet.save(function(err) {
 		if(err) {
 			return res.status(400).send({message: errorHandler.getErrorMessage(err)});
 		}
@@ -78,7 +78,7 @@ exports.codeSnippetByID = function(req, res, next, id) {
  */
 exports.hasAuthorization = function(req, res, next) {
 	if(req.user.roles.indexOf('admin') === -1) {
-		if (req.comment.user.id !== req.user.id) {
+		if (req.codeSnippet.user.id !== req.user.id) {
 			return res.status(403).send('User is not authorized');
 		}
 	}	

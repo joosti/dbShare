@@ -12,7 +12,7 @@ module.exports = function(app) {
 	//-----> Need to place PUT method later
 	app.route('/codeSnippets/:codeSnippetId')
 	   .get(codeSnippets.read)
-	   .delete(user.requiresLogin, codeSnippets.hasAuthorization, codeSnippets.delete);
+	   .delete(users.requiresLogin, codeSnippets.hasAuthorization, codeSnippets.delete);
 
 	//bind middleware
 	app.param('codeSnippetId', codeSnippets.codeSnippetByID);

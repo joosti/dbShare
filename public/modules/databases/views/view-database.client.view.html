@@ -155,19 +155,48 @@
             </form>
         </div>
 
+        <!--Code Snippets section-->
+        <div class="tab-content" ng-show="selectedTab == 3">
+
+            <div class="list-group">
+                <li data-ng-controller="CodeSnippetsController" ng-repeat="codeSnippet in dbCodeSnippets" class = "list-group-item">
+                    <b><a data-ng-href="#!/users/{{codeSnippet.user._id}}" data-ng-bind="codeSnippet.user.displayName"></a></b>
+                    <small class="list-group-item-test"> on <span data-ng-bind="codeSnippet.created | date:'medium'"></span>
+                    <!--Add delete button-->
+                    <section class="codeMirrorSection" style="margin-left:10px; max-width:700px;">
+                        <div ui-codemirror="cmOption" ng-bind="codeSnippet.code"></div>
+                    </section>
+                </li>
+            </div>
+
+            <div class="alert alert-warning text-center" ng-show="dbCodeSnippets.length === 0">
+                No Code Snippets on this Database
+            </div>
+
+        </div>
+
         <!--New code snippet form-->
         <div class="tab-content" ng-show="selectedTab == 4">
-            <!--Newly added CodeMirror element for commenting system-->
-            <div data-ng-controller="CodeSnippetsController">
-                <section class="codeMirrorSection" style="margin-left:10px; max-width:700px;">
-                    <div ui-codemirror="cmOption" ng-model="cmModel"></div>
-                </section>
-                <label class="control-label" for="reviews" style="padding-left:10px">Mode :</label>
-                <select class="mode-button  ng-valid ng-dirty" style="margin-left:10px; max-width:700px;" ng-model="mode" ng-options="m for m in modes" ng-change="modeChanged()"></select>
-            </div>
-            <div class="form-group">
-                <input type="submit" class="btn btn-default" id="" style="margin-left:10px;">
-            </div>  
+            <!-- Form (w/ new Code Mirror controller) to add code snippets to a specific database -->
+            <form class="form-horizontal" data-ng-controller="CodeSnippetsController" novalidate data-ng-submit="create(database._id); getCodeSnippet(database._id); resetCodeSnippetField()">
+                <fieldset>
+                    <div class="form-group">
+                        <label class="control-label" for="reviews" style="padding-left:10px">Add Comment</label>
+                        <div class="controls">
+                            <section class="codeMirrorSection" style="margin-left:10px; max-width:700px">
+                                <div ui-codemirror="cmOption" ng-model="cmModel"></div>
+                            </section>
+                            <label class="control-label" style="padding-left:10px">Mode</label>
+                            <select class="mode-button  ng-valid ng-dirty" style="margin-left:10px; max-width:700px;" ng-model="mode" ng-options="m for m in modes" ng-change="modeChanged()"></select>
+                        </div>   
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" class="btn btn-default" id="codeSnippetSubmit" style="margin-left:10px;">
+                    </div>    
+                    <div data-ng-show="error" class="text-danger">
+                        <strong data-ng-bind="error"></strong>
+                    </div>
+                </fieldset>
+            </form>
         </div>
-    </div>
 </section>

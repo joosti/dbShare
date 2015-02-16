@@ -1,6 +1,7 @@
 'use strict';
 
-angular.module('codeSnippets').controller('CodeSnippetController', ['$scope', '$stateParams', '$location', 'Authentication', 'CodeSnippet', 
+//code Snippet controller
+angular.module('codeSnippets').controller('CodeSnippetsController', ['$scope', '$stateParams', '$location', 'Authentication', 'CodeSnippets', 
 	function( $scope, $stateParams, $location, Authentication, CodeSnippets ){
 
 		$scope.authentication = Authentication;
@@ -54,10 +55,10 @@ angular.module('codeSnippets').controller('CodeSnippetController', ['$scope', '$
 		//create new CodeSnippet
 		$scope.create = function(databaseId) {
 			//create new CodeSnippet object
-			var codeSnippet = new CodeSnippet({
-				code = this.cmModel;
-				mode = this.mode;
-				databaseId = databaseId;
+			var codeSnippet = new CodeSnippets({
+				code: $scope.cmModel,
+				mode: $scope.mode,
+				databaseId: databaseId});
 
 				//redirect after save
 				codeSnippet.$save(function(response) {
@@ -67,11 +68,46 @@ angular.module('codeSnippets').controller('CodeSnippetController', ['$scope', '$
 				}, function(errorResponse) {
 					$scope.error = errorResponse.data.message;
 				});
-			});
 		};
 
 		//remove existing CodeSnippet
-			//$scope.remove = function( codeSnippet ) {};
+		$scope.remove = function( codeSnippet ) {
+			if(codeSnippet) {
+				codeSnippet.$remove();
+
+				for(var i in $scope.codeSnippets) {
+					if($scope.codeSnippets[i] === codeSnippet)
+						$scope.codeSnippets.splice(i, 1);
+				}
+			} else {
+				$scope.codeSnippet.$remove(function() {
+					$location.path('codeSnippets');
+				});
+			}
+		};
+
+		//Find a list of Code snippets
+		$scope.find = function() {
+			//query() is GET method provided by $resource
+			$scope.codeSnippets = CodeSnippets.query();
+		};
+
+		//Find existing Code Snippet
+		$scope.findOne = function() {
+			$scope.codeSnippet = CodeSnippets.get({
+				codeSnippetId: $stateParams.codeSnippetId
+			});
+		};
+
+		//Reset CodeSnippet field
+		$scope.resetCodeSnippetField = function() {
+			$scope.cmModel = '<!-- XML code in here. -->\n';
+		};
+
+		//admin function
+		$scope.isAdmin = function() {
+			return (Authentication.user.roles.indexOf('admin') !== -1);
+		};
 
 		//update existing CodeSnippet
 }]);
