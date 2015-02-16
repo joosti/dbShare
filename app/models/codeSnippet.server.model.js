@@ -11,7 +11,7 @@ var mongoose = require('mongoose'),
 Code Schema
 */
 
-var CodeSchema = new Schema({
+var CodeSnippetSchema = new Schema({
 	
 	//mode used by user to input code
 	mode: {
@@ -28,8 +28,11 @@ var CodeSchema = new Schema({
 	user: {
 		type: Schema.ObjectId, 
 		ref: 'user'
+	}, 
+	databaseId: {
+		type: String
 	}
 
 });
 
-mongoose.model('CodeSnippet', CodeSchema);
+mongoose.model('CodeSnippet', CodeSnippetSchema);

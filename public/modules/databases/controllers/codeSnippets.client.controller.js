@@ -71,6 +71,7 @@ angular.module('codeSnippets').controller('CodeSnippetController', ['$scope', '$
 		};
 
 		//remove existing CodeSnippet
+			//$scope.remove = function( codeSnippet ) {};
 
 		//update existing CodeSnippet
 }]);
