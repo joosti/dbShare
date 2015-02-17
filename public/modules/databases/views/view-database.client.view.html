@@ -156,7 +156,7 @@
         </div>
 
         <!--Code Snippets section-->
-        <div class="tab-content" ng-show="selectedTab == 3">
+        <div class="tab-content" ng-show="selectedTab == 3" id="snippetList">
 
             <div class="list-group">
                 <li data-ng-controller="CodeSnippetsController" ng-repeat="codeSnippet in dbCodeSnippets" class = "list-group-item">
@@ -178,7 +178,7 @@
         <!--New code snippet form-->
         <div class="tab-content" ng-show="selectedTab == 4">
             <!-- Form (w/ new Code Mirror controller) to add code snippets to a specific database -->
-            <form class="form-horizontal" data-ng-controller="CodeSnippetsController" novalidate data-ng-submit="create(database._id); getCodeSnippet(database._id); resetCodeSnippetField()">
+            <form class="form-horizontal" data-ng-controller="CodeSnippetsController" novalidate data-ng-submit="create(database._id); getCodeSnippets(database._id); resetCodeSnippetField()">
                 <fieldset>
                     <div class="form-group">
                         <label class="control-label" for="reviews" style="padding-left:10px">Add Comment</label>
