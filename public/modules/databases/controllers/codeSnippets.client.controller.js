@@ -14,7 +14,7 @@ angular.module('codeSnippets').controller('CodeSnippetsController', ['$scope', '
 
 		$scope.mode = $scope.modes[0];
 
-		$scope.cmOption = {
+		$scope.cmOption1 = {
 			lineNumbers: true,
 			lineWrapping: true,
 			autoCloseBrackets: true,
@@ -39,6 +39,32 @@ angular.module('codeSnippets').controller('CodeSnippetsController', ['$scope', '
 
 
 		};
+
+		$scope.cmOption2 = {
+			lineNumbers: true,
+			lineWrapping: true,
+			autoCloseBrackets: true,
+			enableSearchTools: true,
+			showSearchButton: true,
+			highlightMatches: true,
+			readOnly: 'nocursor',
+			smartIndent: true,
+			theme: 'monokai',
+			extraKeys: {'Ctrl-Space': 'autocomplete'},
+			foldGutter: {
+				rangeFinder: new CodeMirror.fold.combine(CodeMirror.fold.brace, CodeMirror.fold.comment)
+			},
+			gutters: ['CodeMirror-linenumbers', 'CodeMirror-foldgutter'],
+
+			onLoad : function(_cm){
+
+				// HACK to have the codemirror instance in the scope...
+				$scope.modeChanged = function(){
+					_cm.setOption('mode', $scope.mode.toLowerCase());
+				};
+			}
+		};
+
 
 		//initial code content...
 
@@ -110,7 +136,8 @@ angular.module('codeSnippets').controller('CodeSnippetsController', ['$scope', '
 					if($scope.codeSnippets[i] === codeSnippet)
 						$scope.codeSnippets.splice(i, 1);
 				}
-			} else {
+			}
+			else {
 				$scope.codeSnippet.$remove(function() {
 					$location.path('codeSnippets');
 				});
