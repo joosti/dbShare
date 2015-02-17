@@ -33,8 +33,6 @@ module.exports = {
 				'public/lib/angular-bootstrap/ui-bootstrap-tpls.js',
 				'public/lib/angular-ui-codemirror/ui-codemirror.js',
 				'public/lib/codemirror/lib/codemirror.js',
-				'public/lib/codemirror/mode/sass/sass.js',
-				'public/lib/codemirror/mode/r/r.js',
 				'public/lib/codemirror/addon/hint/show-hint.js',
 				'public/lib/codemirror/addon/fold/foldcode.js',
 				'public/lib/codemirror/addon/fold/foldgutter.js',
@@ -45,7 +43,8 @@ module.exports = {
 				'public/lib/codemirror/addon/edit/closebrackets.js',
 				'public/lib/codemirror/addon/search/search.js',
 				'public/lib/codemirror/addon/mode/loadmode.js',
-				'public/lib/codemirror/addon/search/match-highlighter.js'
+				'public/lib/codemirror/addon/search/match-highlighter.js',
+				'public/lib/codemirror/mode/r/r.js'
 			]
 		},
 		css: [
