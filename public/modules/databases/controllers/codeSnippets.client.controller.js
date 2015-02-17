@@ -10,7 +10,7 @@ angular.module('codeSnippets').controller('CodeSnippetsController', ['$scope', '
 
 		//modes enabled for posting code comments
 
-		$scope.modes = ['SASS', 'R'];
+		$scope.modes = ['R'];
 
 		$scope.mode = $scope.modes[0];
 
@@ -42,20 +42,27 @@ angular.module('codeSnippets').controller('CodeSnippetsController', ['$scope', '
 
 		//initial code content...
 
-		$scope.cmModel = '// Sass code goes here\n\n' +
-		'$page-width:    800px\n'+
-		'$sidebar-width: 200px\n'+
-		'$primary-color: #eeeeee\n\n'+
-		'body.home .media-unit {\n' +
-		'\tborder: 1px solid #ccc;\n'+
-		'\tbackground-color: #fff;\n'+
-		'}\n'+
-		'body.home  .media-unit .right {\n' +
-		'\tborder-left: 1px solid #ccc;\n' +
-		'}\n'+
-		'body.home .media-unit .right h1 {\n' +
-		'\tfont-size: 24px;\n'+
-		'}\n' +
+		$scope.cmModel = '\n/* SAS code goes here */\n' +
+		'data example;\n' +
+		'input group $ outcome $ count @@;\n' +
+		'datalines;\n' +
+		'placebo yes 2 placebo no 18 active yes 7 active no 13;\n' +
+		'proc freq order=data; weight count;\n' +
+		'\ttables group*outcome / riskdiff(CL=(WALD MN)) measures;\n' +
+		'\t\t* MN = Miettinen and Nurminen inverted score test;\n' +
+		'run;\n' +
+		'\n\n** STATA CODE goes here\n' +
+		'gen n_age_group = irecode(age,17,30,45,60,.)+1\n' +
+		'recode\n' +
+		'replace n_age_group = 1 if (age <= 17)\n' +
+		'\treplace n_age_group = 2 if (age >= 18 & age <= 30)\n' +
+		'\treplace n_age_group = 3 if (age >= 31 & age <= 45)\n' +
+		'\treplace n_age_group = 4 if (age >= 46 & age <= 60)\n' +
+		'\treplace n_age_group = 5 if (age >= 61 & age != .)\n' +
+		'assert n_age_group != missing(n_age_group)\n' +
+		'label define age_group_labels 1 "0-17" 2 "18-30" 3 "31-45" ///\n' +
+		'4 "46-60" 5 ">60"\n' +
+		'label values n_age_group age_group_labels\n' +
 		'\n\n\n# R code goes here\n\n' +
 		'VARselect(x, lag.max=10, type="both")\n' +
 		'summary(fit <- VAR(x, p=2, type="both"))\n' +
