@@ -10,14 +10,13 @@ angular.module('codeSnippets').controller('CodeSnippetsController', ['$scope', '
 
 		//modes enabled for posting code comments
 
-		$scope.modes = ['XML', 'Javascript', 'text/x-mysql'];
+		$scope.modes = ['SASS', 'R'];
 
 		$scope.mode = $scope.modes[0];
 
 		$scope.cmOption = {
 			lineNumbers: true,
 			lineWrapping: true,
-			autoCloseTags: true,
 			autoCloseBrackets: true,
 			enableSearchTools: true,
 			showSearchButton: true,
@@ -37,19 +36,44 @@ angular.module('codeSnippets').controller('CodeSnippetsController', ['$scope', '
 					_cm.setOption('mode', $scope.mode.toLowerCase());
 				};
 			}
+
+
 		};
 
 		//initial code content...
 
-		$scope.cmModel = '<!-- XML code in here. -->\n' +
-		'<root class="main">\n\t<foo style="background-attachment: fixed">\n\t\tOMG this is great!\n\t</foo>\n\t<bar/>\n</root>\n\n\n' +
-		'// Javascript code in here.\n' +
-		'function foo(msg) {\n\tvar r = Math.random();\n\treturn "" + r + " : " + msg;\n}' +
-		'\n\n# SQL code in here\n' +
-		'\nSELECT Orders.OrderID, Customers.CustomerName, Orders.OrderDate\n'+
-		'FROM Orders\n' +
-		'INNER JOIN Customers\n' +
-		'ON Orders.CustomerID=Customers.CustomerID;\n';
+		$scope.cmModel = '// Sass code goes here\n\n' +
+		'$page-width:    800px\n'+
+		'$sidebar-width: 200px\n'+
+		'$primary-color: #eeeeee\n\n'+
+		'body.home .media-unit {\n' +
+		'\tborder: 1px solid #ccc;\n'+
+		'\tbackground-color: #fff;\n'+
+		'}\n'+
+		'body.home  .media-unit .right {\n' +
+		'\tborder-left: 1px solid #ccc;\n' +
+		'}\n'+
+		'body.home .media-unit .right h1 {\n' +
+		'\tfont-size: 24px;\n'+
+		'}\n' +
+		'\n\n\n# R code goes here\n\n' +
+		'VARselect(x, lag.max=10, type="both")\n' +
+		'summary(fit <- VAR(x, p=2, type="both"))\n' +
+		'library(fGarch)\n' +
+		'summary(nyse.g <- garchFit(~garch(1,1), nyse))\t' +
+		'u = nyse.g@sigma.t\n' +
+		'plot(window(nyse, start=900, end=1000), ylim=c(-.22,.2), ylab="NYSE Returns")\n'+
+		'lines(window(nyse-2*u, start=900, end=1000), lty=2, col=4)\n' +
+		'lines(window(nyse+2*u, start=900, end=1000), lty=2, col=4)\n' +
+		'X = list(height=5.4, weight=54)\n' +
+		'print("Use default printing --")\n' +
+		'print(X)\n' +
+		'print("Accessing individual elements --")\n' +
+		'cat("Your height is ", X$height, " and your weight is ", X$weight, "\n")\n' +
+		'square <- function(x) {\n' +
+		'\treturn(x*x)\n'+
+		'}\n'+
+		'cat("The square of 3 is ", square(3), "\n")\n';
 
 
 		//create new CodeSnippet
