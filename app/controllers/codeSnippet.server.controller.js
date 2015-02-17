@@ -46,7 +46,7 @@ exports.delete = function(req, res) {
 		else
 			res.jsonp(codeSnippet);
 	});
-}
+};
 
 /*
 ** List of code snippets
@@ -60,18 +60,20 @@ exports.list = function(req, res) {
 		else
 			res.jsonp(codeSnippets);
 	});
-}
+};
 
 /*
 ** Middleware to get codeSnippet by ID
 */
 
 exports.codeSnippetByID = function(req, res, next, id) {
-	if (err) return next(err);
-	if (!codeSnippet) return next(new Error('Failed to load Code Snippet' + id));
-	req.codeSnippet = codeSnippet;
-	next();
-}
+	CodeSnippet.findById(id).populate('user', 'displayName').exec(function(err, codeSnippet) {
+		if(err) return next(err);
+		if(!codeSnippet) return next(new Error('Unable to load code snippet ' + id));
+		req.codeSnippet = codeSnippet;
+		next();
+	});
+};
 
 /**
  * Comment authorization middleware

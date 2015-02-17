@@ -55,14 +55,6 @@ angular.module('codeSnippets').controller('CodeSnippetsController', ['$scope', '
 				rangeFinder: new CodeMirror.fold.combine(CodeMirror.fold.brace, CodeMirror.fold.comment)
 			},
 			gutters: ['CodeMirror-linenumbers', 'CodeMirror-foldgutter'],
-
-			onLoad : function(_cm){
-
-				// HACK to have the codemirror instance in the scope...
-				$scope.modeChanged = function(){
-					_cm.setOption('mode', $scope.mode.toLowerCase());
-				};
-			}
 		};
 
 

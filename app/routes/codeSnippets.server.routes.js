@@ -16,4 +16,4 @@ module.exports = function(app) {
 
 	//bind middleware
 	app.param('codeSnippetId', codeSnippets.codeSnippetByID);
-}
+};
