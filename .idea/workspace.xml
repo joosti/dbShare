@@ -1,13 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="e48cb234-fa14-4e43-b162-b5db60627ff1" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/env/all.js" afterPath="$PROJECT_DIR$/config/env/all.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/modules/databases/controllers/codeSnippets.client.controller.js" afterPath="$PROJECT_DIR$/public/modules/databases/controllers/codeSnippets.client.controller.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/lib/codemirror/lib/codemirror.css" afterPath="$PROJECT_DIR$/public/lib/codemirror/lib/codemirror.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/modules/databases/views/view-database.client.view.html" afterPath="$PROJECT_DIR$/public/modules/databases/views/view-database.client.view.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-    </list>
+    <list default="true" id="e48cb234-fa14-4e43-b162-b5db60627ff1" name="Default" comment="" />
     <ignored path="dbShare.iws" />
     <ignored path=".idea/workspace.xml" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
