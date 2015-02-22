@@ -45,6 +45,7 @@ video {
   border-radius: 10px;
   padding-bottom: 10px;
   background-color: white;
+
 }
 audio:not([controls]) {
   display: none;
@@ -1402,25 +1403,43 @@ pre code {
   max-height: 340px;
   overflow-y: scroll;
 }
+.leftBar {
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+  width: 400px;
+}
 .container {
   padding-right: 15px;
   padding-left: 15px;
   margin-right: auto;
   margin-left: auto;
+  width: 1000px;
 }
+
+.view {
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+  width: 1100px;
+}
+
+
 @media (min-width: 768px) {
   .container {
-    width: 750px;
+    width: 1500px;
   }
 }
 @media (min-width: 992px) {
   .container {
-    width: 970px;
+    width: 1500px;
   }
 }
 @media (min-width: 1200px) {
   .container {
-    width: 1170px;
+    width: 1500px;
   }
 }
 .container-fluid {
