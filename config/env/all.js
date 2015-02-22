@@ -53,6 +53,7 @@ module.exports = {
 				'public/lib/split-pane/split-pane.js',
 				'public/lib/angular-split-pane/angular-split-pane.js',
 				'public/lib/jquery.splitter/js/jquery.splitter-0.14.0.js'
+        'public/lib/codemirror/addon/display/placeholder.js'
 			]
 		},
 		css: [
