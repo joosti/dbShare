@@ -18,10 +18,13 @@ module.exports = {
 				'public/lib/codemirror/lib/codemirror.css',
 				'public/lib/codemirror/addon/hint/show-hint.css',
 				'public/lib/codemirror/addon/fold/foldgutter.css',
-				'public/lib/codemirror/theme/monokai.css'
+				'public/lib/codemirror/theme/monokai.css',
+				'public/lib/w2ui/w2ui-1.4.2.min.css',
+				'public/lib/jquery.splitter/css/jquery.splitter.css'
 
 			],
 			js: [
+				'public/lib/jquery/dist/jquery.min.js',
 				'public/lib/angular/angular.js',
 				'public/lib/angular-resource/angular-resource.js', 
 				'public/lib/angular-cookies/angular-cookies.js', 
@@ -45,7 +48,12 @@ module.exports = {
 				'public/lib/codemirror/addon/mode/loadmode.js',
 				'public/lib/codemirror/addon/search/match-highlighter.js',
 				'public/lib/codemirror/mode/r/r.js',
-                'public/lib/codemirror/addon/display/placeholder.js'
+				'public/lib/ng-pageslide/src/angular-pageslide-directive.js',
+				'public/lib/w2ui/w2ui-1.4.2.min.js',
+				'public/lib/split-pane/split-pane.js',
+				'public/lib/angular-split-pane/angular-split-pane.js',
+				'public/lib/jquery.splitter/js/jquery.splitter-0.14.0.js'
+        'public/lib/codemirror/addon/display/placeholder.js'
 			]
 		},
 		css: [

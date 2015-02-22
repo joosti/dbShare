@@ -11,7 +11,10 @@ var ApplicationConfiguration = function () {
         'ngSanitize',
         'ui.router',
         'ui.bootstrap',
-        'ui.utils'
+        'ui.utils',
+        'ng-pageslide-master',
+        'angular-split-pane',
+        'bgDirectives'
       ];
     // Add a new vertical module
     var registerModule = function (moduleName, dependencies) {

@@ -14,6 +14,8 @@
     "angular-bootstrap": "~0.11.0",
     "angular-ui-utils": "~0.1.1",
     "angular-ui-router": "~0.2.10",
-    "angular-ui-codemirror": "~0.2.3"
+    "angular-ui-codemirror": "~0.2.3",
+    "ng-pageslide": "latest",
+    "w2ui": "latest"
   }
 }
