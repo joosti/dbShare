@@ -1,0 +1,5 @@
+-As a user, I want to see a list of DBs posted on the left side of the page. 
+-As a user, I want to see a list of other users participating in a database on the right side of the page.
+-As a user, when I click on a database, information about the database should populate the middle of the page. 
+-As a user, when I click a link to another user, I should see their extended user profile. 
+-As a user, I want to have the ability to write a comment with code highlighting, in order to share my code with other users. 
