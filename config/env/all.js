@@ -18,10 +18,17 @@ module.exports = {
 				'public/lib/codemirror/lib/codemirror.css',
 				'public/lib/codemirror/addon/hint/show-hint.css',
 				'public/lib/codemirror/addon/fold/foldgutter.css',
-				'public/lib/codemirror/theme/monokai.css'
+				'public/lib/codemirror/theme/monokai.css',
+				'public/lib/kendo-ui-core/styles/kendo.common.min.css',
+				'public/lib/kendo-ui-core/styles/kendo.default.min.css',
+				'public/lib/kendo-ui-core/styles/kendo.dataviz.min.css',
+				'public/lib/kendo-ui-core/styles/kendo.dataviz.default.min.css'
+			
+
 
 			],
 			js: [
+			  'public/lib/kendo-ui-core/js/jquery.min.js',
 				'public/lib/angular/angular.js',
 				'public/lib/angular-resource/angular-resource.js', 
 				'public/lib/angular-cookies/angular-cookies.js', 
@@ -45,7 +52,12 @@ module.exports = {
 				'public/lib/codemirror/addon/mode/loadmode.js',
 				'public/lib/codemirror/addon/search/match-highlighter.js',
 				'public/lib/codemirror/mode/r/r.js',
-                'public/lib/codemirror/addon/display/placeholder.js'
+        'public/lib/codemirror/addon/display/placeholder.js',
+        'public/lib/kendo-ui-core/js/angular-route.js',
+        'public/lib/kendo-ui-core/js/kendo.all.min.js',
+				'public/lib/kendo-ui-core/js/kendo.ui.core.min.js'
+				
+				
 			]
 		},
 		css: [

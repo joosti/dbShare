@@ -1,11 +1,34 @@
 'use strict';
 
 // Databases controller
-angular.module('databases').controller('DatabasesController', ['$scope', '$stateParams', '$location', '$window', 'Users', 'Authentication', 'Databases', 'Comments', 'CodeSnippets', '$modal', 
+angular.module('databases').controller('DatabasesController', ['$scope', '$stateParams', '$location', '$window', 'Users', 'Authentication', 'Databases', 'Comments', 'CodeSnippets', '$modal',
 	function($scope, $stateParams, $location, $window, Users, Authentication, Databases, Comments, CodeSnippets, $modal) {
 		$scope.user = {};
 		angular.copy(Authentication.user, $scope.user);
 		$scope.authentication = Authentication;
+
+
+
+    $scope.orientation = "horizontal";
+    $scope.hello = "Hello from Controller!";
+
+
+    $("#vertical").kendoSplitter({
+                        orientation: "vertical",
+                        panes: [
+                            { collapsible: false, size: "1000px"},
+                            
+                        ]
+                    });
+
+     $("#horizontal").kendoSplitter({
+                        panes: [
+                            { collapsible: true, size: "400px" },
+                            { collapsible: false, size: "500px" },
+                            { collapsible: true, size: "100px" }
+                        ]
+                    });
+
 
 		// Create new Database
 		$scope.create = function() {
@@ -76,19 +99,31 @@ angular.module('databases').controller('DatabasesController', ['$scope', '$state
 		// Find a list of Databases
 		$scope.find = function() {
 			$scope.databases = Databases.query();
+
+      //$scope.findDBUsers(Databases[0].id);
+       // $scope.getComments(Databases[0].id);
+       // $scope.getCodeSnippets(Databases[0].id);
+        //$scope.database = Databases[0]; //Set this scope's current databas
+
+
+        
+
 		};
 
 		// Find existing Database
 		$scope.findOne = function() {
-			//Note we had to use a local variable 'result' in order to be able to use it within the callback function
-			var result = Databases.get({ 
-				databaseId: $stateParams.databaseId
-			}, function(){
-				$scope.findDBUsers(result._id);
-				$scope.getComments(result._id);
-				$scope.getCodeSnippets(result._id);
-				$scope.database = result; //Set this scope's current database
-			});
+
+      //Note we had to use a local variable 'result' in order to be able to use it within the callback function
+      var result = Databases.get({ 
+        databaseId: $stateParams.databaseId
+      }, function(){
+
+        $scope.findDBUsers(result._id);
+        $scope.getComments(result._id);
+        $scope.getCodeSnippets(result._id);
+        $scope.database = result; //Set this scope's current database
+      });
+			
 		};
 
 		// Add databases into portfolio
@@ -241,3 +276,5 @@ angular.module('databases').controller('ModalInstanceCtrl', function ($scope, $m
   };
 
 });
+
+

@@ -11,7 +11,8 @@ var ApplicationConfiguration = function () {
         'ngSanitize',
         'ui.router',
         'ui.bootstrap',
-        'ui.utils'
+        'ui.utils',
+        'ui.codemirror'
       ];
     // Add a new vertical module
     var registerModule = function (moduleName, dependencies) {
@@ -45,6 +46,8 @@ angular.element(document).ready(function () {
 });'use strict';
 // Use Applicaion configuration module to register a new module
 ApplicationConfiguration.registerModule('core');'use strict';
+// Use applicaion configuration module to register a new module
+ApplicationConfiguration.registerModule('codeSnippets');'use strict';
 // Use applicaion configuration module to register a new module
 ApplicationConfiguration.registerModule('comments');'use strict';
 // Use applicaion configuration module to register a new module
@@ -257,6 +260,114 @@ angular.module('databases').config([
     });
   }
 ]);'use strict';
+//code Snippet controller
+angular.module('codeSnippets').controller('CodeSnippetsController', [
+  '$scope',
+  '$stateParams',
+  '$location',
+  'Authentication',
+  'CodeSnippets',
+  function ($scope, $stateParams, $location, Authentication, CodeSnippets) {
+    $scope.authentication = Authentication;
+    /* NEW CODEMIRROR CONTROLS */
+    //modes enabled for posting code comments
+    $scope.modes = ['R'];
+    $scope.mode = $scope.modes[0];
+    //New code-mirror snippet options
+    $scope.cmOption1 = {
+      placeholder: 'Your code goes here',
+      viewportMargin: Infinity,
+      lineNumbers: true,
+      lineWrapping: true,
+      autoCloseBrackets: true,
+      enableSearchTools: true,
+      showSearchButton: true,
+      highlightMatches: true,
+      smartIndent: true,
+      theme: 'monokai',
+      extraKeys: { 'Ctrl-Space': 'autocomplete' },
+      foldGutter: { rangeFinder: new CodeMirror.fold.combine(CodeMirror.fold.brace, CodeMirror.fold.comment) },
+      gutters: [
+        'CodeMirror-linenumbers',
+        'CodeMirror-foldgutter'
+      ],
+      onLoad: function (_cm) {
+        // HACK to have the codemirror instance in the scope...
+        $scope.modeChanged = function () {
+          _cm.setOption('mode', $scope.mode.toLowerCase());
+        };
+      }
+    };
+    //Archived code-mirror snippet options
+    $scope.cmOption2 = {
+      lineNumbers: true,
+      lineWrapping: true,
+      autoCloseBrackets: true,
+      enableSearchTools: true,
+      showSearchButton: true,
+      highlightMatches: true,
+      readOnly: 'nocursor',
+      smartIndent: true,
+      theme: 'monokai',
+      extraKeys: { 'Ctrl-Space': 'autocomplete' },
+      foldGutter: { rangeFinder: new CodeMirror.fold.combine(CodeMirror.fold.brace, CodeMirror.fold.comment) },
+      gutters: [
+        'CodeMirror-linenumbers',
+        'CodeMirror-foldgutter'
+      ]
+    };
+    //initial code content...
+    $scope.cmModel = '';
+    //create new CodeSnippet
+    $scope.create = function (databaseId) {
+      //create new CodeSnippet object
+      var codeSnippet = new CodeSnippets({
+          code: $scope.cmModel,
+          mode: $scope.mode,
+          databaseId: databaseId
+        });
+      //redirect after save
+      codeSnippet.$save(function (response) {
+        //clear CodeMirror form
+        $scope.cmModel = '<!-- XML code in here. -->\n';
+        $scope.mode = $scope.modes[0];
+      }, function (errorResponse) {
+        $scope.error = errorResponse.data.message;
+      });
+    };
+    //remove existing CodeSnippet
+    $scope.remove = function (codeSnippet) {
+      if (codeSnippet) {
+        codeSnippet.$remove();
+        for (var i in $scope.codeSnippets) {
+          if ($scope.codeSnippets[i] === codeSnippet)
+            $scope.codeSnippets.splice(i, 1);
+        }
+      } else {
+        $scope.codeSnippet.$remove(function () {
+          $location.path('codeSnippets');
+        });
+      }
+    };
+    //Find a list of Code snippets
+    $scope.find = function () {
+      //query() is GET method provided by $resource
+      $scope.codeSnippets = CodeSnippets.query();
+    };
+    //Find existing Code Snippet
+    $scope.findOne = function () {
+      $scope.codeSnippet = CodeSnippets.get({ codeSnippetId: $stateParams.codeSnippetId });
+    };
+    //Reset CodeSnippet field
+    $scope.resetCodeSnippetField = function () {
+      $scope.cmModel = '<!-- XML code in here. -->\n';
+    };
+    //admin function
+    $scope.isAdmin = function () {
+      return Authentication.user.roles.indexOf('admin') !== -1;
+    };  //update existing CodeSnippet
+  }
+]);'use strict';
 // Comments controller
 angular.module('comments').controller('CommentsController', [
   '$scope',
@@ -324,6 +435,7 @@ angular.module('comments').controller('CommentsController', [
 ]);'use strict';
 // Databases controller
 angular.module('databases').controller('DatabasesController', [
+  'kendo-ui-core.directives',
   '$scope',
   '$stateParams',
   '$location',
@@ -332,11 +444,14 @@ angular.module('databases').controller('DatabasesController', [
   'Authentication',
   'Databases',
   'Comments',
+  'CodeSnippets',
   '$modal',
-  function ($scope, $stateParams, $location, $window, Users, Authentication, Databases, Comments, $modal) {
+  function ($scope, $stateParams, $location, $window, Users, Authentication, Databases, Comments, CodeSnippets, $modal) {
     $scope.user = {};
     angular.copy(Authentication.user, $scope.user);
     $scope.authentication = Authentication;
+    $scope.orientation = 'horizontal';
+    $scope.hello = 'Hello from Controller!';
     // Create new Database
     $scope.create = function () {
       // Create new Database object
@@ -405,6 +520,7 @@ angular.module('databases').controller('DatabasesController', [
       var result = Databases.get({ databaseId: $stateParams.databaseId }, function () {
           $scope.findDBUsers(result._id);
           $scope.getComments(result._id);
+          $scope.getCodeSnippets(result._id);
           $scope.database = result;  //Set this scope's current database
         });
     };
@@ -481,6 +597,7 @@ angular.module('databases').controller('DatabasesController', [
     };
     //Find all comments associated with the current database
     $scope.getComments = function (database_id) {
+      console.log('get here');
       var allComments = Comments.query({}, function () {
           for (var i = 0; i < allComments.length; i++) {
             //console.log(allComments);
@@ -491,6 +608,20 @@ angular.module('databases').controller('DatabasesController', [
             }
           }
           $scope.dbComments = allComments;
+        });
+    };
+    //Find all code snippets associated with the current database
+    $scope.getCodeSnippets = function (database_id) {
+      console.log('get here');
+      var allCodeSnippets = CodeSnippets.query({}, function () {
+          for (var i = 0; i < allCodeSnippets.length; i++) {
+            var currentCodeSnippet = allCodeSnippets[i];
+            if (currentCodeSnippet.databaseId !== database_id) {
+              allCodeSnippets.splice(i, 1);
+              i--;
+            }
+          }
+          $scope.dbCodeSnippets = allCodeSnippets;
         });
     };
     $scope.isProficient = function (proficients, dbID) {
@@ -507,6 +638,8 @@ angular.module('databases').controller('DatabasesController', [
     };
     //sort order for the list database page
     $scope.sortorder = 'name';
+    //default tab for comment/code section
+    $scope.selectedTab = 1;
   }
 ]);
 angular.module('databases').controller('ModalInstanceCtrl', [
@@ -521,6 +654,13 @@ angular.module('databases').controller('ModalInstanceCtrl', [
     $scope.cancel = function () {
       $modalInstance.dismiss('cancel');
     };
+  }
+]);'use strict';
+//Comments service used to communicate CodeSnippet REST endpoints
+angular.module('codeSnippets').factory('CodeSnippets', [
+  '$resource',
+  function ($resource) {
+    return $resource('codeSnippets/:codeSnippetId', { codeSnippetId: '@_id' });  //place update action after returned $resource
   }
 ]);'use strict';
 //Comments service used to communicate Comments REST endpoints
