@@ -1,44 +1,11 @@
-
-
-
-
-
-
-    
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 <div id="example" ng-app="DatabasesController">
   <div class="demo-section k-content" ng-controller="DatabasesController" style="width: 1100px;height: 1000px">
-
-  
     <div class="box-col" style="width: 1100px;height: 1000px">
       <div kendo-splitter
            k-panes="[ null, null,null]"
            k-orientation="orientation"
            k-rebind="orientation">
-
-
         <div>
-          
-
-
-
-
-
-
                                 <div data-ng-controller="DatabasesController" data-ng-init="find()">
 
                                         <div class="page-header">
@@ -115,30 +82,14 @@
                                         <a class="btn btn-primary" href="/#!/databases/create" data-ng-show="databases.length">
                                             Create New Database
                                         </a>
-                                        
-
                                  </div>
-
-
-
-
-
-
         </div>
         <div styles ="width:300px;">
-
-
-
                                 <div data-ng-controller="DatabasesController" data-ng-init="findOne()">
-
-
                                     <!--Buttons to add/remove database in portfolio-->
                                         <button ng-show="checkForDatabaseInPortfolio()" id="addDBButton" data-ng-click="open('md', database);" class="btn addDatabases pull-right">
                                         Add Database To Your Portfolio <i class="glyphicon glyphicon-plus"></i></button> 
                                         <button ng-show="!checkForDatabaseInPortfolio()" id="removeDBButton" data-ng-click="removeDatabaseFromPortfolio(); findDBUsers(database._id);" class="btn removeDatabase pull-right"> Remove Database From Portfolio <i class="glyphicon glyphicon-minus"></i></button>
-
-                                       
-
 
                                     <!-- Div for the modal for adding DBs -->
                                          <div>
@@ -334,16 +285,8 @@
                                     </fieldset>
                                 </form>
                             </div>
-                                     
-
-
-
                               </div>
-
-
-
         </div>
-
         <div styles ="width:100px;">
            <div class="page-header">
               <h1>Users</h1>

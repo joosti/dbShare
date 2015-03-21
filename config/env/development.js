@@ -1,7 +1,7 @@
 'use strict';
 
 module.exports = {
-	db: 'mongodb://localhost/cen3031fa14-dev',
+	db: 'mongodb://kenantt:dbShare2015@ds053937.mongolab.com:53937/dbshare',
 	app: {
 		title: 'CEN3031FA14 - Development Environment'
 	},

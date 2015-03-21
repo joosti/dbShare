@@ -13,21 +13,23 @@ angular.module('databases').controller('DatabasesController', ['$scope', '$state
     $scope.hello = "Hello from Controller!";
 
 
-    $("#vertical").kendoSplitter({
-                        orientation: "vertical",
-                        panes: [
-                            { collapsible: false, size: "1000px"},
-                            
-                        ]
-                    });
+		$("#vertical").kendoSplitter({
+			orientation: "vertical",
+			panes: [
+				{ collapsible: false },
+				{ collapsible: false, size: "100px" },
+				{ collapsible: false, resizable: false, size: "100px" }
+			]
+		});
 
-     $("#horizontal").kendoSplitter({
-                        panes: [
-                            { collapsible: true, size: "400px" },
-                            { collapsible: false, size: "500px" },
-                            { collapsible: true, size: "100px" }
-                        ]
-                    });
+
+		$("#horizontal").kendoSplitter({
+			panes: [
+				{ collapsible: true, size: "220px" },
+				{ collapsible: false },
+				{ collapsible: true, size: "220px" }
+			]
+		});
 
 
 		// Create new Database
