@@ -23,25 +23,32 @@ var randomURL;                  //DB url
 var randomDBName;               //DB Name
 var randomDate;                 //Comment Date
 var randomCode;                 //codeSnippet
+var randomUserID = ["550efebe467b9a788f9acf55", "550f8999a89116f5661ff265", "550f8a6ba89116f5661ff266",
+                    "550f8a6ba89116f5661ff267", "550f8c83a89116f5661ff268", "550f8c83a89116f5661ff269",
+                    "550f8c83a89116f5661ff26a", "550f8c84a89116f5661ff26b", "550f8c84a89116f5661ff26b",
+                    "550f8c84a89116f5661ff26c", "550f8c84a89116f5661ff26d", "550f8c84a89116f5661ff26e"];
 
 //var usersArray = [];
 //var databasesArray = [];
 //var commentsArray = [];
 //var codeSnippetsArray = [];
 
-var users = 'db.users.insert([\n';
-var databases = 'db.databases.insert([\n';
-var comments = 'db.comments.insert([\n';
-var codeSnippets = 'db.comments.insert([\n';
+//var users = 'db.users.insert([\n';
+//var databases = 'db.databases.insert([\n';
+//var comments = 'db.comments.insert([\n';
+//var codeSnippets = 'db.comments.insert([\n';
 
 
 
-//var users = "";
-//var databases = "";
-//var comments = "";
-//var codeSnippets = "";
+var users = "";
+var databases = "";
+var comments = "";
+var codeSnippets = "";
 
-for(var i = 0; i < 10; ++i) {
+var maxValue = 30;
+var userIDCounter = 0;
+
+for(var i = 0; i < maxValue; ++i) {
     randomFirstName = faker.name.firstName();
     randomLastName = faker.name.lastName();
     randomEmail = faker.internet.email();
@@ -49,70 +56,125 @@ for(var i = 0; i < 10; ++i) {
     randomPassword = faker.internet.password();
     randomResearchInterests = faker.hacker.phrase();
 
-    randomDescriptionLong = faker.lorem.paragraphs();
-    randomDescriptionShort = faker.lorem.paragraph();
+    randomDescriptionLong = faker.hacker.phrase();
+    randomDescriptionShort = faker.hacker.phrase();
     randomDBName = faker.company.companyName();
     randomURL = faker.internet.domainName();
 
     randomDate = faker.date.recent();
     randomComment = faker.hacker.phrase();
-    randomCode = faker.lorem.paragraphs();
+    randomCode = faker.lorem.paragraph();
 
     //This is all the inputs for the users table
-    users += "{\n";
-    users += "username: '" +  randomEmail + "',\n";
-    users += "password: '" + randomPassword + "',\n";
-    users += "firstName: '" + randomFirstName + "',\n";
-    users += "lastName: '" + randomLastName + "',\n";
-    users += "displayName: '" + randomDisplayName + "',\n";
-    users += "researchinterests: '" + randomResearchInterests + "',\n";
-    users += "roles: ['user'],\n";
-    users += "portfolios:[],\n";
-    users += "proficientpors:[],\n";
-    users += "provider: 'local'\n";
-    users += "}\n";
+    users += '{';
+    users += '"username": "' +  randomEmail + '", ';
+    users += '"password": "' + randomPassword + '", ';
+    users += '"firstName": "' + randomFirstName + '", ';
+    users += '"lastName": "' + randomLastName + '", ';
+    users += '"displayName": "' + randomDisplayName + '", ';
+    users += '"researchinterests": "' + randomResearchInterests + '", ';
+    users += '"roles": ' + "[" + "'user'" + "], ";
+    users += '"portfolios":"[]", ';
+    users += '"proficientpors": "[]", ';
+    users += '"provider": ' + "'local'";
+    if(i == maxValue - 1){
+        users += '}\n';
+    }
+    else {
+        users += '},\n';
+    }
 
     //usersArray[i] = users;
 
     //users = "";
 
     //This is all the inputs for the databases table
-    databases += "{\n";
-    databases += "name: '" +  randomDBName + "',\n";
-    databases += "descrpitonLong: '" + randomDescriptionLong + "',\n";
-    databases += "descriptionShort: '" + randomDescriptionShort + "',\n";
-    databases += "url: '" + randomURL + "'\n";
-    databases += "}\n";
+    databases += '{';
+    databases += '"name": "' + randomDBName +'", ';
+    databases += '"descrpitonLong": "' + randomDescriptionLong + '", ';
+    databases += '"descriptionShort": "' + randomDescriptionShort + '", ';
+    databases += '"url": "' + randomURL + '" ';
+    if(i == maxValue - 1){
+        databases += '}\n';
+    }
+    else {
+        databases += '},\n';
+    }
 
     //databasesArray[i] = databases;
 
     //databases = "";
 
     //This is the inputs for comments table
-    comments += "{\n";
-    comments += "reviews: '" +  randomDBName + "',\n";
-    comments += "created: '" + randomDate + "'\n";
-    comments += "user: '" + randomDisplayName + "'\n";
-    comments += "databaseID: '" + randomDBName + "'\n";
-    comments += "}\n";
+    comments += '{';
+    comments += '"user": {';
+    comments += '"$oid": "' + randomUserID[userIDCounter] + '"}, ';
+    comments += '"databaseId": "550f96584a05f10000b428e0", ';
+    comments += '"created": {';
+    comments += '"$date": "2015-03-23T05:37:51.390Z"}, ';
+    comments += '"reviews": "' + randomComment + '", ';
+    comments += '"__v": 0';
+    if(i == maxValue - 1){
+        comments += '}\n';
+    }
+    else {
+        comments += '},\n';
+    }
+
+    if(userIDCounter == 11){
+        userIDCounter = 0;
+    }
+    else {
+        ++userIDCounter;
+    }
 
     //commentsArray[i] = comments;
 
     //comments = "";
 
     //This is the inputs for codeSnippets table
-    codeSnippets += "{\n";
-    codeSnippets += "mode: 'r',\n";
-    codeSnippets += "code: '" + randomCode + "'\n";
-    codeSnippets += "created: '" + randomDate + "'\n";
-    codeSnippets += "user: '" + randomDisplayName + "'\n";
-    codeSnippets += "databaseID: '" + randomDBName + "'\n";
-    codeSnippets += "},\n";
+    codeSnippets += '{';
+    codeSnippets += '"user": {';
+    codeSnippets += '"$oid": "' + randomUserID[userIDCounter] + '"}, ';
+    codeSnippets += '"code": "' + randomCode + '", ';
+    codeSnippets += '"mode": "R",';
+    codeSnippets += '"databaseId": "550f96584a05f10000b428e0", ';
+    codeSnippets += '"created": {';
+    codeSnippets += '"$date": "2015-03-23T05:37:51.390Z"}, ';
+    codeSnippets += '"__v": 0';
+    if(i == maxValue - 1){
+        codeSnippets += '}\n';
+    }
+    else {
+        codeSnippets += '},\n';
+    }
+
+    /*
+    {
+        "user": {
+        "$oid": "550da9f592c1bc0000da66a8"
+    },
+        "code": "//This is the output of all the users\nfor(var i = 0; i < 10; ++i){\n    console.log(users);\n}\n\n//This is the output for all the databases\nfor(var i = 0; i < 10; ++i){\n    console.log(databases);\n}\n\n//This is the output for all the comments\nfor(var i = 0; i < 10; ++i){\n    console.log(comments);\n}\n\n//This is the output for all the codeSnippet\nfor(var i = 0; i < 10; ++i){\n    console.log(codeSnippets);\n}",
+        "mode": "R",
+        "databaseId": "550f96584a05f10000b428e0",
+        "created": {
+        "$date": "2015-03-23T04:41:36.499Z"
+    },
+        "__v": 0
+    }
+
+    */
 
     //codeSnippetsArray[i] = codeSnippets;
 
     //codeSnippets = "";
 }
+
+
+//users += "]";
+//databases += "]";
+//comments += "]";
+//codeSnippets += "]";
 
 //users += "])";
 //databases += "])";
@@ -120,24 +182,16 @@ for(var i = 0; i < 10; ++i) {
 //codeSnippets += "])";
 
 //This is the output of all the users
-for(var i = 0; i < 10; ++i){
-    console.log(users);
-}
+    //console.log(users);
 
 //This is the output for all the databases
-for(var i = 0; i < 10; ++i){
-    console.log(databases);
-}
+    //console.log(databases);
 
 //This is the output for all the comments
-for(var i = 0; i < 10; ++i){
-    console.log(comments);
-}
+    //console.log(comments);
 
 //This is the output for all the codeSnippet
-for(var i = 0; i < 10; ++i){
     console.log(codeSnippets);
-}
 
 
 
