@@ -63,6 +63,15 @@ describe('Code Snippet Model Unit Tests', function() {
 				done();
 			});
 		});
+
+		it('should be able to remove with no errors', function(done) {
+
+			return codeSnippet.remove(function(err) {
+				should.not.exist(err);
+				done();
+			});
+		});
+
 	});
 
 	afterEach(function(done) {
