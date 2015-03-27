@@ -32,7 +32,7 @@
             <th><a href="" ng-click="predicate = 'created'; reverse=!reverse">Posted On</th>
             <th><a href="" ng-click="predicate = 'user.displayName'; reverse=!reverse">Posted By</th>
         </tr>
-        <tr data-ng-repeat="database in databases | orderBy: predicate : reverse | filter:query" >
+        <tr data-ng-repeat="database in databases | orderBy: predicate : reverse | filter:query">
             <td>
                 <div>
              <script type="text/ng-template" id="addDBModal">
