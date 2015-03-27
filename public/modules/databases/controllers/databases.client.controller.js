@@ -7,7 +7,7 @@ angular.module('databases').controller('DatabasesController', ['$scope', '$state
 		angular.copy(Authentication.user, $scope.user);
 		$scope.authentication = Authentication;
 
-
+    $scope.currentDatabase = {};
 
     $scope.orientation = "horizontal";
     $scope.hello = "Hello from Controller!";
@@ -16,8 +16,6 @@ angular.module('databases').controller('DatabasesController', ['$scope', '$state
 		$("#vertical").kendoSplitter({
 			orientation: "vertical",
 			panes: [
-				{ collapsible: false },
-				{ collapsible: false, size: "100px" },
 				{ collapsible: false, resizable: false, size: "100px" }
 			]
 		});
@@ -25,12 +23,22 @@ angular.module('databases').controller('DatabasesController', ['$scope', '$state
 
 		$("#horizontal").kendoSplitter({
 			panes: [
-				{ collapsible: true, size: "220px" },
-				{ collapsible: false },
-				{ collapsible: true, size: "220px" }
+				{ collapsible: true, size: "100px" },
+        { collapsible: false },
+        { collapsible: true, size: "100%" }
 			]
 		});
 
+    $scope.setDatabase = function(database) {
+
+
+        console.log("id = " + database._id);
+
+        $scope.findDBUsers(database._id );
+        $scope.getComments(database._id );
+        $scope.getCodeSnippets(database._id );
+        $scope.database = database; //Set this scope's current database
+    }
 
 		// Create new Database
 		$scope.create = function() {
@@ -100,12 +108,32 @@ angular.module('databases').controller('DatabasesController', ['$scope', '$state
 
 		// Find a list of Databases
 		$scope.find = function() {
-			$scope.databases = Databases.query();
 
-      //$scope.findDBUsers(Databases[0].id);
-       // $scope.getComments(Databases[0].id);
-       // $scope.getCodeSnippets(Databases[0].id);
-        //$scope.database = Databases[0]; //Set this scope's current databas
+
+			$scope.databases = Databases.query(function() {
+        // $scope.currentDatabase.name = $scope.databases[0].name;
+        // $scope.currentDatabase.descriptionShort = $scope.databases[0].descriptionShort;
+        // $scope.currentDatabase.descriptionLong = $scope.databases[0].descriptionLong;
+        // $scope.currentDatabase.isFree = $scope.databases[0].isFree;
+        // $scope.currentDatabase.url = $scope.databases[0].url;
+        
+        $scope.currentDatabase._id = $scope.databases[0]._id;
+
+        console.log("id = " + $scope.databases[0]._id);
+
+        $scope.findDBUsers($scope.currentDatabase._id );
+        $scope.getComments($scope.currentDatabase._id );
+        $scope.getCodeSnippets($scope.currentDatabase._id );
+        $scope.database = $scope.databases[0]; //Set this scope's current database
+
+
+      });
+     
+
+      // $scope.findDBUsers(Databases[0].id);
+      // $scope.getComments(Databases[0].id);
+      // $scope.getCodeSnippets(Databases[0].id);
+      // $scope.database = Databases[0]; //Set this scope's current databas
 
 
         
@@ -276,6 +304,8 @@ angular.module('databases').controller('ModalInstanceCtrl', function ($scope, $m
 
 
   };
+
+
 
 });
 
