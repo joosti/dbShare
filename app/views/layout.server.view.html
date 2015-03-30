@@ -42,12 +42,18 @@
 	<![endif]-->
 </head>
 
-<body class="ng-cloak" style= "background-color:#4A6FB4">
+<body class="ng-cloak">
 	<header data-ng-include="'/modules/core/views/header.client.view.html'" class="navbar navbar-fixed-top navbar-default"></header>
 	<section class="content">
-		<section class="container maincontent">
-			{% block content %}{% endblock %}
-		</section>
+		<div class="row">
+			<div class="col-md-3">
+				<div data-ng-include="'/modules/databases/views/left.database.side.view.html'"></div>
+			</div>
+			<div class="col-md-6">
+				{% block content %}{% endblock %}
+			</div>
+			<div class="col-md-3"></div>
+		</div>
 	</section>
 
 	<!--Embedding The User Object-->
