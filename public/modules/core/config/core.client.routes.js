@@ -11,6 +11,7 @@ angular.module('core').config(['$stateProvider', '$urlRouterProvider',
 		state('home', {
 			url: '/',
 			templateUrl: 'modules/users/views/authentication/signin.client.view.html'
+			//^this needs to change to modules/split/home.split.up.view
 		});
 	}
 ]);

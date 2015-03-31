@@ -45,14 +45,19 @@
 <body class="ng-cloak">
 	<header data-ng-include="'/modules/core/views/header.client.view.html'" class="navbar navbar-fixed-top navbar-default"></header>
 	<section class="content">
-		<div class="row">
-			<div class="col-md-3">
-				<div data-ng-include="'/modules/databases/views/left.database.side.view.html'"></div>
-			</div>
-			<div class="col-md-6">
-				{% block content %}{% endblock %}
-			</div>
-			<div class="col-md-3"></div>
+		<div class="box-col">
+			<div kendo-splitter
+           		k-panes="[null, null, null]"
+           		k-orientation="'horizontal'"
+           		k-rebind="'horizontal'"
+           		size="100%"
+           		style="height: 900px;">
+           		<div>
+           			<div data-ng-include="'/modules/databases/views/left.database.side.view.html'"></div>
+           		</div>
+           		<div>{% block content %}{% endblock %}</div>
+           		<div>Right hand Side</div>
+           	</div>
 		</div>
 	</section>
 

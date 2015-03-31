@@ -1,0 +1,7 @@
+<section data-ng-controller="DatabasesController" data-ng-init="find()">
+	<table class="table">
+		<tr data-ng-repeat="database in databases | orderBy: predicate : reverse | filter:query">
+			<td><a data-ng-href="#!/databases/{{database._id}}" class="list-group-item" id="dbClick"> {{database.name}} </td>
+		</tr>
+	</table>
+</section>
