@@ -56,7 +56,10 @@
            			<div data-ng-include="'/modules/databases/views/left.database.side.view.html'"></div>
            		</div>
            		<div>{% block content %}{% endblock %}</div>
-           		<div>Right hand Side: User View</div>
+           		<div>
+           			Right hand Side: User View
+           			<div data-ng-include="'/modules/users/views/list-users.client.view.html'"></div>
+           		</div>
            	</div>
 		</div>
 	</section>
