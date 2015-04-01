@@ -36,6 +36,26 @@
 	{% for cssFile in cssFiles %}<link rel="stylesheet" href="{{cssFile}}">
 	{% endfor %}
 
+	<style type="text/css">
+		body, html {
+		  height:100%;
+		  overflow: hidden;
+		}
+
+		.scrollable {
+			height: 100%;
+			overflow-y: auto;
+		}
+
+		.max-height {
+			height: 100%;
+		}
+
+		.no-overflow {
+			overflow: hidden;
+		}
+	</style>
+
 	<!-- HTML5 Shim -->
 	<!--[if lt IE 9]>
 		<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
@@ -44,14 +64,14 @@
 
 <body class="ng-cloak">
 	<header data-ng-include="'/modules/core/views/header.client.view.html'" class="navbar navbar-fixed-top navbar-default"></header>
-	<section class="content">
+	<!--<section class="content">
 		<div class="box-col">
 			<div kendo-splitter
            		k-panes="[null, null, null]"
            		k-orientation="'horizontal'"
            		k-rebind="'horizontal'"
            		size="100%"
-           		style="height: 900px;">
+           		style="height: 700px">
            		<div>
            			<div data-ng-include="'/modules/databases/views/left.database.side.view.html'"></div>
            		</div>
@@ -61,6 +81,19 @@
            			<div data-ng-include="'/modules/users/views/list-users.client.view.html'"></div>
            		</div>
            	</div>
+		</div>
+	</section>-->
+	<section class="content max-height no-overflow">
+		<div class="row max-height">
+			<div class="col-sm-3 scrollable">
+				<div data-ng-include="'/modules/databases/views/left.database.side.view.html'"></div>
+			</div>
+			<div class="col-sm-6 scrollable">
+				{% block content %}{% endblock %}
+			</div>
+			<div class="col-sm-3 scrollable">
+				<div data-ng-include="'/modules/users/views/list-users.client.view.html'"></div>
+			</div>
 		</div>
 	</section>
 
