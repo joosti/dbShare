@@ -133,6 +133,8 @@ describe('Creating a new codeSnippet', function() {
 
 		query.sendKeys('gatorDB');
 
+
+
 	});
 });
 
