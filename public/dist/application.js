@@ -233,11 +233,14 @@ angular.module('core').service('Menus', [function () {
 // Configuring the Articles module
 angular.module('databases').run([
   'Menus',
-  function (Menus) {
+  function (Menus, $rootScope) {
     // Set top bar menu items
     Menus.addMenuItem('topbar', 'Databases', 'databases', 'dropdown', '/databases(/create)?');
     Menus.addSubMenuItem('topbar', 'databases', 'List Databases', 'databases');
     Menus.addSubMenuItem('topbar', 'databases', 'New Database', 'databases/create');
+
+      //If not logged in, do not show as logged in
+      $rootScope.isLoggedIn = false;
   }
 ]);'use strict';
 //Setting up route
@@ -437,6 +440,7 @@ angular.module('comments').controller('CommentsController', [
 angular.module('databases').controller('DatabasesController', [
   'kendo-ui-core.directives',
   '$scope',
+    '$rootScope',
   '$stateParams',
   '$location',
   '$window',
@@ -446,7 +450,7 @@ angular.module('databases').controller('DatabasesController', [
   'Comments',
   'CodeSnippets',
   '$modal',
-  function ($scope, $stateParams, $location, $window, Users, Authentication, Databases, Comments, CodeSnippets, $modal) {
+  function ($scope, $rootScope, $stateParams, $location, $window, Users, Authentication, Databases, Comments, CodeSnippets, $modal) {
     $scope.user = {};
     angular.copy(Authentication.user, $scope.user);
     $scope.authentication = Authentication;

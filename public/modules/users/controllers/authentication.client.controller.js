@@ -1,7 +1,7 @@
 'use strict';
 
-angular.module('users').controller('AuthenticationController', ['$scope', '$stateParams', '$http', '$location', 'Authentication',
-	function($scope, $stateParams, $http, $location, Authentication) {
+angular.module('users').controller('AuthenticationController', ['$scope', '$rootScope', '$stateParams', '$http', '$location', 'Authentication',
+	function($scope, $rootScope, $stateParams, $http, $location, Authentication) {
 		$scope.authentication = Authentication;
 		$scope.registration = 'open';
 
@@ -25,8 +25,9 @@ angular.module('users').controller('AuthenticationController', ['$scope', '$stat
 					//email address is valid, continue with signup
 					$http.post('/auth/signup', $scope.credentials).success(function(response) {
 						// If successful we assign the response to the global user model
-						
+                        $rootScope.isLoggedIn = true;
 						$scope.authentication.user = response;
+
 						// And redirect to the index page
 						$location.path('/databases');
 					}).error(function(response) {
@@ -37,6 +38,7 @@ angular.module('users').controller('AuthenticationController', ['$scope', '$stat
 			else {
 				$http.post('/auth/signup', $scope.credentials).success(function(response) {
 					// And redirect to the index page
+                    $rootScope.isLoggedIn = true;
 					$location.path('/databases');
 				}).error(function(response) {
 					$scope.error = response.message;
@@ -47,6 +49,7 @@ angular.module('users').controller('AuthenticationController', ['$scope', '$stat
 		$scope.signin = function() {
 			$http.post('/auth/signin', $scope.credentials).success(function(response) {
 				// If successful we assign the response to the global user model
+                $rootScope.isLoggedIn = true;
 				$scope.authentication.user = response;
 				// And redirect to the index page
 				$location.path('/databases');
