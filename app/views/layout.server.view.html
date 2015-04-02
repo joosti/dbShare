@@ -86,13 +86,13 @@
 	<section class="content max-height no-overflow">
 		<div class="row max-height">
 			<div class="col-sm-3 scrollable">
-				<div data-ng-include="'/modules/databases/views/left.database.side.view.html'"></div>
+				<div data-ng-hide="!isLoggedIn" data-ng-include="'/modules/databases/views/left.database.side.view.html'"></div>
 			</div>
 			<div class="col-sm-6 scrollable">
 				{% block content %}{% endblock %}
 			</div>
 			<div class="col-sm-3 scrollable">
-				<div data-ng-include="'/modules/users/views/right.side.user.view.html'"></div>
+				<div data-ng-hide="!isLoggedIn" data-ng-include="'/modules/users/views/right.side.user.view.html'"></div>
 			</div>
 		</div>
 	</section>

@@ -238,15 +238,13 @@ angular.module('databases').run([
     Menus.addMenuItem('topbar', 'Databases', 'databases', 'dropdown', '/databases(/create)?');
     Menus.addSubMenuItem('topbar', 'databases', 'List Databases', 'databases');
     Menus.addSubMenuItem('topbar', 'databases', 'New Database', 'databases/create');
-
-      //If not logged in, do not show as logged in
       $rootScope.isLoggedIn = false;
   }
 ]);'use strict';
 //Setting up route
 angular.module('databases').config([
-  '$stateProvider',
-  function ($stateProvider) {
+  '$stateProvider','$rootScope',
+  function ($stateProvider, $rootScope) {
     // Databases state routing
     $stateProvider.state('listDatabases', {
       url: '/databases',
@@ -648,12 +646,13 @@ angular.module('databases').controller('DatabasesController', [
 ]);
 angular.module('databases').controller('ModalInstanceCtrl', [
   '$scope',
+    '$rootScope',
   '$modalInstance',
   'database',
   'Users',
   'Authentication',
   'Databases',
-  function ($scope, $modalInstance, database, Users, Authentication, Databases) {
+  function ($scope, $rootScope,$modalInstance, database, Users, Authentication, Databases) {
     $scope.database = database;
     $scope.cancel = function () {
       $modalInstance.dismiss('cancel');
@@ -676,8 +675,8 @@ angular.module('comments').factory('Comments', [
 ]);'use strict';
 //Databases service used to communicate Databases REST endpoints
 angular.module('databases').factory('Databases', [
-  '$resource',
-  function ($resource) {
+  '$resource', '$rootScope',
+  function ($resource,$rootScope) {
     return $resource('databases/:databaseId', { databaseId: '@_id' }, { update: { method: 'PUT' } });
   }
 ]);'use strict';
@@ -760,11 +759,12 @@ angular.module('users').config([
 ]);'use strict';
 angular.module('users').controller('AuthenticationController', [
   '$scope',
+    '$rootScope',
   '$stateParams',
   '$http',
   '$location',
   'Authentication',
-  function ($scope, $stateParams, $http, $location, Authentication) {
+  function ($scope, $rootScope, $stateParams, $http, $location, Authentication) {
     $scope.authentication = Authentication;
     $scope.registration = 'open';
     // If user is signed in and not an administrator then redirect back home
@@ -785,6 +785,7 @@ angular.module('users').controller('AuthenticationController', [
             //email address is valid, continue with signup
             $http.post('/auth/signup', $scope.credentials).success(function (response) {
               // If successful we assign the response to the global user model
+                $rootScope.isLoggedIn = true;
               $scope.authentication.user = response;
               // And redirect to the index page
               $location.path('/databases');
@@ -796,6 +797,7 @@ angular.module('users').controller('AuthenticationController', [
         else {
           $http.post('/auth/signup', $scope.credentials).success(function (response) {
             // And redirect to the index page
+              $rootScope.isLoggedIn = true;
             $location.path('/databases');
           }).error(function (response) {
             $scope.error = response.message;
@@ -806,6 +808,7 @@ angular.module('users').controller('AuthenticationController', [
     $scope.signin = function () {
       $http.post('/auth/signin', $scope.credentials).success(function (response) {
         // If successful we assign the response to the global user model
+          $rootScope.isLoggedIn = true;
         $scope.authentication.user = response;
         // And redirect to the index page
         $location.path('/databases');
@@ -875,6 +878,7 @@ angular.module('users').controller('PasswordController', [
 ]);'use strict';
 angular.module('users').controller('SettingsController', [
   '$scope',
+    '$rootScope',
   '$http',
   '$timeout',
   '$location',
@@ -882,7 +886,7 @@ angular.module('users').controller('SettingsController', [
   'Authentication',
   'Databases',
   '$modal',
-  function ($scope, $http, $timeout, $location, Users, Authentication, Databases, $modal) {
+  function ($scope, $rootScope, $http, $timeout, $location, Users, Authentication, Databases, $modal) {
     $scope.accountResult = false;
     $scope.user = {};
     angular.copy(Authentication.user, $scope.user);
@@ -969,6 +973,7 @@ angular.module('users').controller('SettingsController', [
       $http.post('/users/verify', $scope.passwordModal).success(function (response) {
         $scope.success = true;
         $location.path('/auth/signout');
+          $rootScope.isLoggedIn = false;
         Authentication.user = null;
         $scope.modalInstance.dismiss('delete');
       }).error(function (response) {
@@ -1036,12 +1041,13 @@ angular.module('users').controller('SettingsController', [
 ]);'use strict';
 angular.module('users').controller('UsersController', [
   '$scope',
+    '$rootScope',
   '$stateParams',
   '$location',
   'Users',
   'Databases',
   'Authentication',
-  function ($scope, $stateParams, $location, Users, Databases, Authentication) {
+  function ($scope, $rootScope, $stateParams, $location, Users, Databases, Authentication) {
     $scope.authentication = Authentication;
     $scope.user = {};
     $scope.users = {};
@@ -1099,6 +1105,7 @@ angular.module('users').controller('UsersController', [
     $scope.deactivateUser = function () {
       $scope.user.roles.push('inactive');
       $scope.inactive = true;
+        $rootScope.isLoggedIn = false;
       var currUser = $scope.user;
       Users.save(currUser);
     };
@@ -1111,15 +1118,15 @@ angular.module('users').controller('UsersController', [
   }
 ]);'use strict';
 // Authentication service for user variables
-angular.module('users').factory('Authentication', [function () {
+angular.module('users').factory('Authentication', '$rootScope', [function ($rootScope) {
     var _this = this;
     _this._data = { user: window.user };
     return _this._data;
   }]);'use strict';
 // Users service used for communicating with the users REST endpoint
-angular.module('users').factory('Users', [
+angular.module('users').factory('Users', '$rootScope', [
   '$resource',
-  function ($resource) {
+  function ($resource, $rootScope) {
     return $resource('users/:userId', { userId: '@_id' }, { update: { method: 'PUT' } });
   }
 ]);

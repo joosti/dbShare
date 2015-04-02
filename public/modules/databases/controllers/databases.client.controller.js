@@ -1,8 +1,8 @@
 'use strict';
 
 // Databases controller
-angular.module('databases').controller('DatabasesController', ['$scope', '$stateParams', '$location', '$window', 'Users', 'Authentication', 'Databases', 'Comments', 'CodeSnippets', '$modal', 
-	function($scope, $stateParams, $location, $window, Users, Authentication, Databases, Comments, CodeSnippets, $modal) {
+angular.module('databases').controller('DatabasesController', ['$scope', '$rootScope', '$stateParams', '$location', '$window', 'Users', 'Authentication', 'Databases', 'Comments', 'CodeSnippets', '$modal',
+	function($scope, $rootScope, $stateParams, $location, $window, Users, Authentication, Databases, Comments, CodeSnippets, $modal) {
 		$scope.user = {};
 		angular.copy(Authentication.user, $scope.user);
 		$scope.authentication = Authentication;
@@ -229,7 +229,7 @@ angular.module('databases').controller('DatabasesController', ['$scope', '$state
 	}
 ]);
 
-angular.module('databases').controller('ModalInstanceCtrl', function ($scope, $modalInstance, database, Users, Authentication, Databases)
+angular.module('databases').controller('ModalInstanceCtrl', function ($scope, $rootScope, $modalInstance, database, Users, Authentication, Databases)
 {
 			$scope.database = database;
 
