@@ -1,7 +1,7 @@
 'use strict';
 
-angular.module('users').controller('SettingsController', ['$scope', '$http', '$timeout','$location', 'Users', 'Authentication',  'Databases', '$modal',
-	function($scope, $http, $timeout, $location, Users, Authentication, Databases, $modal) {
+angular.module('users').controller('SettingsController', ['$scope', '$rootScope', '$http', '$timeout','$location', 'Users', 'Authentication',  'Databases', '$modal',
+	function($scope, $rootScope, $http, $timeout, $location, Users, Authentication, Databases, $modal) {
 
 		$scope.accountResult = false;
 		$scope.user ={};
@@ -112,6 +112,7 @@ angular.module('users').controller('SettingsController', ['$scope', '$http', '$t
 				$location.path('/auth/signout');
 				Authentication.user = null;
 				$scope.modalInstance.dismiss('delete');
+                $rootScope.isLoggedIn = false;
 
 			}).error(function(response) {
 				$scope.error = response.message;

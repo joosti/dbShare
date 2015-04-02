@@ -36,6 +36,26 @@
 	{% for cssFile in cssFiles %}<link rel="stylesheet" href="{{cssFile}}">
 	{% endfor %}
 
+	<style type="text/css">
+		body, html {
+		  height: 100%;
+		  overflow: hidden;
+		}
+
+		.scrollable {
+			height: 90%;
+			overflow-y: auto;
+		}
+
+		.max-height {
+			height: 100%;
+		}
+
+		.no-overflow {
+			overflow: hidden;
+		}
+	</style>
+
 	<!-- HTML5 Shim -->
 	<!--[if lt IE 9]>
 		<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
@@ -44,15 +64,36 @@
 
 <body class="ng-cloak">
 	<header data-ng-include="'/modules/core/views/header.client.view.html'" class="navbar navbar-fixed-top navbar-default"></header>
-	<section class="content">
-		<div class="row">
-			<div class="col-md-3">
-				<div data-ng-include="'/modules/databases/views/left.database.side.view.html'"></div>
+	<!--<section class="content">
+		<div class="box-col">
+			<div kendo-splitter
+           		k-panes="[null, null, null]"
+           		k-orientation="'horizontal'"
+           		k-rebind="'horizontal'"
+           		size="100%"
+           		style="height: 700px">
+           		<div>
+           			<div data-ng-include="'/modules/databases/views/left.database.side.view.html'"></div>
+           		</div>
+           		<div>{% block content %}{% endblock %}</div>
+           		<div>
+           			Right hand Side: User View
+           			<div data-ng-include="'/modules/users/views/list-users.client.view.html'"></div>
+           		</div>
+           	</div>
+		</div>
+	</section>-->
+	<section class="content max-height no-overflow">
+		<div class="row max-height">
+			<div class="col-sm-3 scrollable">
+				<div data-ng-hide="!isLoggedIn" data-ng-include="'/modules/databases/views/left.database.side.view.html'"></div>
 			</div>
-			<div class="col-md-6">
+			<div class="col-sm-6 scrollable">
 				{% block content %}{% endblock %}
 			</div>
-			<div class="col-md-3"></div>
+			<div class="col-sm-3 scrollable">
+				<div data-ng-hide="!isLoggedIn" data-ng-include="'/modules/users/views/right.side.user.view.html'"></div>
+			</div>
 		</div>
 	</section>
 

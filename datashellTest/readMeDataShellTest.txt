@@ -43,7 +43,7 @@ $ mongoimport -h ds053937.mongolab.com:53937 -d dbshare -c databases -u kenantt 
 
 $ mongoimport -h ds053937.mongolab.com:53937 -d dbshare -c comments -u kenantt -p dbShare2015 --file comments.json
 
-$ mongoimport -h ds053937.mongolab.com:53937 -d dbshare -c codeSnippets -u kenantt -p dbShare2015 --file codeSnippets.json
+$ mongoimport -h ds053937.mongolab.com:53937 -d dbshare -c codesnippets -u kenantt -p dbShare2015 --file codeSnippets.json
 
 14. It should give you a "BulkWriteResult" at the end with the nInserted: 30 if all goes right. If there's an error, it will show you what it is and you can address it.
 

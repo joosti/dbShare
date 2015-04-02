@@ -1,44 +1,11 @@
 'use strict';
 
 // Databases controller
-angular.module('databases').controller('DatabasesController', ['$scope', '$stateParams', '$location', '$window', 'Users', 'Authentication', 'Databases', 'Comments', 'CodeSnippets', '$modal',
-	function($scope, $stateParams, $location, $window, Users, Authentication, Databases, Comments, CodeSnippets, $modal) {
+angular.module('databases').controller('DatabasesController', ['$scope', '$rootScope', '$stateParams', '$location', '$window', 'Users', 'Authentication', 'Databases', 'Comments', 'CodeSnippets', '$modal',
+	function($scope, $rootScope, $stateParams, $location, $window, Users, Authentication, Databases, Comments, CodeSnippets, $modal) {
 		$scope.user = {};
 		angular.copy(Authentication.user, $scope.user);
 		$scope.authentication = Authentication;
-
-    $scope.currentDatabase = {};
-
-    $scope.orientation = "horizontal";
-    $scope.hello = "Hello from Controller!";
-
-
-		$("#vertical").kendoSplitter({
-			orientation: "vertical",
-			panes: [
-				{ collapsible: false, resizable: false, size: "100px" }
-			]
-		});
-
-
-		$("#horizontal").kendoSplitter({
-			panes: [
-				{ collapsible: true, size: "100px" },
-        { collapsible: false },
-        { collapsible: true, size: "100%" }
-			]
-		});
-
-    $scope.setDatabase = function(database) {
-
-
-        console.log("id = " + database._id);
-
-        $scope.findDBUsers(database._id );
-        $scope.getComments(database._id );
-        $scope.getCodeSnippets(database._id );
-        $scope.database = database; //Set this scope's current database
-    }
 
 		// Create new Database
 		$scope.create = function() {
@@ -108,52 +75,20 @@ angular.module('databases').controller('DatabasesController', ['$scope', '$state
 
 		// Find a list of Databases
 		$scope.find = function() {
-
-
-			$scope.databases = Databases.query(function() {
-        // $scope.currentDatabase.name = $scope.databases[0].name;
-        // $scope.currentDatabase.descriptionShort = $scope.databases[0].descriptionShort;
-        // $scope.currentDatabase.descriptionLong = $scope.databases[0].descriptionLong;
-        // $scope.currentDatabase.isFree = $scope.databases[0].isFree;
-        // $scope.currentDatabase.url = $scope.databases[0].url;
-        
-        $scope.currentDatabase._id = $scope.databases[0]._id;
-
-        console.log("id = " + $scope.databases[0]._id);
-
-        $scope.findDBUsers($scope.currentDatabase._id );
-        $scope.getComments($scope.currentDatabase._id );
-        $scope.getCodeSnippets($scope.currentDatabase._id );
-        $scope.database = $scope.databases[0]; //Set this scope's current database
-
-
-      });
-     
-
-      // $scope.findDBUsers(Databases[0].id);
-      // $scope.getComments(Databases[0].id);
-      // $scope.getCodeSnippets(Databases[0].id);
-      // $scope.database = Databases[0]; //Set this scope's current databas
-
-
-        
-
+			$scope.databases = Databases.query();
 		};
 
 		// Find existing Database
 		$scope.findOne = function() {
-
-      //Note we had to use a local variable 'result' in order to be able to use it within the callback function
-      var result = Databases.get({ 
-        databaseId: $stateParams.databaseId
-      }, function(){
-
-        $scope.findDBUsers(result._id);
-        $scope.getComments(result._id);
-        $scope.getCodeSnippets(result._id);
-        $scope.database = result; //Set this scope's current database
-      });
-			
+			//Note we had to use a local variable 'result' in order to be able to use it within the callback function
+			var result = Databases.get({ 
+				databaseId: $stateParams.databaseId
+			}, function(){
+				$scope.findDBUsers(result._id);
+				$scope.getComments(result._id);
+				$scope.getCodeSnippets(result._id);
+				$scope.database = result; //Set this scope's current database
+			});
 		};
 
 		// Add databases into portfolio
@@ -294,7 +229,7 @@ angular.module('databases').controller('DatabasesController', ['$scope', '$state
 	}
 ]);
 
-angular.module('databases').controller('ModalInstanceCtrl', function ($scope, $modalInstance, database, Users, Authentication, Databases)
+angular.module('databases').controller('ModalInstanceCtrl', function ($scope, $rootScope, $modalInstance, database, Users, Authentication, Databases)
 {
 			$scope.database = database;
 
@@ -305,8 +240,4 @@ angular.module('databases').controller('ModalInstanceCtrl', function ($scope, $m
 
   };
 
-
-
 });
-
-
