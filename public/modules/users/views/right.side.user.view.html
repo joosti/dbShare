@@ -10,7 +10,7 @@
 	<div>
 		<li class="list-group-item" style="height:35px; background-color:#4A6FB4; color:white; vertical-align:center;">
 			<a href="" ng-click="predicate = 'firstName'; reverse=!reverse"> 
-				<h4 class="pull-left list-group-item-heading" style="color:#ffffff"> Name and Research Interests</h4>
+				<h4 class="pull-left list-group-item-heading" style="color:#ffffff"> Name</h4>
 			<h4 class="pull-right list-group-item-heading"> <a href="" ng-click="predicate = 'username'; reverse=!reverse" style="color:#ffffff"> Email</h4>
 		</li>
 	</div>
@@ -18,8 +18,7 @@
 	<div class="list-group">
 		<li data-ng-repeat="user in users | orderBy:predicate : reverse | filter:query" ng-style="myStyle" class="list-group-item" style="min-height:75px;">
 			<a><h4 class="list-group-item-heading" style="margin-bottom:2px; color:#000000"> {{user.firstName}} {{user.lastName}}</h4>
-			<a class="pull-right list-group-item-text" data-ng-href="mailto:{{user.username}}" data-ng-show="!user.privateProfile">{{user.username}}</a>
-			<p class="list-group-item-text" style="margin-left:10px; margin-bottom:2px; padding-left=10px" ng-show="!user.privateProfile">{{user.researchinterests}}</p>			
+			<a class="pull-right list-group-item-text" data-ng-href="mailto:{{user.username}}" data-ng-show="!user.privateProfile">{{user.username}}</a>		
 			<a class="list-group-item-text" data-ng-href="#!/users/{{user._id}}">View Profile</a>
 			<p class="pull-right list-group-item-text" data-ng-show="user.privateProfile" style="color:#DDDDDD"><i>(Hidden)</i></p>
 		</li>
