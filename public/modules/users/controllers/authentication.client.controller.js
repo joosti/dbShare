@@ -6,7 +6,7 @@ angular.module('users').controller('AuthenticationController', ['$scope', '$root
 		$scope.registration = 'open';
 
 		// If user is signed in and not an administrator then redirect back home
-		if ($scope.authentication.user && $scope.authentication.user.roles.indexOf('admin') === -1) $location.path('/databases');
+		//if ($scope.authentication.user && $scope.authentication.user.roles.indexOf('admin') === -1) $location.path('/databases');
 
 		$scope.signup = function() {
 			if($scope.credentials.confirmpassword !== $scope.credentials.password) {

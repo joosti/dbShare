@@ -70,9 +70,10 @@ angular.module('core').config([
 ]);'use strict';
 angular.module('core').controller('HeaderController', [
   '$scope',
+    '$rootScope',
   'Authentication',
   'Menus',
-  function ($scope, Authentication, Menus) {
+  function ($scope, $rootScope, Authentication, Menus) {
     $scope.authentication = Authentication;
     $scope.isCollapsed = false;
     $scope.menu = Menus.getMenu('topbar');
@@ -768,8 +769,8 @@ angular.module('users').controller('AuthenticationController', [
     $scope.authentication = Authentication;
     $scope.registration = 'open';
     // If user is signed in and not an administrator then redirect back home
-    if ($scope.authentication.user && $scope.authentication.user.roles.indexOf('admin') === -1)
-      $location.path('/databases');
+    //if ($scope.authentication.user && $scope.authentication.user.roles.indexOf('admin') === -1)
+      //$location.path('/databases');
     $scope.signup = function () {
       if ($scope.credentials.confirmpassword !== $scope.credentials.password) {
         $scope.error = 'Passwords do not match';
