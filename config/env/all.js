@@ -55,7 +55,8 @@ module.exports = {
         		'public/lib/codemirror/addon/display/placeholder.js',
         		'public/lib/kendo-ui-core/js/angular-route.js',
         		'public/lib/kendo-ui-core/js/kendo.all.min.js',
-				'public/lib/kendo-ui-core/js/kendo.ui.core.min.js'
+				'public/lib/kendo-ui-core/js/kendo.ui.core.min.js',
+                'public/lib/angular-vs-repeat/angular-vs-repeat.js'
 				
 				
 			]
