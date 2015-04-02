@@ -52,9 +52,9 @@ module.exports = {
 				'public/lib/codemirror/addon/mode/loadmode.js',
 				'public/lib/codemirror/addon/search/match-highlighter.js',
 				'public/lib/codemirror/mode/r/r.js',
-        'public/lib/codemirror/addon/display/placeholder.js',
-        'public/lib/kendo-ui-core/js/angular-route.js',
-        'public/lib/kendo-ui-core/js/kendo.all.min.js',
+        		'public/lib/codemirror/addon/display/placeholder.js',
+        		'public/lib/kendo-ui-core/js/angular-route.js',
+        		'public/lib/kendo-ui-core/js/kendo.all.min.js',
 				'public/lib/kendo-ui-core/js/kendo.ui.core.min.js'
 				
 				
