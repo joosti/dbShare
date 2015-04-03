@@ -282,3 +282,21 @@ li.imp.active a:hover{
 .tab-1 small{
     color: hsl(0, 0%, 60%);
 }
+
+body, html {
+    height: 100%;
+    overflow: hidden;
+}
+
+.scrollable {
+    height: 90%;
+    overflow-y: auto;
+}
+
+.max-height {
+    height: 100%;
+}
+
+.no-overflow {
+    overflow: hidden;
+}

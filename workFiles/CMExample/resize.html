@@ -1,0 +1,38 @@
+
+<!doctype html>
+
+<title>CodeMirror: Autoresize Demo</title>
+<meta charset="utf-8"/>
+<link rel="stylesheet" href="CodeMirror/lib/codemirror.css">
+<link rel=stylesheet href="CodeMirror/doc/docs.css">
+
+
+<script src="CodeMirror/lib/codemirror.js"></script>
+<script src="CodeMirror/mode/css/css.js"></script>
+
+
+<style type="text/css">
+    .CodeMirror {
+        border: 1px solid #eee;
+        height: auto;
+    }
+</style>
+
+<article>
+    <form><textarea id="code" name="code">
+        .CodeMirror {
+        border: 1px solid #eee;
+        height: auto;
+        }
+    </textarea></form>
+
+
+
+    <script>
+        var editor = CodeMirror.fromTextArea(document.getElementById("code"), {
+            lineNumbers: true,
+            viewportMargin: Infinity
+        });
+    </script>
+
+</article>
