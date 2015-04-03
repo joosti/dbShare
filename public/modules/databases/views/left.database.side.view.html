@@ -1,7 +1,53 @@
 <section data-ng-controller="DatabasesController" data-ng-init="find()">
-	<table class="table">
-		<tr data-ng-repeat="database in databases | orderBy: predicate : reverse | filter:query">
-			<td><a data-ng-href="#!/databases/{{database._id}}" class="list-group-item" id="dbClick"> {{database.name}} </td>
-		</tr>
-	</table>
+
+	<div class="page-header">
+		<h1 style="margin-left: 20px;">Databases</h1>
+	</div>
+
+	<div class="input-group" style="margin-bottom:10px; margin-left: 20px;">
+         Search: <input id="query" ng-model="query" class="form-control" placeholder = "Filter Criteria">
+    </div>
+
+    <div class="panel">
+		<table class="table">
+			<tr style="height:35px; background-color:#4A6FB4; color:white;"> 
+	            <th>Add/Remove</th>
+	            <th>Name/Description</th>
+	    	</tr>
+	    	<tr data-ng-repeat="database in databases | orderBy: predicate : reverse | filter:query">
+	    		<td>
+	                <div>
+	             		<script type="text/ng-template" id="addDBModal">
+			                <div class="modal-header">
+			                    <button type="button" class="close" ng-click="$dismiss()">&times;</button>
+			                    <h3 class="modal-title"> Add Database to Portfolio </h3>
+			                </div>
+			                    <div class="modal-body">
+			                        <p>You are adding &quot{{database.name}}&quot created by {{database.user.displayName}} to your portfolio.</p>
+			                        <div class="checkbox">
+			                        <label> 
+			                            <input type="checkbox" data-ng-model="proficient" id="proficient" unchecked>
+
+			                            I am proficient with this database and am willing to answer questions about it.
+			                        </label>
+			                    </div>
+			                        <button class="btn large btn-success" data-ng-click="addDatabaseToPortfolio({{database}}, proficient)">Add Database to Porfolio</button>
+			                        <button class="btn" ng-click="cancel()">Cancel</button>
+			                </div>
+				        </script>
+				    </div>
+
+	                <button style = "vertical-align: center; margin-left: 25px" ng-show="checkForDatabaseInPortfolio({{database}})" data-ng-click="open('md', database)" class="btn addDatabases"><i class="glyphicon glyphicon-plus"></i></button> 
+	                <button style = "vertical-align: center; margin-left: 25px" ng-show="!checkForDatabaseInPortfolio({{database}})" data-ng-click="removeDatabaseFromPortfolio({{database}})" class="btn removeDatabase"><i class="glyphicon glyphicon-minus"></i></button>
+	        	</td>
+	        	<td>
+	        		<p>
+	        			<a data-ng-href="#!/databases/{{database._id}}" class="list-group-item" id="dbClick"> {{database.name}}</a>
+	        		</p>
+	        		<p>{{database.descriptionShort}}</p> 
+	        	</td>
+	    	</tr>
+		</table>
+	</div>
+
 </section>
