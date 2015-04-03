@@ -137,6 +137,7 @@ body {
 
 .repeater-container{
     height: 454px;
+    width: 100%;
     overflow: auto;
     box-shadow: 0 0 10px;
     border-radius: 5px;
