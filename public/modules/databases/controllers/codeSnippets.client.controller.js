@@ -10,7 +10,7 @@ angular.module('codeSnippets').controller('CodeSnippetsController', ['$scope', '
 
 		//modes enabled for posting code comments
 
-		$scope.modes = ['R'];
+		$scope.modes = ['R','stata'];
 
 		$scope.mode = $scope.modes[0];
 
@@ -46,13 +46,14 @@ angular.module('codeSnippets').controller('CodeSnippetsController', ['$scope', '
 
         //Archived code-mirror snippet options
 		$scope.cmOption2 = {
+			//mode = "codeSnippet.mode",
 			lineNumbers: true,
 			lineWrapping: true,
 			autoCloseBrackets: true,
 			enableSearchTools: true,
 			showSearchButton: true,
 			highlightMatches: true,
-			readOnly: 'nocursor',
+			readOnly: true,
 			smartIndent: true,
 			theme: 'monokai',
 			extraKeys: {'Ctrl-Space': 'autocomplete'},
@@ -79,8 +80,9 @@ angular.module('codeSnippets').controller('CodeSnippetsController', ['$scope', '
 				//redirect after save
 				codeSnippet.$save(function(response) {
 					//clear CodeMirror form
-					$scope.cmModel = '<!-- XML code in here. -->\n';
-					$scope.mode = $scope.modes[0];
+					//Commented out by Mike because it causes weird-ass behavior
+					/*$scope.cmModel = '<!-- XML code in here. -->\n';
+					$scope.mode = $scope.modes[0];*/
 				}, function(errorResponse) {
 					$scope.error = errorResponse.data.message;
 				});
@@ -118,7 +120,7 @@ angular.module('codeSnippets').controller('CodeSnippetsController', ['$scope', '
 
 		//Reset CodeSnippet field
 		$scope.resetCodeSnippetField = function() {
-			$scope.cmModel = '<!-- XML code in here. -->\n';
+			$scope.cmModel = '';
 		};
 
 		//admin function
