@@ -279,6 +279,7 @@
 
                                 <div class="list-group">
                                     <li data-ng-controller="CodeSnippetsController" ng-repeat="codeSnippet in dbCodeSnippets" class = "list-group-item">
+                                        <script> $scope.cmOption2.mode={{codeSnippet.mode}};</script>
                                         <b><a data-ng-href="#!/users/{{codeSnippet.user._id}}" data-ng-bind="codeSnippet.user.displayName"></a></b>
                                         <small class="list-group-item-test"> on <span data-ng-bind="codeSnippet.created | date:'medium'"></span>
                                         <!--Add delete button-->

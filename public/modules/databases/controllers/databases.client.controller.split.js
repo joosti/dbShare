@@ -194,6 +194,10 @@ angular.module('databases').controller('DatabasesController', ['$scope', '$rootS
         	var user = new Users(Authentication.user);
         	var database = new Databases($scope.database);
         	if(arg_database) {database = arg_database;}
+            //Check for logged in user, should fix that error.
+        	if (user.displayName===undefined){
+        		return false;
+        	}
 
         	if(user.portfolios.indexOf(database._id) === -1) {
         		return true;
