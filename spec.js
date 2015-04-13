@@ -23,6 +23,7 @@ describe('Getting to the homepage', function() {
   });
 });
 
+
 describe('Creating a new database', function() {
 	it ('should be able to add all the info of the db', function() {
 		browser.get('http://localhost:3000/#!/databases');
@@ -135,54 +136,60 @@ describe('Creating a new codeSnippet', function() {
 		query.sendKeys('gatorDB');
 
 	});
+});
 
-describe('View gatorDB', function() {
-	it ('should be able to see the info for gatorDB', function() {
+	describe('View gatorDB', function() {
+	it ('should be able to see the database for gatorDB', function() {
 		browser.get('http://localhost:3000/#!/databases');
-		element(by.id('userDirectory')).click();
+		element(by.repeater('database in databases').get(0)).$('#copyCalc').click();
 
 		expect(browser.getCurrentUrl()).toEqual('http://localhost:3000/#!/databases/5512eec50b835a0000ee893c');
 
 	});
+});
 
+	// findDBUsers(database._id);
+
+/*
 	describe('View Schumm-Hoppe', function() {
 	it ('should be able to add a codeSnippet to the db', function() {
 		browser.get('http://localhost:3000/#!/databases');
-		element(by.id('userDirectory')).click();
+		element(by.buttonText('Schumm-Hoppe')).click();
 
 		expect(browser.getCurrentUrl()).toEqual('http://localhost:3000/#!/databases/5512fadca89116f5661ff5f6');
 	});
+});
 
 	describe('View Roberts-Rutherford', function() {
 	it ('should be able to add a codeSnippet to the db', function() {
 		browser.get('http://localhost:3000/#!/databases');
-		element(by.id('userDirectory')).click();
+		element(by.buttonText('Roberts-Rutherford')).click();
 
-		expect(browser.getCurrentUrl()).toEqual('http://localhost:3000/#!/settings/list');
+		expect(browser.getCurrentUrl()).toEqual('http://localhost:3000/#!/databases/5512fadda89116f5661ff654');
 	});
 
 	describe('View Marvin-Swaniawski', function() {
 	it ('should be able to add a codeSnippet to the db', function() {
 		browser.get('http://localhost:3000/#!/databases');
-		element(by.id('userDirectory')).click();
+		element(by.buttonText('Marvin-Swaniawski')).click();
 
-		expect(browser.getCurrentUrl()).toEqual('http://localhost:3000/#!/settings/list');
+		expect(browser.getCurrentUrl()).toEqual('http://localhost:3000/#!/databases/5512fadda89116f5661ff653');
 	});
 
 	describe('View Goyette-MacGyver', function() {
 	it ('should be able to add a codeSnippet to the db', function() {
 		browser.get('http://localhost:3000/#!/databases');
-		element(by.id('userDirectory')).click();
+		element(by.buttonText('Goyette-MacGyver')).click();
 
-		expect(browser.getCurrentUrl()).toEqual('http://localhost:3000/#!/settings/list');
+		expect(browser.getCurrentUrl()).toEqual('http://localhost:3000/#!/databases/5512fadda89116f5661ff652');
 	});
 
 	describe('View Larson Group', function() {
 	it ('should be able to add a codeSnippet to the db', function() {
 		browser.get('http://localhost:3000/#!/databases');
-		element(by.id('userDirectory')).click();
+		element(by.buttonText('Larson Group')).click();
 
-		expect(browser.getCurrentUrl()).toEqual('http://localhost:3000/#!/settings/list');
+		expect(browser.getCurrentUrl()).toEqual('http://localhost:3000/#!/databases/5512fadda89116f5661ff651');
 	});
 
 	describe('View Stehr-Greenfelder', function() {
@@ -408,8 +415,7 @@ describe('View gatorDB', function() {
 
 		expect(browser.getCurrentUrl()).toEqual('http://localhost:3000/#!/settings/list');
 	});
-
-});
-
+	});
+	*/
 
 //codeSnippetSubmit.sendKeys('int main(){\nfor(int i = 0; i < 10; ++i){\n cout << "Its great to be a Florida Gator!!!"\n}\n}');
