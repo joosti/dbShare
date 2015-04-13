@@ -414,24 +414,24 @@ describe('View gatorDB', function() {
 ////////CodeSnippet/////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////
 
-describe('Creating a new codeSnippet', function() {
-    it ('should be able to add a codeSnippet to the db', function() {
-        browser.get('http://localhost:3000/#!/databases');
-        element(by.id('userDirectory')).click();
-
-        query.sendKeys('gatorDB');
-
-    });
-});
-
-describe('Creating a new codeSnippet', function() {
-    it ('should be able to add a codeSnippet to the db', function() {
-        browser.get('http://localhost:3000/#!/databases');
-
-        query.sendKeys('gatorDB');
-
-    });
-});
+//describe('Creating a new codeSnippet', function() {
+//    it ('should be able to add a codeSnippet to the db', function() {
+//        browser.get('http://localhost:3000/#!/databases');
+//        element(by.id('userDirectory')).click();
+//
+//        query.sendKeys('gatorDB');
+//
+//    });
+//});
+//
+//describe('Creating a new codeSnippet', function() {
+//    it ('should be able to add a codeSnippet to the db', function() {
+//        browser.get('http://localhost:3000/#!/databases');
+//
+//        query.sendKeys('gatorDB');
+//
+//    });
+//});
 
 
 //codeSnippetSubmit.sendKeys('int main(){\nfor(int i = 0; i < 10; ++i){\n cout << "Its great to be a Florida Gator!!!"\n}\n}');
