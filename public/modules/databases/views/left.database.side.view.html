@@ -43,7 +43,7 @@
 				<span><button style = "vertical-align: right; margin-right: 10px" ng-show="checkForDatabaseInPortfolio({{database}})" data-ng-click="open('md', database)" class="btn addDatabases"><i class="glyphicon glyphicon-plus"></i></button></span>
 				<span><button style = "vertical-align: right; margin-right: 10px" ng-show="!checkForDatabaseInPortfolio({{database}})" data-ng-click="removeDatabaseFromPortfolio({{database}})" class="btn removeDatabase"><i class="glyphicon glyphicon-minus"></i></button></span>
 
-    			<h4 class="list-group-item-heading pull-right" style="color:#ffffff margin-top:15px;"><a data-ng-href="#!/databases/{{database._id}}" id="dbClick"> {{database.name}}</a></h4>
+    			<h4 class="list-group-item-heading pull-right" style="color:#ffffff margin-top:15px;"><a data-ng-href="#!/databases/{{database._id}}" id="{{database.name}}"> {{database.name}}</a></h4>
 
     			<p class="list-group-item-text" style="margin-top: 10px;">
     				<a href="#" ng-click="showDescription = !showDescription"> Click for Description</a>
