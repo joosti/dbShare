@@ -92,7 +92,6 @@ describe('Creating a new database', function() {
     it ('should be able to add all the info of the db', function() {
         browser.get('http://localhost:3000/#!/databases');
         element(by.buttonText('Create New Database')).click();
-        webdriver-manager start
         browser.get('http://localhost:3000/#!/databases/create');
         name.sendKeys('The Real DB');
         url.sendKeys('www.realdbs.com');
