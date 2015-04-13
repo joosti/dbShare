@@ -165,7 +165,7 @@ angular.module('databases').controller('DatabasesController', ['$scope', '$rootS
 	       			{
 	       				//console.log(currUser.firstName + " " + currUser.lastName + " does not have this database!");
 	       				allUsers.splice(i, 1);
-	       				i--; // We need to decrement i because the right neighbor of the recently spliced element will shift left
+	       				i--; // We need to decrement i because the right neighbor of the recently spliced element will ft left
 	       			}
 	       		}
 	        	$scope.dbUsers = allUsers;

@@ -1,7 +1,7 @@
 'use strict';
 
-angular.module('users').controller('UsersController', ['$scope', '$stateParams', '$location', 'Users', 'Databases', 'Authentication',
-	function($scope, $stateParams, $location, Users, Databases, Authentication) {
+angular.module('users').controller('UsersController', ['$scope', '$rootScope', '$stateParams', '$location', 'Users', 'Databases', 'Authentication',
+	function($scope, $rootScope, $stateParams, $location, Users, Databases, Authentication) {
 		$scope.authentication = Authentication;
 		$scope.user = {};
 		$scope.users = {};
@@ -71,11 +71,13 @@ angular.module('users').controller('UsersController', ['$scope', '$stateParams',
 		};
 
 		$scope.userInactive = function() {
+			$rootScope.isLoggedIn = false;
 			return ($scope.inactive);
 		};
 
 		//Functions for Deactivation and Reactivation of users
 		$scope.deactivateUser = function() {
+			$rootScope.isLoggedIn = false;
 			$scope.user.roles.push('inactive');
 			$scope.inactive = true;
   			var currUser = $scope.user;

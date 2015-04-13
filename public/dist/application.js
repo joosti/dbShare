@@ -233,7 +233,7 @@ angular.module('core').service('Menus', [function () {
   }]);'use strict';
 // Configuring the Articles module
 angular.module('databases').run([
-  'Menus',
+  'Menus', '$rootScope',
   function (Menus, $rootScope) {
     // Set top bar menu items
     Menus.addMenuItem('topbar', 'Databases', 'databases', 'dropdown', '/databases(/create)?');
