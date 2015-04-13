@@ -46,7 +46,7 @@ angular.module('codeSnippets').controller('CodeSnippetsController', ['$scope', '
 
         //Archived code-mirror snippet options
 		$scope.cmOption2 = {
-			//mode = "codeSnippet.mode",
+			//mode = $scope.codeItem.mode,
 			lineNumbers: true,
 			lineWrapping: true,
 			autoCloseBrackets: true,
