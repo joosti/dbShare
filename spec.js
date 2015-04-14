@@ -218,12 +218,12 @@ describe('Creating a new database', function() {
 	});
 });
 
-// *** has space
+//*** has space
 // 	describe('View Larson Group', function() {
 // 	it ('should be able to see the database for Larson Group', function() {
 // 		browser.get('http://localhost:3000/#!/databases');
 //         query.sendKeys('Larson Group');
-// 		element(by.id('Larson\ Group')).click();
+// 		element(by.text('Larson Group')).click();
 
 // 		expect(browser.getCurrentUrl()).toEqual('http://localhost:3000/#!/databases/5512fadda89116f5661ff651');
 // 	});
@@ -242,7 +242,7 @@ describe('Creating a new database', function() {
 	describe('View Lynch-Luettgen', function() {
 	it ('should be able to see the database for Lynch-Luettgen', function() {
 		browser.get('http://localhost:3000/#!/databases');
-     query.sendKeys('Lynch-Luettgen');
+     	query.sendKeys('Lynch-Luettgen');
 		element(by.id('Lynch-Luettgen')).click();
 
 		expect(browser.getCurrentUrl()).toEqual('http://localhost:3000/#!/databases/5512fadda89116f5661ff64f');
@@ -376,5 +376,165 @@ describe('View Swaniawski-Rice', function() {
 		element(by.id('Swaniawski-Rice')).click();
 
 		expect(browser.getCurrentUrl()).toEqual('http://localhost:3000/#!/databases/5512fadda89116f5661ff624');
+	});
+});
+
+describe('View Fay-Braun', function() {
+	it ('should be able to see the database for Fay-Braun', function() {
+		browser.get('http://localhost:3000/#!/databases');
+     	query.sendKeys('Fay-Braun');
+		element(by.id('Fay-Braun')).click();
+
+		expect(browser.getCurrentUrl()).toEqual('http://localhost:3000/#!/databases/5512fadda89116f5661ff623');
+	});
+});
+
+describe('View Franecki-Wolf', function() {
+	it ('should be able to see the database for Franecki-Wolf', function() {
+		browser.get('http://localhost:3000/#!/databases');
+     	query.sendKeys('Franecki-Wolf');
+		element(by.id('Franecki-Wolf')).click();
+
+		expect(browser.getCurrentUrl()).toEqual('http://localhost:3000/#!/databases/5512fadda89116f5661ff61c');
+	});
+});
+
+describe('View Kohler-Torp', function() {
+	it ('should be able to see the database for Kohler-Torp', function() {
+		browser.get('http://localhost:3000/#!/databases');
+     	query.sendKeys('Kohler-Torp');
+		element(by.id('Kohler-Torp')).click();
+
+		expect(browser.getCurrentUrl()).toEqual('http://localhost:3000/#!/databases/5512fadda89116f5661ff635');
+	});
+});
+
+describe('View Jacobs-Bogan', function() {
+	it ('should be able to see the database for Jacobs-Bogan', function() {
+		browser.get('http://localhost:3000/#!/databases');
+     	query.sendKeys('Jacobs-Bogan');
+		element(by.id('Jacobs-Bogan')).click();
+
+		expect(browser.getCurrentUrl()).toEqual('http://localhost:3000/#!/databases/5512fadda89116f5661ff60d');
+	});
+});
+
+describe('View Hudson-Adams', function() {
+	it ('should be able to see the database for Hudson-Adams', function() {
+		browser.get('http://localhost:3000/#!/databases');
+     	query.sendKeys('Hudson-Adams');
+		element(by.id('Hudson-Adams')).click();
+
+		expect(browser.getCurrentUrl()).toEqual('http://localhost:3000/#!/databases/5512fadda89116f5661ff62c');
+	});
+});
+
+describe('View Gutkowski-Predovic', function() {
+	it ('should be able to see the database for Gutkowski-Predovic', function() {
+		browser.get('http://localhost:3000/#!/databases');
+     	query.sendKeys('Gutkowski-Predovic');
+		element(by.id('Gutkowski-Predovic')).click();
+
+		expect(browser.getCurrentUrl()).toEqual('http://localhost:3000/#!/databases/5512fadda89116f5661ff60a');
+	});
+});
+
+describe('View Stanton-Becker', function() {
+	it ('should be able to see the database for Stanton-Becker', function() {
+		browser.get('http://localhost:3000/#!/databases');
+     	query.sendKeys('Stanton-Becker');
+		element(by.id('Stanton-Becker')).click();
+
+		expect(browser.getCurrentUrl()).toEqual('http://localhost:3000/#!/databases/5512fadda89116f5661ff611');
+	});
+});
+
+describe('View Johnston-Gulgowski', function() {
+	it ('should be able to see the database for Johnston-Gulgowski', function() {
+		browser.get('http://localhost:3000/#!/databases');
+     	query.sendKeys('Johnston-Gulgowski');
+		element(by.id('Johnston-Gulgowski')).click();
+
+		expect(browser.getCurrentUrl()).toEqual('http://localhost:3000/#!/databases/5512fadda89116f5661ff606');
+	});
+});
+
+describe('View Kirlin-Kub', function() {
+	it ('should be able to see the database for Kirlin-Kub', function() {
+		browser.get('http://localhost:3000/#!/databases');
+     	query.sendKeys('Kirlin-Kub');
+		element(by.id('Kirlin-Kub')).click();
+
+		expect(browser.getCurrentUrl()).toEqual('http://localhost:3000/#!/databases/5512fadda89116f5661ff604');
+	});
+});
+
+describe('View Schaefer-Huels', function() {
+	it ('should be able to see the database for Schaefer-Huels', function() {
+		browser.get('http://localhost:3000/#!/databases');
+     	query.sendKeys('Schaefer-Huels');
+		element(by.id('Schaefer-Huels')).click();
+
+		expect(browser.getCurrentUrl()).toEqual('http://localhost:3000/#!/databases/5512fadda89116f5661ff602');
+	});
+});
+
+describe('View Schmidt-Hilll', function() {
+	it ('should be able to see the database for Schaefer-Huels', function() {
+		browser.get('http://localhost:3000/#!/databases');
+     	query.sendKeys('Schmidt-Hilll');
+		element(by.id('Schmidt-Hilll')).click();
+
+		expect(browser.getCurrentUrl()).toEqual('http://localhost:3000/#!/databases/5512fadda89116f5661ff601');
+	});
+});
+
+describe('View Borer-Brekke', function() {
+	it ('should be able to see the database for Borer-Brekke', function() {
+		browser.get('http://localhost:3000/#!/databases');
+     	query.sendKeys('Borer-Brekke');
+		element(by.id('Borer-Brekke')).click();
+
+		expect(browser.getCurrentUrl()).toEqual('http://localhost:3000/#!/databases/5512fadda89116f5661ff600');
+	});
+});
+
+describe('View Wyman-Zemlak', function() {
+	it ('should be able to see the database for Wyman-Zemlak', function() {
+		browser.get('http://localhost:3000/#!/databases');
+     	query.sendKeys('Wyman-Zemlak');
+		element(by.id('Wyman-Zemlak')).click();
+
+		expect(browser.getCurrentUrl()).toEqual('http://localhost:3000/#!/databases/5512fadda89116f5661ff5ff');
+	});
+});
+
+describe('View Cummerata-Kutch', function() {
+	it ('should be able to see the database for Cummerata-Kutch', function() {
+		browser.get('http://localhost:3000/#!/databases');
+     	query.sendKeys('Cummerata-Kutch');
+		element(by.id('Cummerata-Kutch')).click();
+
+		expect(browser.getCurrentUrl()).toEqual('http://localhost:3000/#!/databases/5512fadda89116f5661ff5fa');
+	});
+});
+
+describe('View Haley-Kuphal', function() {
+	it ('should be able to see the database for Haley-Kuphal', function() {
+		browser.get('http://localhost:3000/#!/databases');
+     	query.sendKeys('Haley-Kuphal');
+		element(by.id('Haley-Kuphal')).click();
+
+		expect(browser.getCurrentUrl()).toEqual('http://localhost:3000/#!/databases/5512fadca89116f5661ff5f5');
+	});
+});
+
+describe('View Monahan-Ward', function() {
+	it ('should be able to see the database for Monahan-Ward', function() {
+		browser.get('http://localhost:3000/#!/databases');
+     	query.sendKeys('Monahan-Ward');
+		element(by.id('Monahan-Ward')).click();
+
+		expect(browser.getCurrentUrl()).toEqual('http://localhost:3000/#!/databases/5512fadda89116f5661ff5f9');
 	});
 });
