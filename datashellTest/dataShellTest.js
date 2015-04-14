@@ -23,10 +23,10 @@ var randomURL;                  //DB url
 var randomDBName;               //DB Name
 var randomDate;                 //Comment Date
 var randomCode;                 //codeSnippet
-var randomUserID = ["5512f0d3a89116f5661ff5b8", "5512f0d3a89116f5661ff5b9", "5512f0d3a89116f5661ff5ba",
-                    "5512f0d3a89116f5661ff5bb", "5512f0d3a89116f5661ff5bc", "5512f0d3a89116f5661ff5bd",
-                    "5512f0d3a89116f5661ff5be", "5512f0d3a89116f5661ff5bf", "5512f0d3a89116f5661ff5c0",
-                    "5512f0d3a89116f5661ff5c2", "5512f0d3a89116f5661ff5c3", "5512f0d3a89116f5661ff5c4"];
+var randomUserID = ["552d88452bba3087b53dc968", "552d88452bba3087b53dc969", "552d88452bba3087b53dc96a",
+                    "552d88452bba3087b53dc96b", "552d88452bba3087b53dc96c", "552d88452bba3087b53dc96d",
+                    "552d88452bba3087b53dc96e", "552d88452bba3087b53dc96f", "552d88452bba3087b53dc970",
+                    "552d88452bba3087b53dc971", "552d88452bba3087b53dc972", "552d88452bba3087b53dc973"];
 
 //var usersArray = [];
 //var databasesArray = [];
@@ -45,7 +45,7 @@ var databases = "";
 var comments = "";
 var codeSnippets = "";
 
-var maxValue = 30;
+var maxValue = 100;
 var userIDCounter = 0;
 
 for(var i = 0; i < maxValue; ++i) {
@@ -109,7 +109,7 @@ for(var i = 0; i < maxValue; ++i) {
     comments += '{';
     comments += '"user": {';
     comments += '"$oid": "' + randomUserID[userIDCounter] + '"}, ';
-    comments += '"databaseId": "5512eec50b835a0000ee893c", ';
+    comments += '"databaseId": "552d85612e01ff00006eee89", ';
     comments += '"created": {';
     comments += '"$date": "2015-03-23T05:37:51.390Z"}, ';
     comments += '"reviews": "' + randomComment + '", ';
@@ -138,7 +138,7 @@ for(var i = 0; i < maxValue; ++i) {
     codeSnippets += '"$oid": "' + randomUserID[userIDCounter] + '"}, ';
     codeSnippets += '"code": "' + randomComment + randomDescriptionLong + randomDescriptionShort + '", ';
     codeSnippets += '"mode": "R",';
-    codeSnippets += '"databaseId": "5512eec50b835a0000ee893c", ';
+    codeSnippets += '"databaseId": "552d85612e01ff00006eee89", ';
     codeSnippets += '"created": {';
     codeSnippets += '"$date": "2015-03-23T05:37:51.390Z"}, ';
     codeSnippets += '"__v": 0';
