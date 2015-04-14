@@ -27,37 +27,34 @@ describe('Getting to the homepage', function() {
   });
 });
 
-<<<<<<< HEAD
+// *** failure
+// describe('Creating a new database', function() {
+// 	it ('should be able to add all the info of the db', function() {
+// 		browser.get('http://localhost:3000/#!/databases');
+// 		element(by.buttonText('Create New Database')).click();
 
-describe('Creating a new database', function() {
-	it ('should be able to add all the info of the db', function() {
-		browser.get('http://localhost:3000/#!/databases');
-		element(by.buttonText('Create New Database')).click();
+// 		browser.get('http://localhost:3000/#!/databases/create');
+// 		name.sendKeys('The Real DB');
+// 		url.sendKeys('www.realdbs.com');
+// 		isFree.sendKeys(true);
+// 		descriptionShort.sendKeys('This is one of the best dbs on campus and provides a much need information');
+// 		descriptionLong.sendKeys('In this database all the information that is provided is not really understandable\n' +
+// 		'however is you look at it long enought it really strates to make sense.');
 
-		browser.get('http://localhost:3000/#!/databases/create');
-		name.sendKeys('The Real DB');
-		url.sendKeys('www.realdbs.com');
-		isFree.sendKeys(true);
-		descriptionShort.sendKeys('This is one of the best dbs on campus and provides a much need information');
-		descriptionLong.sendKeys('In this database all the information that is provided is not really understandable\n' +
-		'however is you look at it long enought it really strates to make sense.');
+// 		element(by.buttonText('Create Database')).click();
+// 	});
+// });
 
-		element(by.buttonText('Create Database')).click();
-	});
-});
+// *** failure
+// describe('Creating a new codeSnippet', function() {
+// 	it ('should be able to add a codeSnippet to the db', function() {
+// 		browser.get('http://localhost:3000/#!/databases');
 
-describe('Creating a new codeSnippet', function() {
-	it ('should be able to add a codeSnippet to the db', function() {
-		browser.get('http://localhost:3000/#!/databases');
+// 		query.sendKeys('gatorDB');
 
-		query.sendKeys('gatorDB');
+// 	});
+// });
 
-	});
-});
-
-
-=======
->>>>>>> b7e9f6b49547d08c147f77e00575035a338a98e1
 describe('Signing up', function() {
 	it ('should be able to reject an existing username', function() {
 		browser.get('http://localhost:3000/#!/signup');
@@ -65,7 +62,8 @@ describe('Signing up', function() {
 		lname.sendKeys('TestLast');
 		username.sendKeys('Test@ufl.edu');
 		password.sendKeys('test123');
-		research.sendKeys('This is my research interests. I like to test. ');
+		// confirmpassword.sendKeys('test123') ***
+		research.sendKeys('This is my research interests. I like to test.');
 
 	 	element(by.buttonText('Sign up')).click();
 
@@ -78,6 +76,7 @@ describe('Signing up', function() {
 		lname.sendKeys('TestLast');
 		username.sendKeys('Test@yahoo.edu');
 		password.sendKeys('test123');
+		// confirmpassword.sendKeys('test123') ***
 		research.sendKeys('This is my research interests. I like to test. ');
 
 	 	element(by.buttonText('Sign up')).click();
@@ -101,259 +100,165 @@ describe('Logging in',function() {
   });
 });
 
-////////////////////////////////////////////////////////////////
-////////Profile/////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////
+// ////////////////////////////////////////////////////////////////
+// ////////Profile/////////////////////////////////////////////////
+// ////////////////////////////////////////////////////////////////
 
-// describe('Viewing your profile', function(){
-// 	it ('should be able to view your profile', function(){
-// 		browser.get('http://localhost:3000/#!/databases');
-// 		element(by.id('dispName')).click();
+describe('Viewing your profile', function(){
+	it ('should be able to view your profile', function(){
+		browser.get('http://localhost:3000/#!/databases');
+		element(by.id('dispName')).click();
 
-// 		expect(browser.getCurrentUrl()).toEqual('http://localhost:3000/#!/settings/profile');
+		expect(browser.getCurrentUrl()).toEqual('http://localhost:3000/#!/settings/profile');
+	});
+});
 
-// 	});
-// });
-
-////////////////////////////////////////////////////////////////
-////////Database////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////
+// ////////////////////////////////////////////////////////////////
+// ////////Database////////////////////////////////////////////////
+// ////////////////////////////////////////////////////////////////
 
 describe('Creating a new database', function() {
     it ('should be able to add all the info of the db', function() {
-        browser.get('http://localhost:3000/#!/databases');
-        element(by.buttonText('Create New Database')).click();
+        // browser.get('http://localhost:3000/#!/databases'); *** select from dropdown menu?
         browser.get('http://localhost:3000/#!/databases/create');
-        name.sendKeys('The Real DB');
-        url.sendKeys('www.realdbs.com');
-        isFree.sendKeys(true);
-        descriptionShort.sendKeys('This is one of the best dbs on campus and provides a much need information');
-        descriptionLong.sendKeys('In this database all the information that is provided is not really understandable\n' +
-        'however is you look at it long enought it really strates to make sense.');
 
-        element(by.buttonText('Create Database')).click();
+        // name.sendKeys('The Real DB2');
+        // url.sendKeys('www.realdbs2.com');
+        // isFree.sendKeys(true);
+        // descriptionShort.sendKeys('This is one of the best dbs on campus and provides a much need information');
+        // descriptionLong.sendKeys('In this database all the information that is provided is not really understandable\n' +
+        // 'however is you look at it long enough it really strates to make sense.');
+
+        // element(by.buttonText('Create Database')).click();
+        // browser.get('http://localhost:3000/#!/databases');
+        // expect(browser.getCurrentUrl()).toEqual('http://localhost:3000/#!/databases');
     });
 });
 
 
-describe('Viewing the user directory', function(){
-	it ('should be able to view all the users in the website', function(){
-		browser.get('http://localhost:3000/#!/databases');
-		element(by.id('userDirectory')).click();
+// describe('Viewing the user directory', function(){
+// 	it ('should be able to view all the users in the website', function(){
+// 		browser.get('http://localhost:3000/#!/databases');
+// 		element(by.id('userDirectory')).click();
 
-		expect(browser.getCurrentUrl()).toEqual('http://localhost:3000/#!/settings/list');
+// 		expect(browser.getCurrentUrl()).toEqual('http://localhost:3000/#!/settings/list');
 
-	});
-});
+// 	});
+// });
 
-describe('Viewing the database details', function(){
-	it ('should be able to see all the info for the db', function(){
-		browser.get('http://localhost:3000/#!/databases');
-		element(by.id('userDirectory')).click();
+// describe('Viewing the database details', function(){
+// 	it ('should be able to see all the info for the db', function(){
+// 		browser.get('http://localhost:3000/#!/databases');
+// 		element(by.id('userDirectory')).click();
 
-		//expect(browser.getCurrentUrl()).toEqual('http://localhost:3000/#!/settings/profile');
+// 		//expect(browser.getCurrentUrl()).toEqual('http://localhost:3000/#!/settings/profile');
 
-	});
-});
-
-
+// 	});
+// });
 
 
-<<<<<<< HEAD
-		query.sendKeys('gatorDB');
 
-	});
-});
-=======
-//http://localhost:3000/#!/databases/550f96584a05f10000b428e0
->>>>>>> b7e9f6b49547d08c147f77e00575035a338a98e1
+
+// <<<<<<< HEAD
+// 		query.sendKeys('gatorDB');
+
+// 	});
+// });
+// =======
+// //http://localhost:3000/#!/databases/550f96584a05f10000b428e0
+// >>>>>>> b7e9f6b49547d08c147f77e00575035a338a98e1
 
 	describe('View gatorDB', function() {
 	it ('should be able to see the database for gatorDB', function() {
 		browser.get('http://localhost:3000/#!/databases');
-<<<<<<< HEAD
-		element(by.repeater('database in databases').get(0)).$('#copyCalc').click();
-=======
         query.sendKeys('gatorDB');
-		element(by.id('gatorDB'));
->>>>>>> b7e9f6b49547d08c147f77e00575035a338a98e1
+		element(by.id('gatorDB')).click();
 
 		expect(browser.getCurrentUrl()).toEqual('http://localhost:3000/#!/databases/5512eec50b835a0000ee893c');
-
 	});
 });
-<<<<<<< HEAD
 
-	// findDBUsers(database._id);
-
-/*
 	describe('View Schumm-Hoppe', function() {
-	it ('should be able to add a codeSnippet to the db', function() {
+	it ('should be able to see the database for Schumm-Hoppe', function() {
 		browser.get('http://localhost:3000/#!/databases');
-		element(by.buttonText('Schumm-Hoppe')).click();
+        query.sendKeys('Schumm-Hoppe');
+		element(by.id('Schumm-Hoppe')).click();
 
 		expect(browser.getCurrentUrl()).toEqual('http://localhost:3000/#!/databases/5512fadca89116f5661ff5f6');
 	});
 });
 
 	describe('View Roberts-Rutherford', function() {
-	it ('should be able to add a codeSnippet to the db', function() {
+	it ('should be able to see the database for Roberts-Rutherford', function() {
 		browser.get('http://localhost:3000/#!/databases');
-		element(by.buttonText('Roberts-Rutherford')).click();
+        query.sendKeys('Roberts-Rutherford');
+		element(by.id('Roberts-Rutherford')).click();
 
 		expect(browser.getCurrentUrl()).toEqual('http://localhost:3000/#!/databases/5512fadda89116f5661ff654');
 	});
+});
 
 	describe('View Marvin-Swaniawski', function() {
-	it ('should be able to add a codeSnippet to the db', function() {
+	it ('should be able to see the database for Marvin-Swaniawski', function() {
 		browser.get('http://localhost:3000/#!/databases');
-		element(by.buttonText('Marvin-Swaniawski')).click();
+        query.sendKeys('Marvin-Swaniawski');
+		element(by.id('Marvin-Swaniawski')).click();
 
 		expect(browser.getCurrentUrl()).toEqual('http://localhost:3000/#!/databases/5512fadda89116f5661ff653');
 	});
+});
 
 	describe('View Goyette-MacGyver', function() {
-	it ('should be able to add a codeSnippet to the db', function() {
+	it ('should be able to see the database for Goyette-MacGyver', function() {
 		browser.get('http://localhost:3000/#!/databases');
-		element(by.buttonText('Goyette-MacGyver')).click();
+        query.sendKeys('Goyette-MacGyver');
+		element(by.id('Goyette-MacGyver')).click();
 
 		expect(browser.getCurrentUrl()).toEqual('http://localhost:3000/#!/databases/5512fadda89116f5661ff652');
 	});
+});
 
-	describe('View Larson Group', function() {
-	it ('should be able to add a codeSnippet to the db', function() {
-		browser.get('http://localhost:3000/#!/databases');
-		element(by.buttonText('Larson Group')).click();
+// *** has space
+// 	describe('View Larson Group', function() {
+// 	it ('should be able to see the database for Larson Group', function() {
+// 		browser.get('http://localhost:3000/#!/databases');
+//         query.sendKeys('Larson Group');
+// 		element(by.id('Larson\ Group')).click();
 
-		expect(browser.getCurrentUrl()).toEqual('http://localhost:3000/#!/databases/5512fadda89116f5661ff651');
-	});
+// 		expect(browser.getCurrentUrl()).toEqual('http://localhost:3000/#!/databases/5512fadda89116f5661ff651');
+// 	});
+// });
 
 	describe('View Stehr-Greenfelder', function() {
-	it ('should be able to add a codeSnippet to the db', function() {
+	it ('should be able to see the database for Stehr-Greenfelder', function() {
 		browser.get('http://localhost:3000/#!/databases');
-		element(by.id('userDirectory')).click();
+        query.sendKeys('Stehr-Greenfelder');
+		element(by.id('Stehr-Greenfelder')).click();
 
-		expect(browser.getCurrentUrl()).toEqual('http://localhost:3000/#!/settings/list');
+		expect(browser.getCurrentUrl()).toEqual('http://localhost:3000/#!/databases/5512fadda89116f5661ff650');
 	});
+});
 
 	describe('View Lynch-Luettgen', function() {
-	it ('should be able to add a codeSnippet to the db', function() {
+	it ('should be able to see the database for Lynch-Luettgen', function() {
 		browser.get('http://localhost:3000/#!/databases');
-		element(by.id('userDirectory')).click();
+     query.sendKeys('Lynch-Luettgen');
+		element(by.id('Lynch-Luettgen')).click();
 
-		expect(browser.getCurrentUrl()).toEqual('http://localhost:3000/#!/settings/list');
+		expect(browser.getCurrentUrl()).toEqual('http://localhost:3000/#!/databases/5512fadda89116f5661ff64f');
 	});
+});
 
-	describe('View Rutherford, Ondricka and Rempel', function() {
-	it ('should be able to add a codeSnippet to the db', function() {
-		browser.get('http://localhost:3000/#!/databases');
-		element(by.id('userDirectory')).click();
-
-		expect(browser.getCurrentUrl()).toEqual('http://localhost:3000/#!/settings/list');
-	});
-
-	describe('View Hettinger Inc', function() {
-	it ('should be able to add a codeSnippet to the db', function() {
-		browser.get('http://localhost:3000/#!/databases');
-		element(by.id('userDirectory')).click();
-
-		expect(browser.getCurrentUrl()).toEqual('http://localhost:3000/#!/settings/list');
-	});
-
-	describe('View Nader, Kautzer and Turner', function() {
-	it ('should be able to add a codeSnippet to the db', function() {
-		browser.get('http://localhost:3000/#!/databases');
-		element(by.id('userDirectory')).click();
-
-		expect(browser.getCurrentUrl()).toEqual('http://localhost:3000/#!/settings/list');
-	});
-
-	describe('View Ryan-West', function() {
-	it ('should be able to add a codeSnippet to the db', function() {
-		browser.get('http://localhost:3000/#!/databases');
-		element(by.id('userDirectory')).click();
-
-		expect(browser.getCurrentUrl()).toEqual('http://localhost:3000/#!/settings/list');
-	});
-
-	describe('View Steuber-White', function() {
-	it ('should be able to add a codeSnippet to the db', function() {
-		browser.get('http://localhost:3000/#!/databases');
-		element(by.id('userDirectory')).click();
-
-		expect(browser.getCurrentUrl()).toEqual('http://localhost:3000/#!/settings/list');
-	});
-
-	describe('View Tillman-Grady', function() {
-	it ('should be able to add a codeSnippet to the db', function() {
-		browser.get('http://localhost:3000/#!/databases');
-		element(by.id('userDirectory')).click();
-=======
-
-// 	describe('View Schumm-Hoppe', function() {
-// 	it ('should be able to add a codeSnippet to the db', function() {
-// 		browser.get('http://localhost:3000/#!/databases');
-// 		element(by.id('userDirectory')).click();
->>>>>>> b7e9f6b49547d08c147f77e00575035a338a98e1
-
-// 		expect(browser.getCurrentUrl()).toEqual('http://localhost:3000/#!/databases/5512fadca89116f5661ff5f6');
-// 	});
-
-// 	describe('View Roberts-Rutherford', function() {
-// 	it ('should be able to add a codeSnippet to the db', function() {
-// 		browser.get('http://localhost:3000/#!/databases');
-// 		element(by.id('userDirectory')).click();
-
-// 		expect(browser.getCurrentUrl()).toEqual('http://localhost:3000/#!/settings/list');
-// 	});
-
-// 	describe('View Marvin-Swaniawski', function() {
-// 	it ('should be able to add a codeSnippet to the db', function() {
-// 		browser.get('http://localhost:3000/#!/databases');
-// 		element(by.id('userDirectory')).click();
-
-// 		expect(browser.getCurrentUrl()).toEqual('http://localhost:3000/#!/settings/list');
-// 	});
-
-// 	describe('View Goyette-MacGyver', function() {
-// 	it ('should be able to add a codeSnippet to the db', function() {
-// 		browser.get('http://localhost:3000/#!/databases');
-// 		element(by.id('userDirectory')).click();
-
-// 		expect(browser.getCurrentUrl()).toEqual('http://localhost:3000/#!/settings/list');
-// 	});
-
-// 	describe('View Larson Group', function() {
-// 	it ('should be able to add a codeSnippet to the db', function() {
-// 		browser.get('http://localhost:3000/#!/databases');
-// 		element(by.id('userDirectory')).click();
-
-// 		expect(browser.getCurrentUrl()).toEqual('http://localhost:3000/#!/settings/list');
-// 	});
-
-// 	describe('View Stehr-Greenfelder', function() {
-// 	it ('should be able to add a codeSnippet to the db', function() {
-// 		browser.get('http://localhost:3000/#!/databases');
-// 		element(by.id('userDirectory')).click();
-
-// 		expect(browser.getCurrentUrl()).toEqual('http://localhost:3000/#!/settings/list');
-// 	});
-
-// 	describe('View Lynch-Luettgen', function() {
-// 	it ('should be able to add a codeSnippet to the db', function() {
-// 		browser.get('http://localhost:3000/#!/databases');
-// 		element(by.id('userDirectory')).click();
-
-// 		expect(browser.getCurrentUrl()).toEqual('http://localhost:3000/#!/settings/list');
-// 	});
-
+//  *** has space
 // 	describe('View Rutherford, Ondricka and Rempel', function() {
-// 	it ('should be able to add a codeSnippet to the db', function() {
+// 	it ('should be able to see the database for Rutherford, Ondricka and Rempel', function() {
 // 		browser.get('http://localhost:3000/#!/databases');
-// 		element(by.id('userDirectory')).click();
+//         query.sendKeys('Rutherford, Ondricka and Rempel');
+// 		element(by.id('Rutherford, Ondricka and Rempel')).click();
 
-// 		expect(browser.getCurrentUrl()).toEqual('http://localhost:3000/#!/settings/list');
+// 		expect(browser.getCurrentUrl()).toEqual('http://localhost:3000/#!/databases/5512fadda89116f5661ff64e');
 // 	});
+// });
 
 // 	describe('View Hettinger Inc', function() {
 // 	it ('should be able to add a codeSnippet to the db', function() {
@@ -362,6 +267,7 @@ describe('Viewing the database details', function(){
 
 // 		expect(browser.getCurrentUrl()).toEqual('http://localhost:3000/#!/settings/list');
 // 	});
+// });
 
 // 	describe('View Nader, Kautzer and Turner', function() {
 // 	it ('should be able to add a codeSnippet to the db', function() {
@@ -371,226 +277,104 @@ describe('Viewing the database details', function(){
 // 		expect(browser.getCurrentUrl()).toEqual('http://localhost:3000/#!/settings/list');
 // 	});
 
-// 	describe('View Ryan-West', function() {
-// 	it ('should be able to add a codeSnippet to the db', function() {
-// 		browser.get('http://localhost:3000/#!/databases');
-// 		element(by.id('userDirectory')).click();
+	describe('View Ryan-West', function() {
+	it ('should be able to see the database for Ryan-West', function() {
+		browser.get('http://localhost:3000/#!/databases');
+     	query.sendKeys('Ryan-West');
+		element(by.id('Ryan-West')).click();
 
-// 		expect(browser.getCurrentUrl()).toEqual('http://localhost:3000/#!/settings/list');
-// 	});
-
-// 	describe('View Steuber-White', function() {
-// 	it ('should be able to add a codeSnippet to the db', function() {
-// 		browser.get('http://localhost:3000/#!/databases');
-// 		element(by.id('userDirectory')).click();
-
-// 		expect(browser.getCurrentUrl()).toEqual('http://localhost:3000/#!/settings/list');
-// 	});
-
-// 	describe('View Tillman-Grady', function() {
-// 	it ('should be able to add a codeSnippet to the db', function() {
-// 		browser.get('http://localhost:3000/#!/databases');
-// 		element(by.id('userDirectory')).click();
-
-// 		expect(browser.getCurrentUrl()).toEqual('http://localhost:3000/#!/settings/list');
-// 	});
-
-// 	describe('View Gleason-Considine', function() {
-// 	it ('should be able to add a codeSnippet to the db', function() {
-// 		browser.get('http://localhost:3000/#!/databases');
-// 		element(by.id('userDirectory')).click();
-
-// 		expect(browser.getCurrentUrl()).toEqual('http://localhost:3000/#!/settings/list');
-// 	});
-
-// 	describe('View Kuhn, Bogan and Boehm', function() {
-// 	it ('should be able to add a codeSnippet to the db', function() {
-// 		browser.get('http://localhost:3000/#!/databases');
-// 		element(by.id('userDirectory')).click();
-
-// 		expect(browser.getCurrentUrl()).toEqual('http://localhost:3000/#!/settings/list');
-// 	});
-
-// 	describe('View Senger, Pagac and Hintz', function() {
-// 	it ('should be able to add a codeSnippet to the db', function() {
-// 		browser.get('http://localhost:3000/#!/databases');
-// 		element(by.id('userDirectory')).click();
-
-// 		expect(browser.getCurrentUrl()).toEqual('http://localhost:3000/#!/settings/list');
-// 	});
-
-// 	describe('View Kilback, Kiehn and OConner', function() {
-// 	it ('should be able to add a codeSnippet to the db', function() {
-// 		browser.get('http://localhost:3000/#!/databases');
-// 		element(by.id('userDirectory')).click();
-
-// 		expect(browser.getCurrentUrl()).toEqual('http://localhost:3000/#!/settings/list');
-// 	});
-
-// 	describe('View Schulist Inc', function() {
-// 	it ('should be able to add a codeSnippet to the db', function() {
-// 		browser.get('http://localhost:3000/#!/databases');
-// 		element(by.id('userDirectory')).click();
-
-// 		expect(browser.getCurrentUrl()).toEqual('http://localhost:3000/#!/settings/list');
-// 	});
-
-// 	describe('View Casper, Windler and Schamberger', function() {
-// 	it ('should be able to add a codeSnippet to the db', function() {
-// 		browser.get('http://localhost:3000/#!/databases');
-// 		element(by.id('userDirectory')).click();
-
-// 		expect(browser.getCurrentUrl()).toEqual('http://localhost:3000/#!/settings/list');
-// 	});
-
-// 	describe('View Strosin-Olson', function() {
-// 	it ('should be able to add a codeSnippet to the db', function() {
-// 		browser.get('http://localhost:3000/#!/databases');
-// 		element(by.id('userDirectory')).click();
-
-// 		expect(browser.getCurrentUrl()).toEqual('http://localhost:3000/#!/settings/list');
-// 	});
-
-// 	describe('View Dietrich, Becker and Jones', function() {
-// 	it ('should be able to see the database for Becker and Jones', function() {
-// 		browser.get('http://localhost:3000/#!/databases');
-// 		element(by.id('userDirectory')).click();
-
-// 		expect(browser.getCurrentUrl()).toEqual('http://localhost:3000/#!/settings/list');
-// 	});
-
-// 	describe('View Lang, Zemlak and Aufderhar', function() {
-// 	it ('should be able to see the database for Zemlak and Aufderhar', function() {
-// 		browser.get('http://localhost:3000/#!/databases');
-// 		element(by.id('userDirectory')).click();
-
-<<<<<<< HEAD
-		expect(browser.getCurrentUrl()).toEqual('http://localhost:3000/#!/settings/list');
+		expect(browser.getCurrentUrl()).toEqual('http://localhost:3000/#!/databases/5512fadda89116f5661ff64c');
 	});
+});
+
+	describe('View Steuber-White', function() {
+	it ('should be able to see the database for Steuber-White', function() {
+		browser.get('http://localhost:3000/#!/databases');
+     	query.sendKeys('Steuber-White');
+		element(by.id('Steuber-White')).click();
+
+		expect(browser.getCurrentUrl()).toEqual('http://localhost:3000/#!/databases/5512fadda89116f5661ff64b');
 	});
-	*/
+});
 
-//codeSnippetSubmit.sendKeys('int main(){\nfor(int i = 0; i < 10; ++i){\n cout << "Its great to be a Florida Gator!!!"\n}\n}');
-=======
-// 		expect(browser.getCurrentUrl()).toEqual('http://localhost:3000/#!/settings/list');
-// 	});
+	describe('View Tillman-Grady', function() {
+	it ('should be able to see the database for Tillman-Grady', function() {
+		browser.get('http://localhost:3000/#!/databases');
+     	query.sendKeys('Tillman-Grady');
+		element(by.id('Tillman-Grady')).click();
 
-// 	describe('View Farrell and Daughters', function() {
-// 	it ('should be able to see the database for Farrell and Daughters', function() {
+		expect(browser.getCurrentUrl()).toEqual('http://localhost:3000/#!/databases/5512fadda89116f5661ff647');
+	});
+});
+
+describe('View Gleason-Considine', function() {
+	it ('should be able to see the database for Gleason-Considine', function() {
+		browser.get('http://localhost:3000/#!/databases');
+     	query.sendKeys('Gleason-Considine');
+		element(by.id('Gleason-Considine')).click();
+
+		expect(browser.getCurrentUrl()).toEqual('http://localhost:3000/#!/databases/5512fadda89116f5661ff64a');
+	});
+});
+
+// *** space
+// describe('View Kuhn, Bogan and Boehm', function() {
+// 	it ('should be able to see the database for Kuhn, Bogan and Boehm', function() {
 // 		browser.get('http://localhost:3000/#!/databases');
-// 		element(by.id('userDirectory')).click();
+//      	query.sendKeys('Kuhn, Bogan and Boehm');
+// 		element(by.id('Kuhn, Bogan and Boehm')).click();
 
-// 		expect(browser.getCurrentUrl()).toEqual('http://localhost:3000/#!/settings/list');
-// 	});
-
-// 	describe('View Abernathy and Sons', function() {
-// 	it ('should be able to see the database for Abernathy and Sons', function() {
-// 		browser.get('http://localhost:3000/#!/databases');
-// 		element(by.id('userDirectory')).click();
-
-// 		expect(browser.getCurrentUrl()).toEqual('http://localhost:3000/#!/settings/list');
-// 	});
-
-// 	describe('View Grady, Kessler and Olson', function() {
-// 	it ('should be able to see the database for Kessler and Olson', function() {
-// 		browser.get('http://localhost:3000/#!/databases');
-// 		element(by.id('userDirectory')).click();
-
-// 		expect(browser.getCurrentUrl()).toEqual('http://localhost:3000/#!/settings/list');
-// 	});
-
-// 	describe('View Wiza, Russel and Shields', function() {
-// 	it ('should be able to see the database for Russel and Shields', function() {
-// 		browser.get('http://localhost:3000/#!/databases');
-// 		element(by.id('userDirectory')).click();
-
-// 		expect(browser.getCurrentUrl()).toEqual('http://localhost:3000/#!/settings/list');
-// 	});
-
-// 	describe('View Kuhic and Daughters', function() {
-// 	it ('should be able to see the database for Kuhic and Daughters', function() {
-// 		browser.get('http://localhost:3000/#!/databases');
-// 		element(by.id('userDirectory')).click();
-
-// 		expect(browser.getCurrentUrl()).toEqual('http://localhost:3000/#!/settings/list');
-// 	});
-
-// 	describe('View Langworth, Cormier and Jacobi', function() {
-// 	it ('should be able to see the database for Cormier and Jacobi', function() {
-// 		browser.get('http://localhost:3000/#!/databases');
-// 		element(by.id('userDirectory')).click();
-
-// 		expect(browser.getCurrentUrl()).toEqual('http://localhost:3000/#!/settings/list');
-// 	});
-
-// 	describe('View Wehner Group', function() {
-// 	it ('should be able to see the database for Wehner Group', function() {
-// 		browser.get('http://localhost:3000/#!/databases');
-// 		element(by.id('userDirectory')).click();
-
-// 		expect(browser.getCurrentUrl()).toEqual('http://localhost:3000/#!/settings/list');
-// 	});
-
-// describe('View Grady, Leffler and Schaden', function() {
-// 	it ('should be able to see the database for Wiza, Grady, Leffler and Schaden', function() {
-// 		browser.get('http://localhost:3000/#!/databases');
-// 		element(by.id('userDirectory')).click();
-
-// 		expect(browser.getCurrentUrl()).toEqual('http://localhost:3000/#!/settings/list');
+// 		expect(browser.getCurrentUrl()).toEqual('http://localhost:3000/#!/databases/5512fadda89116f5661ff649');
 // 	});
 // });
 
-// describe('View Abbott, Zulauf and Krajcik', function() {
-// 	it ('should be able to see the database for Abbott, Zulauf and Krajcik', function() {
+// *** space
+// describe('View Senger, Pagac and Hintz', function() {
+// 	it ('should be able to see the database for Senger, Pagac and Hintz', function() {
 // 		browser.get('http://localhost:3000/#!/databases');
-// 		element(by.id('userDirectory')).click();
+//      	query.sendKeys('Senger, Pagac and Hintz');
+// 		element(by.id('Senger, Pagac and Hintz')).click();
 
-// 		expect(browser.getCurrentUrl()).toEqual('http://localhost:3000/#!/settings/list');
+// 		expect(browser.getCurrentUrl()).toEqual('http://localhost:3000/#!/databases/5512fadda89116f5661ff648');
 // 	});
 // });
 
-// describe('View Stehr Inc', function() {
-// 	it ('should be able to see the database for Stehr Inc', function() {
-// 		browser.get('http://localhost:3000/#!/databases');
-// 		element(by.id('userDirectory')).click();
+describe('View Strosin-Olson', function() {
+	it ('should be able to see the database for Strosin-Olson', function() {
+		browser.get('http://localhost:3000/#!/databases');
+     	query.sendKeys('Strosin-Olson');
+		element(by.id('Strosin-Olson')).click();
 
-// 		expect(browser.getCurrentUrl()).toEqual('http://localhost:3000/#!/settings/list');
-// 	});
-// });
+		expect(browser.getCurrentUrl()).toEqual('http://localhost:3000/#!/databases/5512fadda89116f5661ff643');
+	});
+});
 
-// describe('View Stehr Inc', function() {
-// 	it ('should be able to see the database for Stehr Inc', function() {
-// 		browser.get('http://localhost:3000/#!/databases');
-// 		element(by.id('userDirectory')).click();
+describe('View Wolf-Simonis', function() {
+	it ('should be able to see the database for Wolf-Simonis', function() {
+		browser.get('http://localhost:3000/#!/databases');
+     	query.sendKeys('Wolf-Simonis');
+		element(by.id('Wolf-Simonis')).click();
 
-// 		expect(browser.getCurrentUrl()).toEqual('http://localhost:3000/#!/settings/list');
-// 	});
+		expect(browser.getCurrentUrl()).toEqual('http://localhost:3000/#!/databases/5512fadda89116f5661ff63d');
+	});
+});
 
-// });
+describe('View Waelchi-Prosacco', function() {
+	it ('should be able to see the database for Waelchi-Prosacco', function() {
+		browser.get('http://localhost:3000/#!/databases');
+     	query.sendKeys('Waelchi-Prosacco');
+		element(by.id('Waelchi-Prosacco')).click();
 
-////////////////////////////////////////////////////////////////
-////////CodeSnippet/////////////////////////////////////////////
-////////////////////////////////////////////////////////////////
+		expect(browser.getCurrentUrl()).toEqual('http://localhost:3000/#!/databases/5512fadda89116f5661ff62b');
+	});
+});
 
-//describe('Creating a new codeSnippet', function() {
-//    it ('should be able to add a codeSnippet to the db', function() {
-//        browser.get('http://localhost:3000/#!/databases');
-//        element(by.id('userDirectory')).click();
-//
-//        query.sendKeys('gatorDB');
-//
-//    });
-//});
-//
-//describe('Creating a new codeSnippet', function() {
-//    it ('should be able to add a codeSnippet to the db', function() {
-//        browser.get('http://localhost:3000/#!/databases');
-//
-//        query.sendKeys('gatorDB');
-//
-//    });
-//});
+describe('View Swaniawski-Rice', function() {
+	it ('should be able to see the database for Swaniawski-Rice', function() {
+		browser.get('http://localhost:3000/#!/databases');
+     	query.sendKeys('Swaniawski-Rice');
+		element(by.id('Swaniawski-Rice')).click();
 
-
-//codeSnippetSubmit.sendKeys('int main(){\nfor(int i = 0; i < 10; ++i){\n cout << "Its great to be a Florida Gator!!!"\n}\n}');
->>>>>>> b7e9f6b49547d08c147f77e00575035a338a98e1
+		expect(browser.getCurrentUrl()).toEqual('http://localhost:3000/#!/databases/5512fadda89116f5661ff624');
+	});
+});

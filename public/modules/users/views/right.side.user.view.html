@@ -20,7 +20,7 @@
 
 						<a><h4 class="list-group-item-heading" style="margin-bottom:2px; color:#000000"> {{user.firstName}} {{user.lastName}}</h4>
 						<a class="pull-right list-group-item-text" data-ng-href="mailto:{{user.username}}" data-ng-show="!user.privateProfile">{{user.username}}</a>		
-						<a class="list-group-item-text" data-ng-href="#!/users/{{user._id}}">View Profile</a>
+						<a class="list-group-item-text" data-ng-href="#!/users/{{user._id}}" id="{{user.username}}">View Profile</a>
 						<p class="pull-right list-group-item-text" data-ng-show="user.privateProfile" style="color:#DDDDDD"><i>(Hidden)</i></p>
 				</div>
 
