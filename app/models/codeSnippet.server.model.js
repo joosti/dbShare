@@ -24,6 +24,12 @@ var CodeSnippetSchema = new Schema({
 	created: {
 		type: Date, 
 		default: Date.now
+	},
+	reviews: {
+		type: String, 
+		default: '',
+		trim: true, 
+		required: 'Comment on your code snippet.'
 	}, 
 	user: {
 		type: Schema.ObjectId, 
