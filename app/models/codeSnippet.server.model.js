@@ -28,8 +28,7 @@ var CodeSnippetSchema = new Schema({
 	csComment: {
 		type: String, 
 		default: '',
-		trim: true, 
-		required: 'Comment on your code snippet.'
+		trim: true
 	}, 
 	user: {
 		type: Schema.ObjectId, 

@@ -11,7 +11,6 @@ angular.module('codeSnippets').controller('CodeSnippetsController', ['$scope', '
 		//modes enabled for posting code comments
 
 		$scope.loadMode=function(mode){
-			console.log("awful waffle");
 			$scope.initMode=mode;
 		};
 
@@ -70,7 +69,6 @@ angular.module('codeSnippets').controller('CodeSnippetsController', ['$scope', '
 			},
 			gutters: ['CodeMirror-linenumbers', 'CodeMirror-foldgutter'],
 			onLoad : function(_cm){
-						console.log($scope.initMode);
 						_cm.setOption('mode', $scope.initMode.toLowerCase());
 			}
 		};

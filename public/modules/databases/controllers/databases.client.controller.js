@@ -177,7 +177,6 @@ angular.module('databases').controller('DatabasesController', ['$scope', '$rootS
 
         //Find all comments associated with the current database
 		$scope.getComments = function(database_id) {
-			console.log('get here');
 			var allComments = Comments.query({}, function(){
 				for(var i = 0; i < allComments.length; i++)
 				{
@@ -194,7 +193,6 @@ angular.module('databases').controller('DatabasesController', ['$scope', '$rootS
 
 		//Find all code snippets associated with the current database
 		$scope.getCodeSnippets = function(database_id) {
-			console.log('get here');
 			var allCodeSnippets = CodeSnippets.query({}, function() {
 				for(var i = 0; i < allCodeSnippets.length; i++)
 				{
@@ -234,13 +232,9 @@ angular.module('databases').controller('DatabasesController', ['$scope', '$rootS
 
 angular.module('databases').controller('ModalInstanceCtrl', function ($scope, $rootScope, $modalInstance, database, Users, Authentication, Databases)
 {
-			$scope.database = database;
+	$scope.database = database;
 
-
-    $scope.cancel = function () {
-    $modalInstance.dismiss('cancel');
-
-
-  };
-
+	$scope.cancel = function () {
+		$modalInstance.dismiss('cancel');
+	};
 });
