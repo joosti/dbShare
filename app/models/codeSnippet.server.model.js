@@ -25,7 +25,7 @@ var CodeSnippetSchema = new Schema({
 		type: Date, 
 		default: Date.now
 	},
-	reviews: {
+	csComment: {
 		type: String, 
 		default: '',
 		trim: true, 

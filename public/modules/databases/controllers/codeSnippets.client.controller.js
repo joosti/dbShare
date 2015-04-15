@@ -88,6 +88,7 @@ angular.module('codeSnippets').controller('CodeSnippetsController', ['$scope', '
 			var codeSnippet = new CodeSnippets({
 				code: $scope.cmModel,
 				mode: $scope.mode,
+				csComment: this.csComment,
 				databaseId: databaseId});
 
 				//redirect after save
@@ -134,6 +135,7 @@ angular.module('codeSnippets').controller('CodeSnippetsController', ['$scope', '
 		//Reset CodeSnippet field
 		$scope.resetCodeSnippetField = function() {
 			$scope.cmModel = '';
+			$scope.csComment = null;
 		};
 
 		//admin function
