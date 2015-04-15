@@ -137,7 +137,12 @@ for(var i = 0; i < maxValue; ++i) {
     codeSnippets += '"user": {';
     codeSnippets += '"$oid": "' + randomUserID[userIDCounter] + '"}, ';
     codeSnippets += '"code": "' + randomComment + randomDescriptionLong + randomDescriptionShort + '", ';
-    codeSnippets += '"mode": "R",';
+    if(i%2 == 0){
+        codeSnippets += '"mode": "r",';
+    }
+    else{
+        codeSnippets += '"mode": "stata",';
+    }
     codeSnippets += '"databaseId": "552d85612e01ff00006eee89", ';
     codeSnippets += '"created": {';
     codeSnippets += '"$date": "2015-03-23T05:37:51.390Z"}, ';
