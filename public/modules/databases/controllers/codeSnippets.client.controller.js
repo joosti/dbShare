@@ -10,7 +10,13 @@ angular.module('codeSnippets').controller('CodeSnippetsController', ['$scope', '
 
 		//modes enabled for posting code comments
 
-		$scope.modes = ['R','stata'];
+		$scope.loadMode=function(mode){
+			console.log("awful waffle");
+			$scope.initMode=mode;
+		};
+
+		
+		$scope.modes = ['r','stata'];
 
 		$scope.mode = $scope.modes[0];
 
@@ -37,8 +43,11 @@ angular.module('codeSnippets').controller('CodeSnippetsController', ['$scope', '
 
 				// HACK to have the codemirror instance in the scope...
 				$scope.modeChanged = function(){
+					
 					_cm.setOption('mode', $scope.mode.toLowerCase());
+				
 				};
+
 			}
 
 
@@ -46,7 +55,6 @@ angular.module('codeSnippets').controller('CodeSnippetsController', ['$scope', '
 
         //Archived code-mirror snippet options
 		$scope.cmOption2 = {
-			//mode = $scope.codeItem.mode,
 			lineNumbers: true,
 			lineWrapping: true,
 			autoCloseBrackets: true,
@@ -61,9 +69,14 @@ angular.module('codeSnippets').controller('CodeSnippetsController', ['$scope', '
 				rangeFinder: new CodeMirror.fold.combine(CodeMirror.fold.brace, CodeMirror.fold.comment)
 			},
 			gutters: ['CodeMirror-linenumbers', 'CodeMirror-foldgutter'],
+			onLoad : function(_cm){
+						console.log($scope.initMode);
+						_cm.setOption('mode', $scope.initMode.toLowerCase());
+			}
 		};
+		
 
-
+		
 		//initial code content...
 
 		$scope.cmModel = "";
