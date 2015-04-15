@@ -162,10 +162,14 @@
                 <li data-ng-controller="CodeSnippetsController" ng-repeat="codeSnippet in dbCodeSnippets" class = "list-group-item">
                     <b><a data-ng-href="#!/users/{{codeSnippet.user._id}}" data-ng-bind="codeSnippet.user.displayName"></a></b>
                     <small class="list-group-item-test"> on <span data-ng-bind="codeSnippet.created | date:'medium'"></span>
+
+                    <!--Delete Comment Button-->
+                    <i class="glyphicon glyphicon-remove" id="delComment" ng-show="authentication.user._id === codeSnippet.user._id || authentication.user.roles.indexOf('admin') !== -1" style="color:red; cursor: pointer" ng-click="remove(codeSnippet); getCodeSnippets(database._id);"></i> 
                         
                     <section class="codeMirrorSection" ng-init="loadMode(codeSnippet.mode)">
                         <div ui-codemirror="cmOption2" ng-model="codeSnippet.code" ui-refresh="selectedTab == 3"></div>
                     </section>
+
                     <!--<h4 class="list-group-item-heading" ng-show="codeSnippet.csComment != ''" style="margin-top: 10px;">Description</h4>-->
                     <h5 class="list-group-item-heading" ng-show="codeSnippet.csComment != ''" style="padding-top: 10px; margin-left: 10px;">{{codeSnippet.csComment}}</h5>
                 </li>
