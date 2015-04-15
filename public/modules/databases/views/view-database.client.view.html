@@ -163,10 +163,11 @@
                     <b><a data-ng-href="#!/users/{{codeSnippet.user._id}}" data-ng-bind="codeSnippet.user.displayName"></a></b>
                     <small class="list-group-item-test"> on <span data-ng-bind="codeSnippet.created | date:'medium'"></span>
                         
-                    <!--Add delete button-->
                     <section class="codeMirrorSection" ng-init="loadMode(codeSnippet.mode)">
                         <div ui-codemirror="cmOption2" ng-model="codeSnippet.code" ui-refresh="selectedTab == 3"></div>
                     </section>
+                    <!--<h4 class="list-group-item-heading" ng-show="codeSnippet.csComment != ''" style="margin-top: 10px;">Description</h4>-->
+                    <h5 class="list-group-item-heading" ng-show="codeSnippet.csComment != ''" style="padding-top: 10px; margin-left: 10px;">{{codeSnippet.csComment}}</h5>
                 </li>
             </div>
 
@@ -182,13 +183,19 @@
             <form class="form-horizontal" data-ng-controller="CodeSnippetsController" novalidate data-ng-submit="create(database._id); getCodeSnippets(database._id); resetCodeSnippetField()">
                 <fieldset>
                     <div class="form-group">
-                        <label class="control-label" for="reviews" style="padding-left:10px">Add Comment</label>
+                        <label class="control-label" for="reviews" style="padding-left:10px">Add Code Snippet</label>
                         <div class="controls">
                             <section class="codeMirrorSection" >
                                 <div ui-codemirror="cmOption1" ng-model="cmModel"></div>
                             </section>
                             <label class="control-label" style="padding-left:10px">Mode</label>
                             <select class="mode-button  ng-valid ng-dirty" style="margin-left:10px; max-width:700px;" ng-model="mode" ng-options="m for m in modes" ng-change="modeChanged()"></select>
+                        </div>   
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label" for="reviews" style="padding-left:10px">Add Comment</label>
+                        <div class="controls">
+                            <textarea type="text" data-ng-model="csComment" id="csComment" class="form-control" style="margin-left:10px; max-width:700px;" placeholder="Enter your comment here"></textarea>
                         </div>   
                     </div>
                     <div class="form-group">
