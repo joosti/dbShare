@@ -6,7 +6,7 @@ angular.module('databases').controller('DatabasesController', ['$scope', '$rootS
 		$scope.user = {};
 		angular.copy(Authentication.user, $scope.user);
 		$scope.authentication = Authentication;
-
+    $scope.currentDatabase = {};
 		// Create new Database
 		$scope.create = function() {
 			// Create new Database object
@@ -76,6 +76,16 @@ angular.module('databases').controller('DatabasesController', ['$scope', '$rootS
 		// Find a list of Databases
 		$scope.find = function() {
 			$scope.databases = Databases.query();
+
+      $scope.databases = Databases.query( function() { 
+
+        $scope.currentDatabase = $scope.databases[0];
+        $scope.findDBUsers($scope.currentDatabase._id );
+        $scope.getComments($scope.currentDatabase._id );
+        $scope.getCodeSnippets($scope.currentDatabase._id );
+        $scope.database = $scope.databases[0];
+      } );
+       
 		};
 
 		// Find existing Database
