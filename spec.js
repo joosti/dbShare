@@ -62,7 +62,7 @@ describe('Signing up', function() {
 		lname.sendKeys('TestLast');
 		username.sendKeys('Test@ufl.edu');
 		password.sendKeys('test123');
-		// confirmpassword.sendKeys('test123') ***
+		//confirm.sendKeys('test123');
 		research.sendKeys('This is my research interests. I like to test.');
 
 	 	element(by.buttonText('Sign up')).click();
@@ -76,7 +76,7 @@ describe('Signing up', function() {
 		lname.sendKeys('TestLast');
 		username.sendKeys('Test@yahoo.edu');
 		password.sendKeys('test123');
-		// confirmpassword.sendKeys('test123') ***
+		//confirm.sendKeys('test123');
 		research.sendKeys('This is my research interests. I like to test. ');
 
 	 	element(by.buttonText('Sign up')).click();
@@ -158,7 +158,7 @@ describe('Creating a new database', function() {
 
 
 
-
+// update
 // <<<<<<< HEAD
 // 		query.sendKeys('gatorDB');
 
@@ -223,7 +223,7 @@ describe('Creating a new database', function() {
 // 	it ('should be able to see the database for Larson Group', function() {
 // 		browser.get('http://localhost:3000/#!/databases');
 //         query.sendKeys('Larson Group');
-// 		element(by.text('Larson Group')).click();
+// 		element(by.id('Larson Group')).click();
 
 // 		expect(browser.getCurrentUrl()).toEqual('http://localhost:3000/#!/databases/5512fadda89116f5661ff651');
 // 	});
