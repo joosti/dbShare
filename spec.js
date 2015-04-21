@@ -120,38 +120,6 @@ describe('Creating a new database', function() {
 // gatorDB INFO
 // http://localhost:3000/#!/databases/552d85612e01ff00006eee89
 
-// describe('Viewing the user directory', function(){
-// 	it ('should be able to view all the users in the website', function(){
-// 		browser.get('http://localhost:3000/#!/databases');
-// 		element(by.id('userDirectory')).click();
-
-// 		expect(browser.getCurrentUrl()).toEqual('http://localhost:3000/#!/settings/list');
-
-// 	});
-// });
-
-// describe('Viewing the database details', function(){
-// 	it ('should be able to see all the info for the db', function(){
-// 		browser.get('http://localhost:3000/#!/databases');
-// 		element(by.id('userDirectory')).click();
-
-// 		//expect(browser.getCurrentUrl()).toEqual('http://localhost:3000/#!/settings/profile');
-
-// 	});
-// });
-
-
-
-
-// <<<<<<< HEAD
-// 		query.sendKeys('gatorDB');
-
-// 	});
-// });
-// =======
-// //http://localhost:3000/#!/databases/550f96584a05f10000b428e0
-// >>>>>>> b7e9f6b49547d08c147f77e00575035a338a98e1
-
 	describe('View gatorDB', function() {
 	it ('should be able to see the database for gatorDB', function() {
 		browser.get('http://localhost:3000/#!/databases');
