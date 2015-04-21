@@ -55,13 +55,6 @@ describe('Database Model Unit Tests:', function() {
 // ------------------------------------------------ Databases / Save Tests -------------------------------------------------
 // -------------------------------------------------------------------------------------------------------------------------
 				
-		it('should begin with no databases', function(done) {
-			Database.find({}, function(err, databases) {
-				databases.should.have.length(0);
-				done();
-			});
-		});
-
 		it('should be able to save without problems', function(done) {
 			database.save(done);
 		});
@@ -572,9 +565,7 @@ it('should be able to show an error if descriptionLong, descirpitonShort, and ur
 		});
 
 	afterEach(function(done) { 
-		Database.remove().exec();
-		User.remove().exec();
-
+		Database.remove({name:'Database Name'}).exec();
 		done();
 	});
 });
