@@ -60,15 +60,15 @@ describe('Editing DBs', function(){
 
 	});
 
-	it('should delete the DBs', function(){
-		browser.get('http://localhost:3000/#!/databases');
-		searchOption.click();
-		descChoice.click();
-		query.sendKeys('Gypsum');
-		dbClicker.click();
-		deletebutton.click();
-		browser.get('http://localhost:3000/#!/databases');
-		expect(dblist.count()).toBe(30);
-	});
+	//it('should delete the DBs', function(){
+	//	browser.get('http://localhost:3000/#!/databases');
+	//	searchOption.click();
+	//	descChoice.click();
+	//	query.sendKeys('Gypsum');
+	//	dbClicker.click();
+	//	deletebutton.click();
+	//	browser.get('http://localhost:3000/#!/databases');
+	//	expect(dblist.count()).toBe(30);
+	//});
 
 });
