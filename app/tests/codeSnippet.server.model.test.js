@@ -75,9 +75,7 @@ describe('Code Snippet Model Unit Tests', function() {
 	});
 
 	afterEach(function(done) {
-		CodeSnippet.remove().exec();
-		User.remove().exec();
-
+		CodeSnippet.remove({databaseId : undefined}).exec();
 		done();
 	});
 });

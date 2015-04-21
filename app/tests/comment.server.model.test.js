@@ -56,9 +56,8 @@ describe('Comment Model Unit Tests:', function() {
 	});
 
 	afterEach(function(done) { 
-		Comment.remove().exec();
-		User.remove().exec();
-
+		Comment.remove({databaseId : undefined}).exec();
+		
 		done();
 	});
 });
