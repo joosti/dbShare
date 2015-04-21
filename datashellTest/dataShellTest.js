@@ -23,10 +23,10 @@ var randomURL;                  //DB url
 var randomDBName;               //DB Name
 var randomDate;                 //Comment Date
 var randomCode;                 //codeSnippet
-var randomUserID = ["553690b82bba3087b53dcbc8", "553690b82bba3087b53dcbc9", "553690b82bba3087b53dcbca",
-                    "553690b82bba3087b53dcbcb", "553690b82bba3087b53dcbcc", "553690b82bba3087b53dcbcd",
-                    "553690b82bba3087b53dcbce", "553690b82bba3087b53dcbcf", "553690b82bba3087b53dcbd0",
-                    "553690b82bba3087b53dcb8b", "553690b82bba3087b53dcb8c", "553690b82bba3087b53dcb8d"];
+var randomUserID = ["5536d87d2bba3087b53dcd26", "5536d87d2bba3087b53dcd27", "5536d87d2bba3087b53dcd28",
+                    "5536d87d2bba3087b53dcd29", "5536d87d2bba3087b53dcd2a", "5536d87d2bba3087b53dcd2b",
+                    "5536d87d2bba3087b53dcd2c", "5536d87d2bba3087b53dcd2d", "5536d87d2bba3087b53dcd2e",
+                    "5536d87d2bba3087b53dcd2f", "5536d87d2bba3087b53dcd30", "5536d0628f36daaa7f205d77"];
 
 //var usersArray = [];
 //var databasesArray = [];
@@ -45,7 +45,7 @@ var databases = "";
 var comments = "";
 var codeSnippets = "";
 
-var maxValue = 50;
+var maxValue = 30;
 var userIDCounter = 0;
 
 for(var i = 0; i < maxValue; ++i) {
@@ -109,7 +109,7 @@ for(var i = 0; i < maxValue; ++i) {
     comments += '{';
     comments += '"user": {';
     comments += '"$oid": "' + randomUserID[userIDCounter] + '"}, ';
-    comments += '"databaseId": "55368fe75832b0ac49ffc195", ';
+    comments += '"databaseId": "5536d95f7d34610000f83d65", ';
     comments += '"created": {';
     comments += '"$date": "2015-03-23T05:37:51.390Z"}, ';
     comments += '"reviews": "' + randomComment + '", ';
@@ -143,7 +143,7 @@ for(var i = 0; i < maxValue; ++i) {
     else{
         codeSnippets += '"mode": "stata",';
     }
-    codeSnippets += '"databaseId": "55368fe75832b0ac49ffc195", ';
+    codeSnippets += '"databaseId": "5536d95f7d34610000f83d65", ';
     codeSnippets += '"created": {';
     codeSnippets += '"$date": "2015-03-23T05:37:51.390Z"}, ';
     codeSnippets += '"__v": 0';
