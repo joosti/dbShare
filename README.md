@@ -1,8 +1,9 @@
-##Project description:
+#Project description:
 
-Customer: Joost Impink. Make a web app for UF faculty, researchers, and grad students to share databases that they use. Users can also create a portfolio so that they can keep track of databases they use, as well as add databases that they find that other users have added.
+Customer: Joost Impink
+Description: Make a web app for UF faculty, researchers, and grad students to share databases that they use. Users can also create a portfolio so that they can keep track of databases they use, as well as add databases that they find that other users have added.
 
-#CEN3031FA14
+##CEN3031FA14
 
 Team Name: "Databases Collaborators"
 
@@ -21,7 +22,7 @@ GroupB(Back-end): Kun Cao - kuncao0228, Yufan Lin - yufanlin, Tyler Willis - tjw
 
 
 
-#CEN3031SP15
+##CEN3031SP15
 
 Team Name: "Databases Collaborators"
 
