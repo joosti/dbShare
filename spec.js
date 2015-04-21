@@ -120,7 +120,7 @@ describe('Creating a new database', function() {
 // gatorDB INFO
 // http://localhost:3000/#!/databases/552d85612e01ff00006eee89
 
-	describe('View gatorDB', function() {
+describe('View gatorDB', function() {
 	it ('should be able to see the database for gatorDB', function() {
 		browser.get('http://localhost:3000/#!/databases');
         query.sendKeys('gatorDB');

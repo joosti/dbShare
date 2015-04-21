@@ -8,7 +8,7 @@
 	</div>
 	
 	<!--Signup section-->
-	<div class="col-xs-offset-2 col-xs-8 col-md-offset-5 col-md-2" ng-show="registration === 'open' || authentication.user.roles.indexOf('admin') !== -1" ng-hide="registration === 'closed' && (authentication.user.roles.indexOf('admin') === -1 || !authentication.user)">
+	<div class="col-md-6 col-md-offset-3" ng-show="registration === 'open' || authentication.user.roles.indexOf('admin') !== -1" ng-hide="registration === 'closed' && (authentication.user.roles.indexOf('admin') === -1 || !authentication.user)">
 		<form name="userForm" data-ng-submit="signup()" class="signin form-horizontal" novalidate autocomplete="off">
 			<fieldset>
 				<div class="form-group">
