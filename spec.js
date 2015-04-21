@@ -24,12 +24,6 @@ var randomLast = generateUUID();
 var randomUser = randomLast + "@ufl.edu";
 var randomPass = generateUUID();
 
-var name = element(by.model('name'));
-var url = element(by.model('url'));
-var isFree = element(by.model('isFree'));
-var descriptionShort = element(by.model('descriptionShort'));
-var descriptionLong = element(by.model('descriptionLong'));
-
 var codeSnippetSubmit = element(by.model('codeSnippetSubmit'));
 var query = element(by.model('query'));
 
@@ -61,7 +55,7 @@ describe('Signing up', function() {
     //
 	//	expect($('[data-ng-show="error"]').isDisplayed()).toBeTruthy();
 	//});
-    //
+
 	//it ('should not sign up for a non-UFL email', function(){
 	//	browser.get('http://localhost:3000/#!/signup');
 	//	fname.sendKeys('TestFirst');
@@ -76,8 +70,9 @@ describe('Signing up', function() {
 	//	expect($('[data-ng-show="error"]').isDisplayed()).toBeTruthy();
     //
 	//});
-
+    //
 	it ('should be able to create a new user', function() {
+
 		browser.get('http://localhost:3000/#!/signup');
 		fname.sendKeys(randomFirst);
 		lname.sendKeys(randomLast);
@@ -94,18 +89,17 @@ describe('Signing up', function() {
 });
 
 
-describe('Logging Out',function() {
-	it ('should be able to log out', function() {
-		dropdown.click();
-		signout.click();
-		expect($('[data-ng-show="error"]').isDisplayed()).toBeFalsy();
-	});
-});
-
+//describe('Logging Out',function() {
+//	it ('should be able to log out', function() {
+//		dropdown.click();
+//		signout.click();
+//		expect($('[data-ng-show="error"]').isDisplayed()).toBeFalsy();
+//	});
+//});
+//
 //describe('Logging in',function() {
 //	it ('should be able to log in', function() {
-//		browser.get('http://localhost:3000/#!/');
-//
+//		//browser.get('http://localhost:3000/#!/');
 //		//username.sendKeys('kenan@ufl.edu');
 //		username.sendKeys(randomUser);
 //
@@ -114,7 +108,7 @@ describe('Logging Out',function() {
 //
 //		element(by.buttonText('Sign in')).click();
 //
-//		expect(browser.getCurrentUrl()).toEqual('http://localhost:3000/#!/databases');
+//		expect($('[data-ng-show="error"]').isDisplayed()).toBeFalsy();
 //	});
 //});
 
@@ -122,25 +116,33 @@ describe('Logging Out',function() {
 ////////////////////////////////////////////////////////////////
 ////////Profile/////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////
-//
+
 //describe('Viewing your profile', function(){
 //	it ('should be able to view your profile', function(){
 //		browser.get('http://localhost:3000/#!/databases');
 //		element(by.id('dispName')).click();
-//
 //		expect(browser.getCurrentUrl()).toEqual('http://localhost:3000/#!/settings/profile');
 //	});
 //});
 
-
-//describe('Adding database to your portfolio', function(){
-//	it ('should be able to add a database protfolio', function(){
-//		browser.get('http://localhost:3000/#!/databases');
-//		element(by.id('dispName')).click();
 //
-//		expect(browser.getCurrentUrl()).toEqual('http://localhost:3000/#!/settings/profile');
-//	});
-//});
+describe('Adding database to your portfolio', function(){
+	it ('should be able to add a database', function(){
+		browser.get('http://localhost:3000/#!/databases/');
+
+		var porlist = element.all(by.repeater('item in menu.items'));
+		porlist[0].click();
+
+		element(by.id('name')).sendKeys( generateUUID() );
+		element(by.id('url')).sendKeys( generateUUID() );
+		element(by.id('descriptionShort')).sendKeys( generateUUID() );
+		element(by.id('descriptionLong')).sendKeys( generateUUID() );
+		element(by.id('submit')).click();
+		expect($('[data-ng-show="error"]').isDisplayed()).toBeFalsy();
+	});
+
+
+});
 
 ////////////////////////////////////////////////////////////////
 ////////Database////////////////////////////////////////////////
@@ -199,3 +201,16 @@ describe('Logging Out',function() {
 //
 // 	});
 //});
+
+//describe('Deleting a user', function() {
+//	it ('should be able to delete a user', function() {
+//		browser.get('http://localhost:3000/#!/settings/edit');
+//		element(by.id('deleteMe')).click();
+//
+//
+//
+//
+//	});
+//});
+
+
