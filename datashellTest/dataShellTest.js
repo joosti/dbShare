@@ -23,10 +23,10 @@ var randomURL;                  //DB url
 var randomDBName;               //DB Name
 var randomDate;                 //Comment Date
 var randomCode;                 //codeSnippet
-var randomUserID = ["552d88452bba3087b53dc968", "552d88452bba3087b53dc969", "552d88452bba3087b53dc96a",
-                    "552d88452bba3087b53dc96b", "552d88452bba3087b53dc96c", "552d88452bba3087b53dc96d",
-                    "552d88452bba3087b53dc96e", "552d88452bba3087b53dc96f", "552d88452bba3087b53dc970",
-                    "552d88452bba3087b53dc971", "552d88452bba3087b53dc972", "552d88452bba3087b53dc973"];
+var randomUserID = ["553690b82bba3087b53dcbc8", "553690b82bba3087b53dcbc9", "553690b82bba3087b53dcbca",
+                    "553690b82bba3087b53dcbcb", "553690b82bba3087b53dcbcc", "553690b82bba3087b53dcbcd",
+                    "553690b82bba3087b53dcbce", "553690b82bba3087b53dcbcf", "553690b82bba3087b53dcbd0",
+                    "553690b82bba3087b53dcb8b", "553690b82bba3087b53dcb8c", "553690b82bba3087b53dcb8d"];
 
 //var usersArray = [];
 //var databasesArray = [];
@@ -45,7 +45,7 @@ var databases = "";
 var comments = "";
 var codeSnippets = "";
 
-var maxValue = 100;
+var maxValue = 50;
 var userIDCounter = 0;
 
 for(var i = 0; i < maxValue; ++i) {
@@ -109,7 +109,7 @@ for(var i = 0; i < maxValue; ++i) {
     comments += '{';
     comments += '"user": {';
     comments += '"$oid": "' + randomUserID[userIDCounter] + '"}, ';
-    comments += '"databaseId": "552d85612e01ff00006eee89", ';
+    comments += '"databaseId": "55368fe75832b0ac49ffc195", ';
     comments += '"created": {';
     comments += '"$date": "2015-03-23T05:37:51.390Z"}, ';
     comments += '"reviews": "' + randomComment + '", ';
@@ -143,7 +143,7 @@ for(var i = 0; i < maxValue; ++i) {
     else{
         codeSnippets += '"mode": "stata",';
     }
-    codeSnippets += '"databaseId": "552d85612e01ff00006eee89", ';
+    codeSnippets += '"databaseId": "55368fe75832b0ac49ffc195", ';
     codeSnippets += '"created": {';
     codeSnippets += '"$date": "2015-03-23T05:37:51.390Z"}, ';
     codeSnippets += '"__v": 0';
