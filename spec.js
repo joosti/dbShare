@@ -10,7 +10,8 @@ function generateUUID()
 	return text;
 }
 
-
+var dropdown = element(by.id('dropdownCaret'));
+var signout = element(by.id('signout'));
 var username = element(by.model('credentials.username'));
 var password = element(by.model('credentials.password'));
 var confirmpassword = element(by.model('credentials.confirmpassword'));
@@ -47,34 +48,34 @@ describe('Getting to the homepage', function() {
 
 describe('Signing up', function() {
 
-	it ('should be able to reject an existing username', function() {
-		browser.get('http://localhost:3000/#!/signup');
-		fname.sendKeys('TestFirst');
-		lname.sendKeys('TestLast');
-		username.sendKeys('Test@ufl.edu');
-		password.sendKeys('test123');
-		// confirmpassword.sendKeys('test123') ***
-		research.sendKeys('This is my research interests. I like to test.');
-
-		element(by.buttonText('Sign up')).click();
-
-		expect($('[data-ng-show="error"]').isDisplayed()).toBeTruthy();
-	});
-
-	it ('should not sign up for a non-UFL email', function(){
-		browser.get('http://localhost:3000/#!/signup');
-		fname.sendKeys('TestFirst');
-		lname.sendKeys('TestLast');
-		username.sendKeys('Test@yahoo.edu');
-		password.sendKeys('test123');
-		// confirmpassword.sendKeys('test123') ***
-		research.sendKeys('This is my research interests. I like to test. ');
-
-		element(by.buttonText('Sign up')).click();
-
-		expect($('[data-ng-show="error"]').isDisplayed()).toBeTruthy();
-
-	});
+	//it ('should be able to reject an existing username', function() {
+	//	browser.get('http://localhost:3000/#!/signup');
+	//	fname.sendKeys('TestFirst');
+	//	lname.sendKeys('TestLast');
+	//	username.sendKeys('Test@ufl.edu');
+	//	password.sendKeys('test123');
+	//	// confirmpassword.sendKeys('test123') ***
+	//	research.sendKeys('This is my research interests. I like to test.');
+    //
+	//	element(by.buttonText('Sign up')).click();
+    //
+	//	expect($('[data-ng-show="error"]').isDisplayed()).toBeTruthy();
+	//});
+    //
+	//it ('should not sign up for a non-UFL email', function(){
+	//	browser.get('http://localhost:3000/#!/signup');
+	//	fname.sendKeys('TestFirst');
+	//	lname.sendKeys('TestLast');
+	//	username.sendKeys('Test@yahoo.edu');
+	//	password.sendKeys('test123');
+	//	// confirmpassword.sendKeys('test123') ***
+	//	research.sendKeys('This is my research interests. I like to test. ');
+    //
+	//	element(by.buttonText('Sign up')).click();
+    //
+	//	expect($('[data-ng-show="error"]').isDisplayed()).toBeTruthy();
+    //
+	//});
 
 	it ('should be able to create a new user', function() {
 		browser.get('http://localhost:3000/#!/signup');
@@ -92,37 +93,30 @@ describe('Signing up', function() {
 
 });
 
-describe('Logging in',function() {
-	it ('should be able to log in', function() {
-		browser.get('http://localhost:3000/#!/');
 
-		//username.sendKeys('kenan@ufl.edu');
-		username.sendKeys(randomUser);
-
-		//password.sendKeys('dbShare2015');
-		password.sendKeys(randomPass);
-
-		element(by.buttonText('Sign in')).click();
-
-		expect(browser.getCurrentUrl()).toEqual('http://localhost:3000/#!/databases');
+describe('Logging Out',function() {
+	it ('should be able to log out', function() {
+		dropdown.click();
+		signout.click();
+		expect($('[data-ng-show="error"]').isDisplayed()).toBeFalsy();
 	});
 });
 
-describe('Logging in',function() {
-	it ('should be able to log in', function() {
-		browser.get('http://localhost:3000/#!/');
-
-		//username.sendKeys('kenan@ufl.edu');
-		username.sendKeys(randomUser);
-
-		//password.sendKeys('dbShare2015');
-		password.sendKeys(randomPass);
-
-		element(by.buttonText('Sign in')).click();
-
-		expect(browser.getCurrentUrl()).toEqual('http://localhost:3000/#!/databases');
-	});
-});
+//describe('Logging in',function() {
+//	it ('should be able to log in', function() {
+//		browser.get('http://localhost:3000/#!/');
+//
+//		//username.sendKeys('kenan@ufl.edu');
+//		username.sendKeys(randomUser);
+//
+//		//password.sendKeys('dbShare2015');
+//		password.sendKeys(randomPass);
+//
+//		element(by.buttonText('Sign in')).click();
+//
+//		expect(browser.getCurrentUrl()).toEqual('http://localhost:3000/#!/databases');
+//	});
+//});
 
 
 ////////////////////////////////////////////////////////////////
