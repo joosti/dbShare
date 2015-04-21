@@ -52,12 +52,6 @@ describe('User Model Unit Tests:', function() {
 // ------------------------------------------------ User / Save Tests ------------------------------------------------------
 // -------------------------------------------------------------------------------------------------------------------------
 
-		it('should begin with no users', function(done) {
-			User.find({}, function(err, users) {
-				users.should.have.length(0);
-				done();
-			});
-		});
 
 		it('should be able to save without problems', function(done) {
 			user.save(done);
@@ -747,7 +741,7 @@ it('should be able to show an error if  lname, pass and username are empty and u
 	}); 
 
 	after(function(done) {
-		User.remove().exec();
+		User.remove({username: 'user@ufl.edu'}).exec();
 		done();
 	});
 });
