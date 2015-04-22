@@ -133,7 +133,7 @@ describe('Signing up', function() {
 ////////Database////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////
 
-describe('Adding database to your portfolio', function(){
+describe('Adding a database', function(){
 	it ('should be able to add a database', function(){
 		element(by.id('addDBButton')).click();
 		element(by.id('name')).sendKeys( generateUUID() );
@@ -175,12 +175,31 @@ describe('Creating a new comment', function() {
 		element(by.id('reviews')).sendKeys( comment );
 		element(by.id('commentSubmit')).click();
 
-		element(by.id('commentTab')).click();
-
 		//var comment2 = element.all(by.binding('comment.reviews'));
 		//expect(comment).toEqual(comment2);
 	});
 });
+
+
+////////////////////////////////////////////////////////////////
+////////Adding a db to Portfolio////////////////////////////////
+////////////////////////////////////////////////////////////////
+
+describe('Adding database to portfolio', function() {
+	it ('should be able to see the database in portfolio', function() {
+		element(by.id('addDBButtonPort')).click();
+		element(by.id('proficient'));
+		element(by.id('submitAdd')).click();
+		expect($('[data-ng-show="error"]').isDisplayed()).toBeFalsy();
+	});
+});
+
+describe('Adding database to portfolio', function() {
+	it ('should be able to see the database in portfolio', function() {
+		element(by.id('dispName')).click();
+	});
+});
+
 
 
 
