@@ -23,6 +23,7 @@ var randomFirst = generateUUID();
 var randomLast = generateUUID();
 var randomUser = randomLast + "@ufl.edu";
 var randomPass = generateUUID();
+var comment = generateUUID();
 
 var codeSnippetSubmit = element(by.model('codeSnippetSubmit'));
 var query = element(by.model('query'));
@@ -162,21 +163,22 @@ describe('View gatorDB', function() {
 describe('Creating a new comment', function() {
 	it ('should be able to add a comment to the db', function() {
 		element(by.id('newCommentTab')).click();
-		element(by.id('reviews')).sendKeys( generateUUID() );
+		element(by.id('reviews')).sendKeys( comment );
 		element(by.id('commentSubmit')).click();
 		expect($('[data-ng-show="error"]').isDisplayed()).toBeFalsy();
 	});
 });
 
-describe('Creating a new comment', function() {
-	var comment = generateUUID();
-	it ('should be able to add a comment to the db', function() {
-		element(by.id('newCommentTab')).click();
-		element(by.id('reviews')).sendKeys( comment );
-		element(by.id('commentSubmit')).click();
+describe('Checking comment created', function() {
 
-		//var comment2 = element.all(by.binding('comment.reviews'));
-		//expect(comment).toEqual(comment2);
+	it ('should be able to confirm comment added', function() {
+		element(by.id('commentTab')).click();
+
+		var array = element.all(by.repeater('comment in dbComments').column('comment.reviews')).map(function (elm) {
+			return elm.getText();
+		});
+
+		expect(array).toContain(comment);
 	});
 });
 
@@ -186,7 +188,7 @@ describe('Creating a new comment', function() {
 ////////////////////////////////////////////////////////////////
 
 describe('Adding database to portfolio', function() {
-	it ('should be able to see the database in portfolio', function() {
+	it ('should show no errors while adding', function() {
 		element(by.id('addDBButtonPort')).click();
 		element(by.id('proficient'));
 		element(by.id('submitAdd')).click();
@@ -197,18 +199,14 @@ describe('Adding database to portfolio', function() {
 describe('Adding database to portfolio', function() {
 	it ('should be able to see the database in portfolio', function() {
 		element(by.id('dispName')).click();
-		var foo = element.all(by.repeater('portfolio in user.portfolios'));
 
-		var bar;
+		//var foo = element.all(by.repeater('portfolio in user.portfolios')).column('portfolio.name').getText();
 
-		for(var i = 0; i < foo.length; ++i) {
-			if(foo.name == "gatorDB") {
-				bar = "gatorDB";
-			}
-		}
+		var array = element.all(by.repeater('portfolio in user.portfolios').column('portfolio.name')).map(function (elm) {
+			return elm.getText();
+		});
 
-		expect(bar).toEqual('gatorDB');
-
+		expect(array).toContain('gatorDB');
 	});
 });
 
