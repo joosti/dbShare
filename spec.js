@@ -128,12 +128,7 @@ describe('Signing up', function() {
 //
 describe('Adding database to your portfolio', function(){
 	it ('should be able to add a database', function(){
-		browser.sleep(3000);
-		element(by.id('droppy')).click();
-		var foo = element(by.id('droppy')).getElementsByTagname("span");
-		foo[1].click();
-		browser.sleep(3000);
-		//foo.childNodes[1].click();
+		element(by.id('addDBButton')).click();
 		element(by.id('name')).sendKeys( generateUUID() );
 		element(by.id('url')).sendKeys( generateUUID() );
 		element(by.id('descriptionShort')).sendKeys( generateUUID() );
