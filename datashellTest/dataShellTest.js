@@ -23,10 +23,10 @@ var randomURL;                  //DB url
 var randomDBName;               //DB Name
 var randomDate;                 //Comment Date
 var randomCode;                 //codeSnippet
-var randomUserID = ["5536d87d2bba3087b53dcd26", "5536d87d2bba3087b53dcd27", "5536d87d2bba3087b53dcd28",
-                    "5536d87d2bba3087b53dcd29", "5536d87d2bba3087b53dcd2a", "5536d87d2bba3087b53dcd2b",
-                    "5536d87d2bba3087b53dcd2c", "5536d87d2bba3087b53dcd2d", "5536d87d2bba3087b53dcd2e",
-                    "5536d87d2bba3087b53dcd2f", "5536d87d2bba3087b53dcd30", "5536d0628f36daaa7f205d77"];
+var randomUserID = ["55374eda2bba3087b53dce8f", "55374eda2bba3087b53dce90", "55374eda2bba3087b53dce91",
+                    "55374eda2bba3087b53dce92", "55374eda2bba3087b53dce93", "55374eda2bba3087b53dce94",
+                    "55374eda2bba3087b53dce95", "55374eda2bba3087b53dce96", "55374eda2bba3087b53dce97",
+                    "55374eda2bba3087b53dce98", "55374eda2bba3087b53dce52", "55374eda2bba3087b53dce53"];
 
 //var usersArray = [];
 //var databasesArray = [];
@@ -109,7 +109,7 @@ for(var i = 0; i < maxValue; ++i) {
     comments += '{';
     comments += '"user": {';
     comments += '"$oid": "' + randomUserID[userIDCounter] + '"}, ';
-    comments += '"databaseId": "5536d95f7d34610000f83d65", ';
+    comments += '"databaseId": "55374e4a27a6600000bc29ac", ';
     comments += '"created": {';
     comments += '"$date": "2015-03-23T05:37:51.390Z"}, ';
     comments += '"reviews": "' + randomComment + '", ';
@@ -143,7 +143,7 @@ for(var i = 0; i < maxValue; ++i) {
     else{
         codeSnippets += '"mode": "stata",';
     }
-    codeSnippets += '"databaseId": "5536d95f7d34610000f83d65", ';
+    codeSnippets += '"databaseId": "55374e4a27a6600000bc29ac", ';
     codeSnippets += '"created": {';
     codeSnippets += '"$date": "2015-03-23T05:37:51.390Z"}, ';
     codeSnippets += '"__v": 0';
