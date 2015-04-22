@@ -197,6 +197,18 @@ describe('Adding database to portfolio', function() {
 describe('Adding database to portfolio', function() {
 	it ('should be able to see the database in portfolio', function() {
 		element(by.id('dispName')).click();
+		var foo = element.all(by.repeater('portfolio in user.portfolios'));
+
+		var bar;
+
+		for(var i = 0; i < foo.length; ++i) {
+			if(foo.name == "gatorDB") {
+				bar = "gatorDB";
+			}
+		}
+
+		expect(bar).toEqual('gatorDB');
+
 	});
 });
 
