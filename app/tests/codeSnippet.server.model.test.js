@@ -46,23 +46,6 @@ describe('Code Snippet Model Unit Tests', function() {
 			});
 		});
 
-		it('should return an error when trying to save without code', function(done) {
-			codeSnippet.code = '';
-
-			return codeSnippet.save(function(err) {
-				should.exist(err);
-				done();
-			});
-		});
-
-		it('should return an error when trying to save without a mode', function(done) {
-			codeSnippet.mode = '';
-
-			return codeSnippet.save(function(err) {
-				should.exist(err);
-				done();
-			});
-		});
 
 		it('should be able to remove with no errors', function(done) {
 
