@@ -167,6 +167,24 @@ describe('Creating a new comment', function() {
 		expect($('[data-ng-show="error"]').isDisplayed()).toBeFalsy();
 	});
 });
+
+describe('Creating a new comment', function() {
+	var comment = generateUUID();
+	it ('should be able to add a comment to the db', function() {
+		element(by.id('newCommentTab')).click();
+		element(by.id('reviews')).sendKeys( comment );
+		element(by.id('commentSubmit')).click();
+
+		element(by.id('commentTab')).click();
+
+		//var comment2 = element.all(by.binding('comment.reviews'));
+		//expect(comment).toEqual(comment2);
+	});
+});
+
+
+
+
 //
 //describe('Creating a new codeSnippet', function() {
 // 	it ('should be able to add a codeSnippet to the db', function() {
