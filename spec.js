@@ -88,6 +88,9 @@ describe('Signing up', function() {
 
 });
 
+////////////////////////////////////////////////////////////////
+////////Login/Out///////////////////////////////////////////
+////////////////////////////////////////////////////////////////
 
 //describe('Logging Out',function() {
 //	it ('should be able to log out', function() {
@@ -125,7 +128,11 @@ describe('Signing up', function() {
 //	});
 //});
 
-//
+
+////////////////////////////////////////////////////////////////
+////////Database////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////
+
 describe('Adding database to your portfolio', function(){
 	it ('should be able to add a database', function(){
 		element(by.id('addDBButton')).click();
@@ -140,40 +147,15 @@ describe('Adding database to your portfolio', function(){
 
 });
 
-////////////////////////////////////////////////////////////////
-////////Database////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////
+describe('View gatorDB', function() {
+	it ('should be able to see the database for gatorDB', function() {
+		browser.get('http://localhost:3000/#!/databases');
+        query.sendKeys('gatorDB');
+		element(by.id('gatorDB')).click();
 
-//describe('Creating a new database', function() {
-//    it ('should be able to add all the info of the db', function() {
-//        // browser.get('http://localhost:3000/#!/databases'); *** select from dropdown menu?
-//        browser.get('http://localhost:3000/#!/databases/create');
-//
-//         name.sendKeys('The Real DB2');
-//         url.sendKeys('www.realdbs2.com');
-//         isFree.sendKeys(true);
-//         descriptionShort.sendKeys('This is one of the best dbs on campus and provides a much need information');
-//         descriptionLong.sendKeys('In this database all the information that is provided is not really understandable\n' +
-//         'however is you look at it long enough it really strates to make sense.');
-//
-//         element(by.buttonText('Create Database')).click();
-//         browser.get('http://localhost:3000/#!/databases');
-//         expect(browser.getCurrentUrl()).toEqual('http://localhost:3000/#!/databases');
-//    });
-//});
-
-// gatorDB INFO
-// http://localhost:3000/#!/databases/552d85612e01ff00006eee89
-
-//describe('View gatorDB', function() {
-//	it ('should be able to see the database for gatorDB', function() {
-//		browser.get('http://localhost:3000/#!/databases');
-//        query.sendKeys('gatorDB');
-//		element(by.id('gatorDB')).click();
-//
-//		expect(browser.getCurrentUrl()).toEqual('http://localhost:3000/#!/databases/552d85612e01ff00006eee89');
-//	});
-//});
+		expect(browser.getCurrentUrl()).toEqual('http://localhost:3000/#!/databases/552d85612e01ff00006eee89');
+	});
+});
 
 
 ////////////////////////////////////////////////////////////////
